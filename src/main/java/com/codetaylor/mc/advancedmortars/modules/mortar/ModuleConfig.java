@@ -8,7 +8,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class ModuleConfig {
 
-  @Config(modid = ModuleMortar.MOD_ID, category = "mortar.recipes")
+  @Config(modid = ModuleMortar.MOD_ID, category = "mortar.recipes", name = ModuleMortar.MOD_ID + ".module.Mortar")
   public static class Recipes {
 
     @Config.RequiresMcRestart
@@ -17,7 +17,7 @@ public class ModuleConfig {
 
   }
 
-  @Config(modid = ModuleMortar.MOD_ID, category = "mortar.durability")
+  @Config(modid = ModuleMortar.MOD_ID, category = "mortar.durability", name = ModuleMortar.MOD_ID + ".module.Mortar")
   public static class Durability {
 
     @Config.Comment({"Set to 0 for infinite uses."})
