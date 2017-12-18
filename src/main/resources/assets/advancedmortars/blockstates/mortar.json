@@ -1,0 +1,19 @@
+{
+  "forge_marker": 1,
+  "variants": {
+    "variant": {
+      "wood": {
+        "model": "pwcustom:mortar_wood"
+      },
+      "stone": {
+        "model": "pwcustom:mortar_stone"
+      },
+      "iron": {
+        "model": "pwcustom:mortar_iron"
+      },
+      "diamond": {
+        "model": "pwcustom:mortar_diamond"
+      }
+    }
+  }
+}

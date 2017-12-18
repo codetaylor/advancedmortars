@@ -1,0 +1,25 @@
+{
+  "result": {
+    "item": "pwcustom:mortar",
+    "data": 1
+  },
+  "pattern": [
+    "  s",
+    "wfw",
+    " w "
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "s": {
+      "type": "forge:ore_dict",
+      "ore": "stickWood"
+    },
+    "w": {
+      "type": "forge:ore_dict",
+      "ore": "stone"
+    },
+    "f": {
+      "item": "minecraft:flint"
+    }
+  }
+}
