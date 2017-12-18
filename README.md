@@ -14,29 +14,31 @@ This mod contains four in-world mortars, each with two recipe modes: mixing and 
 
 ##### Modes
 
-Switch the mortar between the crushing and mixing mode by sneaking and left-clicking an empty mortar with an empty hand.
+Switch the mortar between the crushing and mixing mode by sneaking and right-clicking an empty mortar with an empty hand.
 
 ![Modes](https://raw.githubusercontent.com/codetaylor/advancedmortars/master/assets/gifs/modes.gif)
 
 ##### Crushing
 
-Place up to a stack of items in the mortar by left-clicking the mortar while holding the items. Then, perform the craft by left-clicking or holding down the left mouse button with an empty hand.
+Place up to a stack of items in the mortar by right-clicking the mortar while holding the items. Then, perform the craft by right-clicking or holding down the right mouse button with an empty hand.
 
 ![Crushing](https://raw.githubusercontent.com/codetaylor/advancedmortars/master/assets/gifs/crushing.gif)
 
 ##### Mixing
 
-Place up to eight individual items in the mortar by left-clicking the mortar while holding the items. Then, perform the craft by left-clicking or holding down the left mouse button with an empty hand. 
+Place up to eight individual items in the mortar by right-clicking the mortar while holding the items. Then, perform the craft by right-clicking or holding down the right mouse button with an empty hand. 
 
 ![Mixing](https://raw.githubusercontent.com/codetaylor/advancedmortars/master/assets/gifs/mixing.gif)
 
-In mixing mode, the mortar can hold up to eight individual items.
+#### Retrieval
+
+Retrieve items in the mortar by sneaking and right-clicking the mortar with an empty hand.
 
 ![Mixing2](https://raw.githubusercontent.com/codetaylor/advancedmortars/master/assets/gifs/mixing2.gif)
 
 ##### Pick-Up
 
-The mortar can easily be picked up and moved by sneaking and right-clicking the mortar. When picked up this way, the mortar will retain its contents.
+The mortar can easily be picked up and moved by sneaking and left-clicking the mortar. When picked up this way, the mortar will retain its contents.
 
 ![Pick-Up](https://raw.githubusercontent.com/codetaylor/advancedmortars/master/assets/gifs/pickup.gif)
 
