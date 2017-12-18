@@ -1,5 +1,5 @@
 {
-  "parent": "pwcustom:block/mortar",
+  "parent": "advancedmortars:block/mortar",
   "textures": {
     "mortar": "blocks/stone",
     "particle": "blocks/stone"

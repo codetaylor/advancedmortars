@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "pwcustom:items/mortar_stone"
+    "layer0": "advancedmortars:items/mortar_stone"
   }
 }

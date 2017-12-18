@@ -1,9 +1,3 @@
-hud.advancedmortars.mortar.mode=Mode: %s
-hud.advancedmortars.mortar.mode.mixing=Mixing
-hud.advancedmortars.mortar.mode.crushing=Crushing
-
-config.advancedmortars.mortar.durability=Mortar Durability
-
 text.advancedmortars.jei.category.mortar.wood=Wood Mortar
 text.advancedmortars.jei.category.mortar.stone=Stone Mortar
 text.advancedmortars.jei.category.mortar.iron=Iron Mortar

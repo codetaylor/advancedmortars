@@ -3,16 +3,16 @@
   "variants": {
     "variant": {
       "wood": {
-        "model": "pwcustom:mortar_wood"
+        "model": "advancedmortars:mortar_wood"
       },
       "stone": {
-        "model": "pwcustom:mortar_stone"
+        "model": "advancedmortars:mortar_stone"
       },
       "iron": {
-        "model": "pwcustom:mortar_iron"
+        "model": "advancedmortars:mortar_iron"
       },
       "diamond": {
-        "model": "pwcustom:mortar_diamond"
+        "model": "advancedmortars:mortar_diamond"
       }
     }
   }
