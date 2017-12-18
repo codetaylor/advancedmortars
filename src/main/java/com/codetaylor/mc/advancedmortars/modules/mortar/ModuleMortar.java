@@ -1,11 +1,11 @@
-package com.sudoplay.mc.pwcustom.modules.mortar;
+package com.codetaylor.mc.advancedmortars.modules.mortar;
 
-import com.sudoplay.mc.pwcustom.ModPWCustom;
-import com.sudoplay.mc.pwcustom.lib.module.ModuleBase;
-import com.sudoplay.mc.pwcustom.modules.mortar.block.BlockMortar;
-import com.sudoplay.mc.pwcustom.modules.mortar.integration.crafttweaker.PluginCraftTweaker;
-import com.sudoplay.mc.pwcustom.modules.mortar.item.ItemBlockMortar;
-import com.sudoplay.mc.pwcustom.modules.mortar.tile.*;
+import com.codetaylor.mc.advancedmortars.ModAdvancedMortars;
+import com.codetaylor.mc.advancedmortars.lib.module.ModuleBase;
+import com.codetaylor.mc.advancedmortars.modules.mortar.block.BlockMortar;
+import com.codetaylor.mc.advancedmortars.modules.mortar.integration.crafttweaker.PluginCraftTweaker;
+import com.codetaylor.mc.advancedmortars.modules.mortar.item.ItemBlockMortar;
+import com.codetaylor.mc.advancedmortars.modules.mortar.tile.*;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
@@ -32,8 +32,8 @@ public class ModuleMortar
    * explicit registration of CT plugin
    */
 
-  public static final String MOD_ID = ModPWCustom.MOD_ID;
-  public static final boolean IS_DEV = ModPWCustom.IS_DEV;
+  public static final String MOD_ID = ModAdvancedMortars.MOD_ID;
+  public static final boolean IS_DEV = ModAdvancedMortars.IS_DEV;
 
   public static class Lang {
 

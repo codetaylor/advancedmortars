@@ -1,11 +1,11 @@
-package com.sudoplay.mc.pwcustom.modules.mortar.block;
+package com.codetaylor.mc.advancedmortars.modules.mortar.block;
 
-import com.sudoplay.mc.pwcustom.lib.spi.BlockBase;
-import com.sudoplay.mc.pwcustom.lib.spi.IBlockVariant;
-import com.sudoplay.mc.pwcustom.lib.util.StackUtil;
-import com.sudoplay.mc.pwcustom.modules.mortar.ModuleConfig;
-import com.sudoplay.mc.pwcustom.modules.mortar.reference.EnumMortarType;
-import com.sudoplay.mc.pwcustom.modules.mortar.tile.*;
+import com.codetaylor.mc.advancedmortars.lib.spi.BlockBase;
+import com.codetaylor.mc.advancedmortars.lib.spi.IBlockVariant;
+import com.codetaylor.mc.advancedmortars.lib.util.StackUtil;
+import com.codetaylor.mc.advancedmortars.modules.mortar.ModuleConfig;
+import com.codetaylor.mc.advancedmortars.modules.mortar.reference.EnumMortarType;
+import com.codetaylor.mc.advancedmortars.modules.mortar.tile.*;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.MapColor;

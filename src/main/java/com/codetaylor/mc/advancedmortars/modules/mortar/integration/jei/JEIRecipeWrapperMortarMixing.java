@@ -1,6 +1,6 @@
-package com.sudoplay.mc.pwcustom.modules.mortar.integration.jei;
+package com.codetaylor.mc.advancedmortars.modules.mortar.integration.jei;
 
-import com.sudoplay.mc.pwcustom.modules.mortar.recipe.RecipeMortarMixing;
+import com.codetaylor.mc.advancedmortars.modules.mortar.recipe.RecipeMortarMixing;
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.IRecipeWrapper;
 import net.minecraft.item.ItemStack;

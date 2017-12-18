@@ -1,27 +1,15 @@
-container.pwcustom.workbench.blacksmith.basic=Blacksmith's Workbench
-container.pwcustom.workbench.carpenter.basic=Carpenter's Workbench
-container.pwcustom.workbench.jeweler.basic=Jeweler's Workbench
-container.pwcustom.workbench.mason.basic=Mason's Workbench
-container.pwcustom.workbench.tailor.basic=Tailor's Workbench
+hud.advancedmortars.mortar.mode=Mode: %s
+hud.advancedmortars.mortar.mode.mixing=Mixing
+hud.advancedmortars.mortar.mode.crushing=Crushing
 
-text.pwcustom.jei.category.workbench.blacksmith=Blacksmith's Workbench
-text.pwcustom.jei.category.workbench.carpenter=Carpenter's Workbench
-text.pwcustom.jei.category.workbench.jeweler=Jeweler's Workbench
-text.pwcustom.jei.category.workbench.mason=Mason's Workbench
-text.pwcustom.jei.category.workbench.tailor=Tailor's Workbench
+config.advancedmortars.mortar.durability=Mortar Durability
 
-hud.pwcustom.mortar.mode=Mode: %s
-hud.pwcustom.mortar.mode.mixing=Mixing
-hud.pwcustom.mortar.mode.crushing=Crushing
+text.advancedmortars.jei.category.mortar.wood=Wood Mortar
+text.advancedmortars.jei.category.mortar.stone=Stone Mortar
+text.advancedmortars.jei.category.mortar.iron=Iron Mortar
+text.advancedmortars.jei.category.mortar.diamond=Diamond Mortar
 
-config.pwcustom.mortar.durability=Mortar Durability
-
-text.pwcustom.jei.category.mortar.wood=Wood Mortar
-text.pwcustom.jei.category.mortar.stone=Stone Mortar
-text.pwcustom.jei.category.mortar.iron=Iron Mortar
-text.pwcustom.jei.category.mortar.diamond=Diamond Mortar
-
-tile.pwcustom.mortar.mortar_wood.name=Wood Mortar
-tile.pwcustom.mortar.mortar_stone.name=Stone Mortar
-tile.pwcustom.mortar.mortar_iron.name=Iron Mortar
-tile.pwcustom.mortar.mortar_diamond.name=Diamond Mortar
+tile.advancedmortars.mortar.mortar_wood.name=Wood Mortar
+tile.advancedmortars.mortar.mortar_stone.name=Stone Mortar
+tile.advancedmortars.mortar.mortar_iron.name=Iron Mortar
+tile.advancedmortars.mortar.mortar_diamond.name=Diamond Mortar

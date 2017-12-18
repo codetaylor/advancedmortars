@@ -1,6 +1,6 @@
-package com.sudoplay.mc.pwcustom.modules.mortar.recipe;
+package com.codetaylor.mc.advancedmortars.modules.mortar.recipe;
 
-import com.sudoplay.mc.pwcustom.modules.mortar.reference.EnumMortarType;
+import com.codetaylor.mc.advancedmortars.modules.mortar.reference.EnumMortarType;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.NonNullList;

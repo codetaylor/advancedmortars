@@ -1,4 +1,4 @@
-package com.sudoplay.mc.pwcustom.lib.spi;
+package com.codetaylor.mc.advancedmortars.lib.spi;
 
 import net.minecraft.util.IStringSerializable;
 

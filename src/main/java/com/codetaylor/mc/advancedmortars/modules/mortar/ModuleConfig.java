@@ -1,4 +1,4 @@
-package com.sudoplay.mc.pwcustom.modules.mortar;
+package com.codetaylor.mc.advancedmortars.modules.mortar;
 
 import net.minecraftforge.common.config.Config;
 import net.minecraftforge.common.config.ConfigManager;

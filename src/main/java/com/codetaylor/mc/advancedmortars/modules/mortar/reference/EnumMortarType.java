@@ -1,6 +1,6 @@
-package com.sudoplay.mc.pwcustom.modules.mortar.reference;
+package com.codetaylor.mc.advancedmortars.modules.mortar.reference;
 
-import com.sudoplay.mc.pwcustom.lib.spi.IVariant;
+import com.codetaylor.mc.advancedmortars.lib.spi.IVariant;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;

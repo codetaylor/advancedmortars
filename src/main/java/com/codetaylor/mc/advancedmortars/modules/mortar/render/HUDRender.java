@@ -1,10 +1,10 @@
-package com.sudoplay.mc.pwcustom.modules.mortar.render;
+package com.codetaylor.mc.advancedmortars.modules.mortar.render;
 
-import com.sudoplay.mc.pwcustom.lib.IRecipeOutputProvider;
-import com.sudoplay.mc.pwcustom.lib.gui.GuiHelper;
-import com.sudoplay.mc.pwcustom.modules.mortar.ModuleMortar;
-import com.sudoplay.mc.pwcustom.modules.mortar.reference.EnumMortarMode;
-import com.sudoplay.mc.pwcustom.modules.mortar.tile.TileEntityMortarBase;
+import com.codetaylor.mc.advancedmortars.lib.IRecipeOutputProvider;
+import com.codetaylor.mc.advancedmortars.lib.gui.GuiHelper;
+import com.codetaylor.mc.advancedmortars.modules.mortar.ModuleMortar;
+import com.codetaylor.mc.advancedmortars.modules.mortar.reference.EnumMortarMode;
+import com.codetaylor.mc.advancedmortars.modules.mortar.tile.TileEntityMortarBase;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.GlStateManager;

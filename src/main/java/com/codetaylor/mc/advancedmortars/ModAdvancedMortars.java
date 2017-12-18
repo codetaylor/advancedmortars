@@ -1,33 +1,23 @@
-package com.sudoplay.mc.pwcustom;
+package com.codetaylor.mc.advancedmortars;
 
-import com.sudoplay.mc.pwcustom.lib.gui.GuiHandler;
-import com.sudoplay.mc.pwcustom.lib.module.IModuleLoggerFactory;
-import com.sudoplay.mc.pwcustom.lib.module.ModuleEventRouter;
-import com.sudoplay.mc.pwcustom.lib.module.ModuleRegistry;
-import com.sudoplay.mc.pwcustom.modules.blocks.ModuleBlocks;
-import com.sudoplay.mc.pwcustom.modules.casts.ModuleCasts;
-import com.sudoplay.mc.pwcustom.modules.craftingparts.ModuleCraftingParts;
-import com.sudoplay.mc.pwcustom.modules.enchanting.ModuleEnchanting;
-import com.sudoplay.mc.pwcustom.modules.mortar.ModuleMortar;
-import com.sudoplay.mc.pwcustom.modules.portals.ModulePortals;
-import com.sudoplay.mc.pwcustom.modules.sawing.ModuleSawing;
-import com.sudoplay.mc.pwcustom.modules.toolparts.ModuleToolParts;
-import com.sudoplay.mc.pwcustom.modules.workbench.ModuleWorkbench;
+import com.codetaylor.mc.advancedmortars.lib.module.IModuleLoggerFactory;
+import com.codetaylor.mc.advancedmortars.lib.module.ModuleEventRouter;
+import com.codetaylor.mc.advancedmortars.lib.module.ModuleRegistry;
+import com.codetaylor.mc.advancedmortars.modules.mortar.ModuleMortar;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.*;
-import net.minecraftforge.fml.common.network.NetworkRegistry;
 import org.apache.logging.log4j.LogManager;
 
 @Mod(
-    modid = ModPWCustom.MOD_ID,
-    version = ModPWCustom.VERSION,
-    name = ModPWCustom.NAME,
-    dependencies = ModPWCustom.DEPENDENCIES
+    modid = ModAdvancedMortars.MOD_ID,
+    version = ModAdvancedMortars.VERSION,
+    name = ModAdvancedMortars.NAME,
+    dependencies = ModAdvancedMortars.DEPENDENCIES
 )
-public class ModPWCustom {
+public class ModAdvancedMortars {
 
   public static final String MOD_ID = Reference.MOD_ID;
   public static final String VERSION = Reference.VERSION;
@@ -38,20 +28,20 @@ public class ModPWCustom {
 
   @SuppressWarnings("unused")
   @Mod.Instance
-  public static ModPWCustom INSTANCE;
+  public static ModAdvancedMortars INSTANCE;
 
   public static final CreativeTabs CREATIVE_TAB = new CreativeTabs(MOD_ID) {
 
     @Override
     public ItemStack getTabIconItem() {
 
-      return new ItemStack(ModulePortals.Items.PORTAL_WAND, 1, 0);
+      return new ItemStack(ModuleMortar.Blocks.MORTAR, 1, 0);
     }
   };
 
   private ModuleEventRouter moduleEventRouter;
 
-  public ModPWCustom() {
+  public ModAdvancedMortars() {
 
     IModuleLoggerFactory moduleLoggerFactory = module -> LogManager.getLogger(MOD_ID + "." + module.getName());
     ModuleRegistry moduleRegistry = new ModuleRegistry(moduleLoggerFactory);
@@ -59,14 +49,6 @@ public class ModPWCustom {
     MinecraftForge.EVENT_BUS.register(this.moduleEventRouter);
 
     moduleRegistry.registerModules(
-        new ModuleWorkbench(),
-        new ModulePortals(),
-        new ModuleSawing(),
-        new ModuleToolParts(),
-        new ModuleCasts(),
-        new ModuleEnchanting(),
-        new ModuleBlocks(),
-        new ModuleCraftingParts(),
         new ModuleMortar()
     );
 
@@ -86,8 +68,6 @@ public class ModPWCustom {
 
   @Mod.EventHandler
   public void onPreInitializationEvent(FMLPreInitializationEvent event) {
-
-    NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
 
     this.moduleEventRouter.onPreInitializationEvent(event);
   }

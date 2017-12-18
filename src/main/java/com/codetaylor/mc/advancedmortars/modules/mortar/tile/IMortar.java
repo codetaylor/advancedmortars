@@ -1,7 +1,7 @@
-package com.sudoplay.mc.pwcustom.modules.mortar.tile;
+package com.codetaylor.mc.advancedmortars.modules.mortar.tile;
 
-import com.sudoplay.mc.pwcustom.modules.mortar.reference.EnumMortarMode;
-import com.sudoplay.mc.pwcustom.modules.mortar.recipe.IRecipeMortar;
+import com.codetaylor.mc.advancedmortars.modules.mortar.reference.EnumMortarMode;
+import com.codetaylor.mc.advancedmortars.modules.mortar.recipe.IRecipeMortar;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.BlockPos;

@@ -1,0 +1,16 @@
+[
+{
+  "modid": "advancedmortars",
+  "name": "Advanced Mortars",
+  "description": "Four mortars, two modes: grind or mix. CraftTweaker and JEI integration.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["codetaylor"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]

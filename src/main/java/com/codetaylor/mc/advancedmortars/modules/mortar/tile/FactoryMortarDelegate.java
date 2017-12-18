@@ -1,7 +1,7 @@
-package com.sudoplay.mc.pwcustom.modules.mortar.tile;
+package com.codetaylor.mc.advancedmortars.modules.mortar.tile;
 
-import com.sudoplay.mc.pwcustom.modules.mortar.reference.EnumMortarMode;
-import com.sudoplay.mc.pwcustom.modules.mortar.reference.EnumMortarType;
+import com.codetaylor.mc.advancedmortars.modules.mortar.reference.EnumMortarMode;
+import com.codetaylor.mc.advancedmortars.modules.mortar.reference.EnumMortarType;
 
 public class FactoryMortarDelegate {
 

@@ -1,8 +1,8 @@
-package com.sudoplay.mc.pwcustom.modules.mortar.integration.jei;
+package com.codetaylor.mc.advancedmortars.modules.mortar.integration.jei;
 
-import com.sudoplay.mc.pwcustom.lib.gui.GuiHelper;
-import com.sudoplay.mc.pwcustom.modules.mortar.ModuleMortar;
-import com.sudoplay.mc.pwcustom.modules.mortar.recipe.RecipeMortarCrushing;
+import com.codetaylor.mc.advancedmortars.lib.gui.GuiHelper;
+import com.codetaylor.mc.advancedmortars.modules.mortar.ModuleMortar;
+import com.codetaylor.mc.advancedmortars.modules.mortar.recipe.RecipeMortarCrushing;
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.IRecipeWrapper;
 import net.minecraft.client.Minecraft;

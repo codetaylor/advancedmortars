@@ -1,8 +1,8 @@
-package com.sudoplay.mc.pwcustom.lib.module.helper;
+package com.codetaylor.mc.advancedmortars.lib.module.helper;
 
 import com.google.common.base.Preconditions;
-import com.sudoplay.mc.pwcustom.lib.spi.IBlockColored;
-import com.sudoplay.mc.pwcustom.lib.spi.IBlockVariant;
+import com.codetaylor.mc.advancedmortars.lib.spi.IBlockColored;
+import com.codetaylor.mc.advancedmortars.lib.spi.IBlockVariant;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemColored;

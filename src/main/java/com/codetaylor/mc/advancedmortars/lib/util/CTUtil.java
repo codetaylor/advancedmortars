@@ -1,4 +1,4 @@
-package com.sudoplay.mc.pwcustom.lib.util;
+package com.codetaylor.mc.advancedmortars.lib.util;
 
 import com.blamejared.mtlib.helpers.InputHelper;
 import crafttweaker.api.item.IIngredient;

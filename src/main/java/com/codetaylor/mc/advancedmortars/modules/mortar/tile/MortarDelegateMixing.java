@@ -1,12 +1,12 @@
-package com.sudoplay.mc.pwcustom.modules.mortar.tile;
+package com.codetaylor.mc.advancedmortars.modules.mortar.tile;
 
-import com.sudoplay.mc.pwcustom.lib.util.StackUtil;
-import com.sudoplay.mc.pwcustom.modules.mortar.ModuleMortar;
-import com.sudoplay.mc.pwcustom.modules.mortar.api.MortarAPI;
-import com.sudoplay.mc.pwcustom.modules.mortar.recipe.IRecipeMortar;
-import com.sudoplay.mc.pwcustom.modules.mortar.recipe.RecipeMortarMixing;
-import com.sudoplay.mc.pwcustom.modules.mortar.reference.EnumMortarMode;
-import com.sudoplay.mc.pwcustom.modules.mortar.reference.EnumMortarType;
+import com.codetaylor.mc.advancedmortars.lib.util.StackUtil;
+import com.codetaylor.mc.advancedmortars.modules.mortar.ModuleMortar;
+import com.codetaylor.mc.advancedmortars.modules.mortar.api.MortarAPI;
+import com.codetaylor.mc.advancedmortars.modules.mortar.recipe.IRecipeMortar;
+import com.codetaylor.mc.advancedmortars.modules.mortar.recipe.RecipeMortarMixing;
+import com.codetaylor.mc.advancedmortars.modules.mortar.reference.EnumMortarMode;
+import com.codetaylor.mc.advancedmortars.modules.mortar.reference.EnumMortarType;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.BlockPos;

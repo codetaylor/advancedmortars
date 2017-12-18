@@ -1,6 +1,6 @@
-package com.sudoplay.mc.pwcustom.modules.mortar.api;
+package com.codetaylor.mc.advancedmortars.modules.mortar.api;
 
-import com.sudoplay.mc.pwcustom.modules.mortar.recipe.RegistryRecipeMortar;
+import com.codetaylor.mc.advancedmortars.modules.mortar.recipe.RegistryRecipeMortar;
 
 public class MortarAPI {
 

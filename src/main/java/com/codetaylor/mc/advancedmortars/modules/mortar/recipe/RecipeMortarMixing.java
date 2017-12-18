@@ -1,4 +1,4 @@
-package com.sudoplay.mc.pwcustom.modules.mortar.recipe;
+package com.codetaylor.mc.advancedmortars.modules.mortar.recipe;
 
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;

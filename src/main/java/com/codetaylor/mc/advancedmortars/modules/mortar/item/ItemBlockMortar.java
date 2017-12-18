@@ -1,6 +1,6 @@
-package com.sudoplay.mc.pwcustom.modules.mortar.item;
+package com.codetaylor.mc.advancedmortars.modules.mortar.item;
 
-import com.sudoplay.mc.pwcustom.modules.mortar.ModuleMortar;
+import com.codetaylor.mc.advancedmortars.modules.mortar.ModuleMortar;
 import net.minecraft.block.Block;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.util.ITooltipFlag;

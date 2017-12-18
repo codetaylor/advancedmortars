@@ -1,6 +1,6 @@
-package com.sudoplay.mc.pwcustom.modules.mortar.integration.jei;
+package com.codetaylor.mc.advancedmortars.modules.mortar.integration.jei;
 
-import com.sudoplay.mc.pwcustom.modules.mortar.ModuleMortar;
+import com.codetaylor.mc.advancedmortars.modules.mortar.ModuleMortar;
 import mezz.jei.api.gui.IDrawable;
 import mezz.jei.api.gui.IGuiItemStackGroup;
 import mezz.jei.api.gui.IRecipeLayout;

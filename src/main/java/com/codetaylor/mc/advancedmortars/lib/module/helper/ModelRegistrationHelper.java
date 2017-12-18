@@ -1,9 +1,9 @@
-package com.sudoplay.mc.pwcustom.lib.module.helper;
+package com.codetaylor.mc.advancedmortars.lib.module.helper;
 
 import com.google.common.base.Preconditions;
-import com.sudoplay.mc.pwcustom.ModPWCustom;
-import com.sudoplay.mc.pwcustom.lib.spi.IBlockVariant;
-import com.sudoplay.mc.pwcustom.lib.spi.IVariant;
+import com.codetaylor.mc.advancedmortars.ModAdvancedMortars;
+import com.codetaylor.mc.advancedmortars.lib.spi.IBlockVariant;
+import com.codetaylor.mc.advancedmortars.lib.spi.IVariant;
 import net.minecraft.block.Block;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.IBlockState;
@@ -105,7 +105,7 @@ public class ModelRegistrationHelper {
         this.registerItemModel(
             item,
             value.getMeta(),
-            new ModelResourceLocation(ModPWCustom.MOD_ID + ":" + name, "inventory")
+            new ModelResourceLocation(ModAdvancedMortars.MOD_ID + ":" + name, "inventory")
         );
       }
 

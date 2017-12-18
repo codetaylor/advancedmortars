@@ -1,6 +1,6 @@
-package com.sudoplay.mc.pwcustom.modules.mortar.recipe;
+package com.codetaylor.mc.advancedmortars.modules.mortar.recipe;
 
-import com.sudoplay.mc.pwcustom.lib.IRecipeOutputProvider;
+import com.codetaylor.mc.advancedmortars.lib.IRecipeOutputProvider;
 
 public interface IRecipeMortar
     extends IRecipeOutputProvider {

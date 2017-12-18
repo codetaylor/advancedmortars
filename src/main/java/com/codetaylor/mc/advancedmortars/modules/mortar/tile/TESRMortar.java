@@ -1,8 +1,8 @@
-package com.sudoplay.mc.pwcustom.modules.mortar.tile;
+package com.codetaylor.mc.advancedmortars.modules.mortar.tile;
 
-import com.sudoplay.mc.pwcustom.ModPWCustom;
-import com.sudoplay.mc.pwcustom.modules.mortar.recipe.IRecipeMortar;
-import com.sudoplay.mc.pwcustom.modules.mortar.reference.EnumMortarMode;
+import com.codetaylor.mc.advancedmortars.ModAdvancedMortars;
+import com.codetaylor.mc.advancedmortars.modules.mortar.recipe.IRecipeMortar;
+import com.codetaylor.mc.advancedmortars.modules.mortar.reference.EnumMortarMode;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
@@ -71,7 +71,7 @@ public class TESRMortar
          * The texture for the pestle is actually loaded in the mortar block model. The texture specified in the
          * pestle model never actually gets baked into the sprite atlas.
          */
-        model = ModelLoaderRegistry.getModel(new ResourceLocation(ModPWCustom.MOD_ID, "block/pestle"));
+        model = ModelLoaderRegistry.getModel(new ResourceLocation(ModAdvancedMortars.MOD_ID, "block/pestle"));
 
       } catch (Exception e) {
         throw new RuntimeException(e);

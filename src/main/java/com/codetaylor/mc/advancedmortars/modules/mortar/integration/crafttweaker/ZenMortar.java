@@ -1,11 +1,11 @@
-package com.sudoplay.mc.pwcustom.modules.mortar.integration.crafttweaker;
+package com.codetaylor.mc.advancedmortars.modules.mortar.integration.crafttweaker;
 
 import com.blamejared.mtlib.helpers.InputHelper;
 import com.blamejared.mtlib.helpers.LogHelper;
 import com.blamejared.mtlib.utils.BaseUndoable;
-import com.sudoplay.mc.pwcustom.lib.util.CTUtil;
-import com.sudoplay.mc.pwcustom.modules.mortar.api.MortarAPI;
-import com.sudoplay.mc.pwcustom.modules.mortar.reference.EnumMortarType;
+import com.codetaylor.mc.advancedmortars.lib.util.CTUtil;
+import com.codetaylor.mc.advancedmortars.modules.mortar.api.MortarAPI;
+import com.codetaylor.mc.advancedmortars.modules.mortar.reference.EnumMortarType;
 import crafttweaker.annotations.ZenRegister;
 import crafttweaker.api.item.IIngredient;
 import crafttweaker.api.item.IItemStack;
@@ -16,7 +16,7 @@ import stanhebben.zenscript.annotations.ZenMethod;
 
 import java.util.Arrays;
 
-import static com.sudoplay.mc.pwcustom.modules.mortar.integration.crafttweaker.ZenMortar.NAME;
+import static com.codetaylor.mc.advancedmortars.modules.mortar.integration.crafttweaker.ZenMortar.NAME;
 
 @ZenClass(NAME)
 public class ZenMortar {

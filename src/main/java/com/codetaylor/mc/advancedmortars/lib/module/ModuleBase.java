@@ -1,8 +1,8 @@
-package com.sudoplay.mc.pwcustom.lib.module;
+package com.codetaylor.mc.advancedmortars.lib.module;
 
-import com.sudoplay.mc.pwcustom.lib.module.helper.BlockRegistrationHelper;
-import com.sudoplay.mc.pwcustom.lib.module.helper.ModelRegistrationHelper;
-import com.sudoplay.mc.pwcustom.lib.module.helper.TileEntityRegistrationHelper;
+import com.codetaylor.mc.advancedmortars.lib.module.helper.BlockRegistrationHelper;
+import com.codetaylor.mc.advancedmortars.lib.module.helper.ModelRegistrationHelper;
+import com.codetaylor.mc.advancedmortars.lib.module.helper.TileEntityRegistrationHelper;
 import net.minecraft.block.Block;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.item.Item;
