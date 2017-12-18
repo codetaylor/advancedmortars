@@ -127,11 +127,39 @@ public abstract class TileEntityMortarBase
       this.craftingProgress += 1;
       this.markDirty();
 
+      float volume = 0.05f;
+
+      if (this.world.rand.nextFloat() < 0.25) {
+        volume = 0.25f;
+      }
+
+      this.world.playSound(
+          null,
+          this.pos.getX() + 0.5,
+          this.pos.getY() + 0.125,
+          this.pos.getZ() + 0.5,
+          SoundEvents.BLOCK_GRAVEL_PLACE,
+          SoundCategory.BLOCKS,
+          volume,
+          1.0f
+      );
+
       if (this.craftingProgress >= recipe.getDuration()) {
         this.resetCraftingProgress();
 
         ItemStack itemStack = this.doCrafting();
         StackUtil.spawnStackOnTop(this.world, itemStack, this.pos);
+
+        this.world.playSound(
+            null,
+            this.pos.getX() + 0.5,
+            this.pos.getY() + 0.125,
+            this.pos.getZ() + 0.5,
+            SoundEvents.ENTITY_ITEM_PICKUP,
+            SoundCategory.BLOCKS,
+            0.25f,
+            1.0f
+        );
 
         // check durability
         int maxDurability = this.getMaxDurability();

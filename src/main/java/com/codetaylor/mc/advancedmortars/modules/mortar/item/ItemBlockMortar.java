@@ -71,7 +71,7 @@ public class ItemBlockMortar
     } else {
       tooltip.add(I18n.format(
           ModuleMortar.Lang.TOOLTIP_DURABILITY,
-          TextFormatting.AQUA + I18n.format(ModuleMortar.Lang.TOOLTIP_DURABILITY_UNBREAKABLE) + TextFormatting.RESET
+          TextFormatting.AQUA + I18n.format(ModuleMortar.Lang.TOOLTIP_DURABILITY_UNBREAKABLE) + TextFormatting.GRAY
       ));
     }
 
@@ -79,23 +79,23 @@ public class ItemBlockMortar
       tooltip.add(I18n.format(
           ModuleMortar.Lang.TOOLTIP_EXTENDED_PICKUP,
           TextFormatting.AQUA,
-          TextFormatting.RESET,
+          TextFormatting.GRAY,
           TextFormatting.AQUA,
-          TextFormatting.RESET
+          TextFormatting.GRAY
       ));
       tooltip.add(I18n.format(
           ModuleMortar.Lang.TOOLTIP_EXTENDED_SWITCHMODES_LINE1,
           TextFormatting.AQUA,
-          TextFormatting.RESET,
+          TextFormatting.GRAY,
           TextFormatting.AQUA,
-          TextFormatting.RESET
+          TextFormatting.GRAY
       ));
       tooltip.add(I18n.format(
           ModuleMortar.Lang.TOOLTIP_EXTENDED_SWITCHMODES_LINE2
       ));
 
     } else {
-      tooltip.add(I18n.format(ModuleMortar.Lang.TOOLTIP_EXTENDED, TextFormatting.AQUA, TextFormatting.RESET));
+      tooltip.add(I18n.format(ModuleMortar.Lang.TOOLTIP_EXTENDED, TextFormatting.AQUA, TextFormatting.GRAY));
     }
   }
 }

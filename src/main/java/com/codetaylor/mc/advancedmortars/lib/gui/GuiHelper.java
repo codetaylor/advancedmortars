@@ -18,11 +18,17 @@ public class GuiHelper {
       int width,
       int height,
       int zLevel,
-      double u0,
-      double v0,
-      double u1,
-      double v1
+      int texPosX,
+      int texPosY,
+      int texWidth,
+      int texHeight
   ) {
+
+    double u0 = texPosX / (double) texWidth;
+    double v0 = texPosY / (double) texHeight;
+
+    double u1 = u0 + width / (double) texWidth;
+    double v1 = v0 + height / (double) texHeight;
 
     TextureManager renderEngine = minecraft.getRenderManager().renderEngine;
     renderEngine.bindTexture(texture);

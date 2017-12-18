@@ -28,25 +28,8 @@ public class HUDRender {
       "textures/gui/hud_mortar.png"
   );
 
-  private static final ResourceLocation TEXTURE_MODE = new ResourceLocation(
-      ModuleMortar.MOD_ID,
-      "textures/gui/hud_mortar_mode.png"
-  );
-
-  private static final ResourceLocation TEXTURE_RETURN = new ResourceLocation(
-      ModuleMortar.MOD_ID,
-      "textures/gui/hud_mortar_return.png"
-  );
-
-  private static final ResourceLocation TEXTURE_CRUSHING = new ResourceLocation(
-      ModuleMortar.MOD_ID,
-      "textures/gui/hud_mortar_crushing.png"
-  );
-
-  private static final ResourceLocation TEXTURE_MIXING = new ResourceLocation(
-      ModuleMortar.MOD_ID,
-      "textures/gui/hud_mortar_mixing.png"
-  );
+  public static final int TEXTURE_WIDTH = 44;
+  public static final int TEXTURE_HEIGHT = 55;
 
   public static void render(ScaledResolution resolution) {
 
@@ -110,6 +93,7 @@ public class HUDRender {
           int x = (int) (radius + resolution.getScaledWidth() / 2) - 8 + 64;
           int y = resolution.getScaledHeight() / 2 - 8;
           minecraft.getRenderItem().renderItemAndEffectIntoGUI(output, x, y);
+          minecraft.getRenderItem().renderItemOverlays(minecraft.fontRenderer, output, x, y);
         }
       }
 
@@ -118,18 +102,25 @@ public class HUDRender {
 
       { // Render recipe output arrow.
         if (recipe != null) {
-          int x = (int) (radius + resolution.getScaledWidth() / 2) - 8 + 28;
-          int y = resolution.getScaledHeight() / 2 - 8;
-          GuiHelper.drawTexturedRect(minecraft, TEXTURE, x, y, 22, 15, 100, 0, 0, 1, 1);
+          int x = (int) (radius + resolution.getScaledWidth() / 2) - 8 + 30;
+          int y = resolution.getScaledHeight() / 2 - 4;
+          GuiHelper.drawTexturedRect(minecraft, TEXTURE, x, y, 8, 10, 100, 10, 23, TEXTURE_WIDTH, TEXTURE_HEIGHT);
+          GuiHelper.drawTexturedRect(minecraft, TEXTURE, x + 10, y, 12, 11, 100, 32, 0, TEXTURE_WIDTH, TEXTURE_HEIGHT);
         }
+      }
+
+      { // Render mortar pick-up hint.
+        int x = resolution.getScaledWidth() / 2 - 9;
+        int y = resolution.getScaledHeight() / 2 - 64 - 16;
+        GuiHelper.drawTexturedRect(minecraft, TEXTURE, x, y, 18, 22, 100, 18, 24, TEXTURE_WIDTH, TEXTURE_HEIGHT);
       }
 
       { // Render ingredient return hint.
         if (!((TileEntityMortarBase) tileEntity).isEmpty()
             && minecraft.player.getHeldItemMainhand().isEmpty()) {
-          int x = resolution.getScaledWidth() / 2 - 8;
-          int y = resolution.getScaledHeight() / 2 - 8;
-          GuiHelper.drawTexturedRect(minecraft, TEXTURE_RETURN, x, y, 18, 21, 100, 0, 0, 1, 1);
+          int x = resolution.getScaledWidth() / 2 - 9;
+          int y = resolution.getScaledHeight() / 2 - 6;
+          GuiHelper.drawTexturedRect(minecraft, TEXTURE, x, y, 18, 22, 100, 0, 23, TEXTURE_WIDTH, TEXTURE_HEIGHT);
         }
       }
 
@@ -139,19 +130,31 @@ public class HUDRender {
         EnumMortarMode mortarMode = ((TileEntityMortarBase) tileEntity).getMortarMode();
 
         if (((TileEntityMortarBase) tileEntity).isEmpty()) {
-          x = resolution.getScaledWidth() / 2 - 8;
+          x = resolution.getScaledWidth() / 2 - 9;
         }
 
         if (mortarMode == EnumMortarMode.CRUSHING) {
-          GuiHelper.drawTexturedRect(minecraft, TEXTURE_CRUSHING, x, y, 16, 23, 100, 0, 0, 1, 1);
+          GuiHelper.drawTexturedRect(minecraft, TEXTURE, x, y, 16, 23, 100, 0, 0, TEXTURE_WIDTH, TEXTURE_HEIGHT);
 
         } else if (mortarMode == EnumMortarMode.MIXING) {
-          GuiHelper.drawTexturedRect(minecraft, TEXTURE_MIXING, x, y, 16, 23, 100, 0, 0, 1, 1);
+          GuiHelper.drawTexturedRect(minecraft, TEXTURE, x, y, 16, 23, 100, 16, 0, TEXTURE_WIDTH, TEXTURE_HEIGHT);
         }
 
         if (((TileEntityMortarBase) tileEntity).isEmpty()
             && minecraft.player.getHeldItemMainhand().isEmpty()) {
-          GuiHelper.drawTexturedRect(minecraft, TEXTURE_MODE, x - 20, y + 5, 18, 10, 100, 0, 0, 1, 1);
+          GuiHelper.drawTexturedRect(
+              minecraft,
+              TEXTURE,
+              x - 20,
+              y + 5,
+              18,
+              10,
+              100,
+              0,
+              23,
+              TEXTURE_WIDTH,
+              TEXTURE_HEIGHT
+          );
         }
       }
 

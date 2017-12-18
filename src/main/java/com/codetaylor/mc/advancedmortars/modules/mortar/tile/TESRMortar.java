@@ -48,7 +48,9 @@ public class TESRMortar
     double offsetY = 0.125;
     double scale = 1.0;
 
-    if (tile.getMortarMode() == EnumMortarMode.CRUSHING) {
+    if (tile.getMortarMode() == EnumMortarMode.CRUSHING
+        && !tile.isEmpty()
+        && itemStackHandler.getStackInSlot(0).getItem() instanceof ItemBlock) {
       scale = 3.0;
       offsetY = 0.2;
     }

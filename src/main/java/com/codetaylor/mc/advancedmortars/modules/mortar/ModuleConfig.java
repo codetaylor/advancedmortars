@@ -8,7 +8,16 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class ModuleConfig {
 
-  @Config(modid = ModuleMortar.MOD_ID, category = "mortar.durability", name = ModuleMortar.MOD_ID + ".module.Mortar")
+  @Config(modid = ModuleMortar.MOD_ID, category = "mortar.recipes")
+  public static class Recipes {
+
+    @Config.RequiresMcRestart
+    @Config.Comment({"Set to false to disable all default recipes."})
+    public static boolean ENABLE_DEFAULT_RECIPES = true;
+
+  }
+
+  @Config(modid = ModuleMortar.MOD_ID, category = "mortar.durability")
   public static class Durability {
 
     @Config.Comment({"Set to 0 for infinite uses."})

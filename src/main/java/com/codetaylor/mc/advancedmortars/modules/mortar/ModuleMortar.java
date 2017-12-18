@@ -2,13 +2,18 @@ package com.codetaylor.mc.advancedmortars.modules.mortar;
 
 import com.codetaylor.mc.advancedmortars.ModAdvancedMortars;
 import com.codetaylor.mc.advancedmortars.lib.module.ModuleBase;
+import com.codetaylor.mc.advancedmortars.modules.mortar.api.MortarAPI;
 import com.codetaylor.mc.advancedmortars.modules.mortar.block.BlockMortar;
 import com.codetaylor.mc.advancedmortars.modules.mortar.integration.crafttweaker.PluginCraftTweaker;
 import com.codetaylor.mc.advancedmortars.modules.mortar.item.ItemBlockMortar;
+import com.codetaylor.mc.advancedmortars.modules.mortar.reference.EnumMortarType;
 import com.codetaylor.mc.advancedmortars.modules.mortar.tile.*;
 import net.minecraft.block.Block;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.Ingredient;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
@@ -19,18 +24,6 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class ModuleMortar
     extends ModuleBase {
-
-  /**
-   * TODO:
-   * <p>
-   * test sound
-   * tooltip in JEI to clarify mortar mode
-   * item tooltip to explain usage
-   * review lang - move lang references to nested Lang class
-   * transfer to stand-alone project
-   * explicit registration of JEI plugin
-   * explicit registration of CT plugin
-   */
 
   public static final String MOD_ID = ModAdvancedMortars.MOD_ID;
   public static final boolean IS_DEV = ModAdvancedMortars.IS_DEV;
@@ -60,6 +53,30 @@ public class ModuleMortar
 
     if (Loader.isModLoaded("crafttweaker")) {
       PluginCraftTweaker.init();
+    }
+
+    if (ModuleConfig.Recipes.ENABLE_DEFAULT_RECIPES) {
+
+      for (EnumMortarType type : EnumMortarType.values()) {
+
+        MortarAPI.RECIPE_REGISTRY.addCrushingRecipe(
+            type,
+            new ItemStack(Items.DYE, 4, 15),
+            4,
+            Ingredient.fromStacks(new ItemStack(Items.BONE, 1, 0))
+        );
+
+        MortarAPI.RECIPE_REGISTRY.addMixingRecipe(
+            type,
+            new ItemStack(Items.DYE, 4, 9),
+            4,
+            new Ingredient[]{
+                Ingredient.fromStacks(new ItemStack(Items.DYE, 1, 1)),
+                Ingredient.fromStacks(new ItemStack(Items.DYE, 1, 15))
+            }
+        );
+      }
+
     }
   }
 

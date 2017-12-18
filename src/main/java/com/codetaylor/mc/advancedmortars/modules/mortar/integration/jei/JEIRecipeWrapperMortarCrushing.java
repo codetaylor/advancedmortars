@@ -46,7 +46,7 @@ public class JEIRecipeWrapperMortarCrushing
       Minecraft minecraft, int recipeWidth, int recipeHeight, int mouseX, int mouseY
   ) {
 
-    GuiHelper.drawTexturedRect(minecraft, this.texture, 20, 16, 14, 21, 100, 0, 0, 1, 1);
+    GuiHelper.drawTexturedRect(minecraft, this.texture, 20, 16, 14, 21, 100, 0, 0, 14, 21);
 
     /*TextureManager renderEngine = minecraft.getRenderManager().renderEngine;
     renderEngine.bindTexture(this.texture);
