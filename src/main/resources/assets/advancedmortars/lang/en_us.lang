@@ -7,3 +7,10 @@ tile.advancedmortars.mortar.mortar_wood.name=Wood Mortar
 tile.advancedmortars.mortar.mortar_stone.name=Stone Mortar
 tile.advancedmortars.mortar.mortar_iron.name=Iron Mortar
 tile.advancedmortars.mortar.mortar_diamond.name=Diamond Mortar
+
+tooltip.advancedmortars.durability=Durability: %s
+tooltip.advancedmortars.durability.unbreakable=Unbreakable
+tooltip.advancedmortars.extended=Hold %sSHIFT%s for more info.
+tooltip.advancedmortars.extended.pickup=%sSHIFT%s + %sLEFT-CLICK%s to pick up mortar.
+tooltip.advancedmortars.extended.switchmodes.line1=%sSHIFT%s + %sRIGHT-CLICK%s with an empty hand
+tooltip.advancedmortars.extended.switchmodes.line2=  on an empty mortar to switch modes.

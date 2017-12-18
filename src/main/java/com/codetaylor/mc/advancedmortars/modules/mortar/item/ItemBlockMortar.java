@@ -3,11 +3,13 @@ package com.codetaylor.mc.advancedmortars.modules.mortar.item;
 import com.codetaylor.mc.advancedmortars.modules.mortar.ModuleMortar;
 import net.minecraft.block.Block;
 import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.ItemMultiTexture;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
@@ -54,23 +56,46 @@ public class ItemBlockMortar
           && stackCompound.hasKey("BlockEntityTag")) {
         NBTTagCompound compound = stackCompound.getCompoundTag("BlockEntityTag");
         int durability = maxDurability - compound.getInteger("durability");
-        tooltip.add("Durability: " + durability + "/" + maxDurability);
+        tooltip.add(I18n.format(
+            ModuleMortar.Lang.TOOLTIP_DURABILITY,
+            durability + "/" + maxDurability
+        ));
 
       } else {
-        tooltip.add("Durability: " + maxDurability + "/" + maxDurability);
+        tooltip.add(I18n.format(
+            ModuleMortar.Lang.TOOLTIP_DURABILITY,
+            maxDurability + "/" + maxDurability
+        ));
       }
 
     } else {
-      tooltip.add("Durability: Unbreakable");
+      tooltip.add(I18n.format(
+          ModuleMortar.Lang.TOOLTIP_DURABILITY,
+          TextFormatting.AQUA + I18n.format(ModuleMortar.Lang.TOOLTIP_DURABILITY_UNBREAKABLE) + TextFormatting.RESET
+      ));
     }
 
     if (GuiScreen.isShiftKeyDown()) {
-      tooltip.add("SHIFT + LEFT-CLICK to pick up mortar.");
-      tooltip.add("SHIFT + RIGHT-CLICK with an empty hand");
-      tooltip.add("  on an empty mortar to switch modes.");
+      tooltip.add(I18n.format(
+          ModuleMortar.Lang.TOOLTIP_EXTENDED_PICKUP,
+          TextFormatting.AQUA,
+          TextFormatting.RESET,
+          TextFormatting.AQUA,
+          TextFormatting.RESET
+      ));
+      tooltip.add(I18n.format(
+          ModuleMortar.Lang.TOOLTIP_EXTENDED_SWITCHMODES_LINE1,
+          TextFormatting.AQUA,
+          TextFormatting.RESET,
+          TextFormatting.AQUA,
+          TextFormatting.RESET
+      ));
+      tooltip.add(I18n.format(
+          ModuleMortar.Lang.TOOLTIP_EXTENDED_SWITCHMODES_LINE2
+      ));
 
     } else {
-      tooltip.add("Hold SHIFT for more info.");
+      tooltip.add(I18n.format(ModuleMortar.Lang.TOOLTIP_EXTENDED, TextFormatting.AQUA, TextFormatting.RESET));
     }
   }
 }

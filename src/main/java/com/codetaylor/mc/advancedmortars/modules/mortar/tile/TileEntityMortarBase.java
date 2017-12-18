@@ -71,12 +71,6 @@ public abstract class TileEntityMortarBase
   }
 
   @Override
-  public String getMortarModeString() {
-
-    return this.mortarDelegate.getMortarModeString();
-  }
-
-  @Override
   public ItemStackHandler getItemStackHandler() {
 
     return this.mortarDelegate.getItemStackHandler();

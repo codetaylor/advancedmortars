@@ -1,7 +1,6 @@
 package com.codetaylor.mc.advancedmortars.modules.mortar.tile;
 
 import com.codetaylor.mc.advancedmortars.lib.util.StackUtil;
-import com.codetaylor.mc.advancedmortars.modules.mortar.ModuleMortar;
 import com.codetaylor.mc.advancedmortars.modules.mortar.api.MortarAPI;
 import com.codetaylor.mc.advancedmortars.modules.mortar.recipe.IRecipeMortar;
 import com.codetaylor.mc.advancedmortars.modules.mortar.recipe.RecipeMortarMixing;
@@ -47,12 +46,6 @@ public class MortarDelegateMixing
   public EnumMortarMode getMortarMode() {
 
     return EnumMortarMode.MIXING;
-  }
-
-  @Override
-  public String getMortarModeString() {
-
-    return ModuleMortar.Lang.MORTAR_MODE_MIXING;
   }
 
   @Override

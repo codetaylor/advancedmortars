@@ -28,8 +28,6 @@ public interface IMortar {
 
   EnumMortarMode getMortarMode();
 
-  String getMortarModeString();
-
   IRecipeMortar getRecipe();
 
   ItemStack doCrafting();

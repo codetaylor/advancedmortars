@@ -37,9 +37,12 @@ public class ModuleMortar
 
   public static class Lang {
 
-    public static final String MORTAR_MODE_LABEL = "hud." + MOD_ID + ".mortar.mode";
-    public static final String MORTAR_MODE_MIXING = "hud." + MOD_ID + ".mortar.mode.mixing";
-    public static final String MORTAR_MODE_CRUSHING = "hud." + MOD_ID + ".mortar.mode.crushing";
+    public static final String TOOLTIP_DURABILITY = "tooltip." + MOD_ID + ".durability";
+    public static final String TOOLTIP_DURABILITY_UNBREAKABLE = "tooltip." + MOD_ID + ".durability.unbreakable";
+    public static final String TOOLTIP_EXTENDED = "tooltip." + MOD_ID + ".extended";
+    public static final String TOOLTIP_EXTENDED_PICKUP = "tooltip." + MOD_ID + ".extended.pickup";
+    public static final String TOOLTIP_EXTENDED_SWITCHMODES_LINE1 = "tooltip." + MOD_ID + ".extended.switchmodes.line1";
+    public static final String TOOLTIP_EXTENDED_SWITCHMODES_LINE2 = "tooltip." + MOD_ID + ".extended.switchmodes.line2";
   }
 
   public static class Blocks {
