@@ -123,7 +123,7 @@ public abstract class TileEntityMortarBase
     this.markDirty();
   }
 
-  public void incrementCraftingProgress() {
+  public boolean incrementCraftingProgress() {
 
     IRecipeMortar recipe = this.getRecipe();
 
@@ -172,7 +172,11 @@ public abstract class TileEntityMortarBase
           this.incrementAndCheckDurability(maxDurability);
         }
       }
+
+      return true;
     }
+
+    return false;
   }
 
   public void inflictHunger(EntityPlayer player) {

@@ -207,8 +207,16 @@ public class BlockMortar
             return true;
           }
 
-          tile.incrementCraftingProgress();
-          tile.inflictHunger(player);
+          if (player.getFoodStats().getFoodLevel() > ModuleConfig.RECIPES.HUNGER_COST_PER_CLICK) {
+
+            // Only perform crafting if hunger cost isn't configured or the player has enough hunger
+            // to cover the cost
+
+            if (tile.incrementCraftingProgress()) {
+              // Only inflict hunger if the crafting process was incremented
+              tile.inflictHunger(player);
+            }
+          }
 
         } else {
 

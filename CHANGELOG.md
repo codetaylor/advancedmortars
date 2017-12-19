@@ -1,3 +1,8 @@
+1.1.6
+* Player's hunger will not go below zero
+* Hunger cost will only be applied when recipe progress increments successfully
+* Player can't increment recipe progress if they don't have enough hunger to cover the cost
+
 1.1.5
 * Slightly modified hunger cost uniform distribution implementation, probably imperceptible to player
 
