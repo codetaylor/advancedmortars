@@ -6,35 +6,38 @@ import net.minecraftforge.fml.client.event.ConfigChangedEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
+@Config(modid = ModuleMortar.MOD_ID, name = ModuleMortar.MOD_ID + ".module.Mortar")
 public class ModuleConfig {
 
-  @Config(modid = ModuleMortar.MOD_ID, category = "mortar.recipes", name = ModuleMortar.MOD_ID + ".module.Mortar")
+  public static Recipes RECIPES = new Recipes();
+
   public static class Recipes {
 
     @Config.RequiresMcRestart
     @Config.Comment({"Set to false to disable all default recipes."})
-    public static boolean ENABLE_DEFAULT_RECIPES = true;
+    public boolean ENABLE_DEFAULT_RECIPES = true;
 
   }
 
-  @Config(modid = ModuleMortar.MOD_ID, category = "mortar.durability", name = ModuleMortar.MOD_ID + ".module.Mortar")
+  public static Durability DURABILITY = new Durability();
+
   public static class Durability {
 
-    @Config.Comment({"Set to 0 for infinite uses."})
     @Config.RangeInt(min = 0)
-    public static int WOOD = 16;
+    @Config.Comment({"Set to 0 for infinite uses."})
+    public int WOOD = 16;
 
-    @Config.Comment({"Set to 0 for infinite uses."})
     @Config.RangeInt(min = 0)
-    public static int STONE = 64;
+    @Config.Comment({"Set to 0 for infinite uses."})
+    public int STONE = 64;
 
-    @Config.Comment({"Set to 0 for infinite uses."})
     @Config.RangeInt(min = 0)
-    public static int IRON = 256;
+    @Config.Comment({"Set to 0 for infinite uses."})
+    public int IRON = 256;
 
-    @Config.Comment({"Set to 0 for infinite uses."})
     @Config.RangeInt(min = 0)
-    public static int DIAMOND = 1024;
+    @Config.Comment({"Set to 0 for infinite uses."})
+    public int DIAMOND = 1024;
 
   }
 

@@ -59,7 +59,7 @@ public class ModuleMortar
       PluginCraftTweaker.init();
     }
 
-    if (ModuleConfig.Recipes.ENABLE_DEFAULT_RECIPES) {
+    if (ModuleConfig.RECIPES.ENABLE_DEFAULT_RECIPES) {
 
       for (EnumMortarType type : EnumMortarType.values()) {
 

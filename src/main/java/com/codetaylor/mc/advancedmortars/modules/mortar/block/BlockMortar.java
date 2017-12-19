@@ -245,13 +245,13 @@ public class BlockMortar
 
     switch (type) {
       case WOOD:
-        return ModuleConfig.Durability.WOOD;
+        return ModuleConfig.DURABILITY.WOOD;
       case STONE:
-        return ModuleConfig.Durability.STONE;
+        return ModuleConfig.DURABILITY.STONE;
       case IRON:
-        return ModuleConfig.Durability.IRON;
+        return ModuleConfig.DURABILITY.IRON;
       case DIAMOND:
-        return ModuleConfig.Durability.DIAMOND;
+        return ModuleConfig.DURABILITY.DIAMOND;
       default:
         throw new IllegalArgumentException("Unknown mortar type: " + type);
     }
