@@ -1,3 +1,6 @@
+1.1.5
+* Slightly modified hunger cost uniform distribution implementation, probably imperceptible to player
+
 1.1.4
 * Added requested feature: usage can have optional hunger cost (see config file)
 

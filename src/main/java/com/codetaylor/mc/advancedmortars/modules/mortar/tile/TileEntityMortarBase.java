@@ -46,7 +46,6 @@ public abstract class TileEntityMortarBase
         EnumMortarType.fromMeta(this.typeId),
         EnumMortarMode.MIXING
     );
-    this.hungerEntropy = -1;
   }
 
   public EnumMortarMode cycleMortarMode() {
@@ -182,13 +181,9 @@ public abstract class TileEntityMortarBase
       return;
     }
 
-    if (this.hungerEntropy < 0) {
-      this.hungerEntropy = this.world.rand.nextFloat();
-    }
-
     this.hungerEntropy += ModuleConfig.RECIPES.HUNGER_COST_CHANCE;
 
-    if (this.hungerEntropy > 1) {
+    if (this.hungerEntropy >= 1) {
       this.hungerEntropy -= 1;
       player.getFoodStats().addStats(-ModuleConfig.RECIPES.HUNGER_COST_PER_CLICK, 0);
     }
