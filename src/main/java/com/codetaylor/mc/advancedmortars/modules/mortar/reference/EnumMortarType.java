@@ -15,8 +15,8 @@ public enum EnumMortarType
     implements IVariant {
 
   WOOD(0, "wood", Material.WOOD, Material.WOOD.getMaterialMapColor(), 2, 5, "axe", 0, SoundType.WOOD),
-  IRON(1, "iron", Material.IRON, Material.IRON.getMaterialMapColor(), 5, 10, "pickaxe", 2, SoundType.METAL),
-  STONE(2, "stone", Material.ROCK, Material.ROCK.getMaterialMapColor(), 1.5f, 10, "pickaxe", 1, SoundType.STONE),
+  STONE(1, "stone", Material.ROCK, Material.ROCK.getMaterialMapColor(), 1.5f, 10, "pickaxe", 1, SoundType.STONE),
+  IRON(2, "iron", Material.IRON, Material.IRON.getMaterialMapColor(), 5, 10, "pickaxe", 2, SoundType.METAL),
   DIAMOND(3, "diamond", Material.IRON, MapColor.DIAMOND, 5, 10, "pickaxe", 3, SoundType.METAL);
 
   private static final EnumMortarType[] META_LOOKUP = Stream.of(EnumMortarType.values())
