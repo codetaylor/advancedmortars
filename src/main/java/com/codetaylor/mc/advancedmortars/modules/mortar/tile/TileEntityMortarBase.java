@@ -1,12 +1,14 @@
 package com.codetaylor.mc.advancedmortars.modules.mortar.tile;
 
 import com.codetaylor.mc.advancedmortars.lib.util.StackUtil;
+import com.codetaylor.mc.advancedmortars.modules.mortar.ModuleConfig;
 import com.codetaylor.mc.advancedmortars.modules.mortar.ModuleMortar;
 import com.codetaylor.mc.advancedmortars.modules.mortar.recipe.IRecipeMortar;
 import com.codetaylor.mc.advancedmortars.modules.mortar.reference.EnumMortarMode;
 import com.codetaylor.mc.advancedmortars.modules.mortar.reference.EnumMortarType;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -34,6 +36,8 @@ public abstract class TileEntityMortarBase
   protected IMortar mortarDelegate;
   protected int craftingProgress;
 
+  protected float hungerEntropy;
+
   public TileEntityMortarBase(EnumMortarType typeId) {
 
     this.typeId = (byte) typeId.getMeta();
@@ -42,6 +46,7 @@ public abstract class TileEntityMortarBase
         EnumMortarType.fromMeta(this.typeId),
         EnumMortarMode.MIXING
     );
+    this.hungerEntropy = -1;
   }
 
   public EnumMortarMode cycleMortarMode() {
@@ -168,6 +173,24 @@ public abstract class TileEntityMortarBase
           this.incrementAndCheckDurability(maxDurability);
         }
       }
+    }
+  }
+
+  public void inflictHunger(EntityPlayer player) {
+
+    if (ModuleConfig.RECIPES.HUNGER_COST_PER_CLICK == 0) {
+      return;
+    }
+
+    if (this.hungerEntropy < 0) {
+      this.hungerEntropy = this.world.rand.nextFloat();
+    }
+
+    this.hungerEntropy += ModuleConfig.RECIPES.HUNGER_COST_CHANCE;
+
+    if (this.hungerEntropy > 1) {
+      this.hungerEntropy -= 1;
+      player.getFoodStats().addStats(-ModuleConfig.RECIPES.HUNGER_COST_PER_CLICK, 0);
     }
   }
 
