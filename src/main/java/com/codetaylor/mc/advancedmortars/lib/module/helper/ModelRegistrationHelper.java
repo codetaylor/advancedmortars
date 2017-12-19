@@ -34,29 +34,29 @@ public class ModelRegistrationHelper {
   // - ItemBlock
   // --------------------------------------------------------------------------
 
-  public void registerBlockItemModels(Block... blocks) {
+  public static void registerBlockItemModels(Block... blocks) {
 
     for (Block block : blocks) {
 
       if (block instanceof IBlockVariant) {
         //noinspection unchecked
-        this.registerVariantBlockItemModels(
+        ModelRegistrationHelper.registerVariantBlockItemModels(
             block.getDefaultState(),
             ((IBlockVariant) block).getVariant()
         );
 
       } else {
-        this.registerBlockItemModel(block.getDefaultState());
+        ModelRegistrationHelper.registerBlockItemModel(block.getDefaultState());
       }
     }
   }
 
-  public void registerBlockItemModel(IBlockState blockState) {
+  public static void registerBlockItemModel(IBlockState blockState) {
 
     Block block = blockState.getBlock();
     Item item = Item.getItemFromBlock(block);
 
-    this.registerItemModel(
+    ModelRegistrationHelper.registerItemModel(
         item,
         new ModelResourceLocation(
             Preconditions.checkNotNull(block.getRegistryName(), "Block %s has null registry name", block),
@@ -65,23 +65,23 @@ public class ModelRegistrationHelper {
     );
   }
 
-  public <T extends IVariant & Comparable<T>> void registerVariantBlockItemModels(
+  public static <T extends IVariant & Comparable<T>> void registerVariantBlockItemModels(
       IBlockState baseState,
       IProperty<T> property
   ) {
 
-    this.registerVariantBlockItemModels(baseState, property, IVariant::getMeta);
+    ModelRegistrationHelper.registerVariantBlockItemModels(baseState, property, IVariant::getMeta);
   }
 
-  public <T extends IVariant & Comparable<T>> void registerVariantBlockItemModelsSeparately(
+  public static <T extends IVariant & Comparable<T>> void registerVariantBlockItemModelsSeparately(
       IBlockState state,
       IProperty<T> property
   ) {
 
-    this.registerVariantBlockItemModelsSeparately(state, property, "");
+    ModelRegistrationHelper.registerVariantBlockItemModelsSeparately(state, property, "");
   }
 
-  public <T extends IVariant & Comparable<T>> void registerVariantBlockItemModelsSeparately(
+  public static <T extends IVariant & Comparable<T>> void registerVariantBlockItemModelsSeparately(
       IBlockState state,
       IProperty<T> property,
       String suffix
@@ -102,7 +102,7 @@ public class ModelRegistrationHelper {
       }
 
       if (item != Items.AIR) {
-        this.registerItemModel(
+        ModelRegistrationHelper.registerItemModel(
             item,
             value.getMeta(),
             new ModelResourceLocation(ModAdvancedMortars.MOD_ID + ":" + name, "inventory")
@@ -112,25 +112,25 @@ public class ModelRegistrationHelper {
     }
   }
 
-  public <T extends Comparable<T>> void registerVariantBlockItemModels(
+  public static <T extends Comparable<T>> void registerVariantBlockItemModels(
       IBlockState baseState,
       IProperty<T> property,
       ToIntFunction<T> getMeta
   ) {
 
     property.getAllowedValues()
-        .forEach(value -> this.registerBlockItemModelForMeta(
+        .forEach(value -> ModelRegistrationHelper.registerBlockItemModelForMeta(
             baseState.withProperty(property, value),
             getMeta.applyAsInt(value)
         ));
   }
 
-  public void registerBlockItemModelForMeta(final IBlockState state, final int metadata) {
+  public static void registerBlockItemModelForMeta(final IBlockState state, final int metadata) {
 
     Item item = Item.getItemFromBlock(state.getBlock());
 
     if (item != Items.AIR) {
-      this.registerItemModel(
+      ModelRegistrationHelper.registerItemModel(
           item,
           metadata,
           PROPERTY_STRING_MAPPER.getPropertyString(state.getProperties())
@@ -142,42 +142,42 @@ public class ModelRegistrationHelper {
   // - Item
   // --------------------------------------------------------------------------
 
-  public void registerItemModels(Item... items) {
+  public static void registerItemModels(Item... items) {
 
     for (Item item : items) {
-      this.registerItemModel(item, item.getRegistryName().toString());
+      ModelRegistrationHelper.registerItemModel(item, item.getRegistryName().toString());
     }
   }
 
-  public void registerItemModel(Item item, String modelLocation) {
+  public static void registerItemModel(Item item, String modelLocation) {
 
     ModelResourceLocation resourceLocation = new ModelResourceLocation(modelLocation, "inventory");
-    this.registerItemModel(item, 0, resourceLocation);
+    ModelRegistrationHelper.registerItemModel(item, 0, resourceLocation);
   }
 
-  public void registerItemModel(Item item, ModelResourceLocation resourceLocation) {
+  public static void registerItemModel(Item item, ModelResourceLocation resourceLocation) {
 
-    this.registerItemModel(item, 0, resourceLocation);
+    ModelRegistrationHelper.registerItemModel(item, 0, resourceLocation);
   }
 
-  public void registerItemModel(final Item item, final int metadata, final String variant) {
+  public static void registerItemModel(final Item item, final int metadata, final String variant) {
 
-    this.registerItemModel(
+    ModelRegistrationHelper.registerItemModel(
         item,
         metadata,
         new ModelResourceLocation(item.getRegistryName(), variant)
     );
   }
 
-  public void registerItemModel(Item item, int meta, ModelResourceLocation resourceLocation) {
+  public static void registerItemModel(Item item, int meta, ModelResourceLocation resourceLocation) {
 
     ModelLoader.setCustomModelResourceLocation(item, meta, resourceLocation);
   }
 
-  public <T extends IVariant> void registerVariantItemModels(Item item, String variantName, T[] values) {
+  public static <T extends IVariant> void registerVariantItemModels(Item item, String variantName, T[] values) {
 
     for (T value : values) {
-      this.registerItemModel(item, value.getMeta(), variantName + "=" + value.getName());
+      ModelRegistrationHelper.registerItemModel(item, value.getMeta(), variantName + "=" + value.getName());
     }
   }
 

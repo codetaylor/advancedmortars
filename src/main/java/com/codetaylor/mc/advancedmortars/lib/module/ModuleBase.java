@@ -1,8 +1,5 @@
 package com.codetaylor.mc.advancedmortars.lib.module;
 
-import com.codetaylor.mc.advancedmortars.lib.module.helper.BlockRegistrationHelper;
-import com.codetaylor.mc.advancedmortars.lib.module.helper.ModelRegistrationHelper;
-import com.codetaylor.mc.advancedmortars.lib.module.helper.TileEntityRegistrationHelper;
 import net.minecraft.block.Block;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.item.Item;
@@ -15,7 +12,6 @@ import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.event.*;
 import net.minecraftforge.fml.common.registry.EntityEntry;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.common.registry.VillagerRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -23,16 +19,6 @@ import org.apache.logging.log4j.Logger;
 
 public abstract class ModuleBase
     implements IModule {
-
-  private static final BlockRegistrationHelper BLOCK_REGISTRATION_HELPER;
-  private static final ModelRegistrationHelper MODEL_REGISTRATION_HELPER;
-  private static final TileEntityRegistrationHelper TILE_ENTITY_REGISTRATION_HELPER;
-
-  static {
-    BLOCK_REGISTRATION_HELPER = new BlockRegistrationHelper();
-    MODEL_REGISTRATION_HELPER = new ModelRegistrationHelper();
-    TILE_ENTITY_REGISTRATION_HELPER = new TileEntityRegistrationHelper();
-  }
 
   private final String name;
   private Logger logger;
@@ -69,25 +55,6 @@ public abstract class ModuleBase
       throw new IllegalStateException("Logger already set!");
     }
     this.logger = logger;
-  }
-
-  // --------------------------------------------------------------------------
-  // - Utility
-  // --------------------------------------------------------------------------
-
-  protected BlockRegistrationHelper getBlockRegistrationHelper() {
-
-    return BLOCK_REGISTRATION_HELPER;
-  }
-
-  protected ModelRegistrationHelper getModelRegistrationHelper() {
-
-    return MODEL_REGISTRATION_HELPER;
-  }
-
-  protected TileEntityRegistrationHelper getTileEntityRegistrationHelper() {
-
-    return TILE_ENTITY_REGISTRATION_HELPER;
   }
 
   // --------------------------------------------------------------------------

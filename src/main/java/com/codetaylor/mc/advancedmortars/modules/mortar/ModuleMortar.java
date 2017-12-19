@@ -2,6 +2,8 @@ package com.codetaylor.mc.advancedmortars.modules.mortar;
 
 import com.codetaylor.mc.advancedmortars.ModAdvancedMortars;
 import com.codetaylor.mc.advancedmortars.lib.module.ModuleBase;
+import com.codetaylor.mc.advancedmortars.lib.module.helper.ModelRegistrationHelper;
+import com.codetaylor.mc.advancedmortars.lib.module.helper.TileEntityRegistrationHelper;
 import com.codetaylor.mc.advancedmortars.modules.mortar.api.MortarAPI;
 import com.codetaylor.mc.advancedmortars.modules.mortar.block.BlockMortar;
 import com.codetaylor.mc.advancedmortars.modules.mortar.integration.crafttweaker.PluginCraftTweaker;
@@ -21,6 +23,8 @@ import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.event.FMLLoadCompleteEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ModuleMortar
     extends ModuleBase {
@@ -101,7 +105,7 @@ public class ModuleMortar
   @Override
   public void onRegisterTileEntitiesEvent() {
 
-    this.getTileEntityRegistrationHelper().registerTileEntities(
+    TileEntityRegistrationHelper.registerTileEntities(
         MOD_ID,
         TileEntityMortarWood.class,
         TileEntityMortarStone.class,
@@ -111,9 +115,10 @@ public class ModuleMortar
   }
 
   @Override
+  @SideOnly(Side.CLIENT)
   public void onClientRegisterModelsEvent(ModelRegistryEvent event) {
 
-    this.getModelRegistrationHelper().registerVariantBlockItemModelsSeparately(
+    ModelRegistrationHelper.registerVariantBlockItemModelsSeparately(
         Blocks.MORTAR.getDefaultState(),
         BlockMortar.VARIANT
     );
