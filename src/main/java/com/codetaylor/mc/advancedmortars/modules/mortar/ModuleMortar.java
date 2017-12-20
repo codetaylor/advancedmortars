@@ -38,6 +38,7 @@ public class ModuleMortar
    * X update JEI graphic
    * X crosshair
    * X update readme
+   * hunger
    * update curse project page
    * update changelog
    */

@@ -1,5 +1,9 @@
 1.2.6
-* Removed mortar modes. The behavior of each mode has been merged into a single mode.
+* NOTICE: ZenScript syntax has changed
+* NOTICE: Config file has changed, please refresh
+* Removed mortar modes. The behavior of each mode has been merged into a single mode. For more information on this decision, please see [this discussion](https://github.com/codetaylor/advancedmortars/issues/8).
+* Changed the hunger mechanic to use exhaustion.
+* Updated Forge to version 14.23.1.2578.
 
 1.1.6
 * Player's hunger will not go below zero

@@ -19,6 +19,7 @@ import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 import net.minecraftforge.items.ItemStackHandler;
@@ -33,8 +34,6 @@ public abstract class TileEntityMortarBase
   protected int durability;
   protected IMortar mortarDelegate;
   protected int craftingProgress;
-
-  protected float hungerEntropy;
 
   public TileEntityMortarBase(EnumMortarType type) {
 
@@ -150,20 +149,6 @@ public abstract class TileEntityMortarBase
     }
 
     return false;
-  }
-
-  public void inflictHunger(EntityPlayer player) {
-
-    if (ModuleConfig.RECIPES.HUNGER_COST_PER_CLICK == 0) {
-      return;
-    }
-
-    this.hungerEntropy += ModuleConfig.RECIPES.HUNGER_COST_CHANCE;
-
-    if (this.hungerEntropy >= 1) {
-      this.hungerEntropy -= 1;
-      player.getFoodStats().addStats(-ModuleConfig.RECIPES.HUNGER_COST_PER_CLICK, 0);
-    }
   }
 
   private void incrementAndCheckDurability(int maxDurability) {

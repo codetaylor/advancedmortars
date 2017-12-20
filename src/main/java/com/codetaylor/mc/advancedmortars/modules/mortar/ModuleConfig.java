@@ -13,13 +13,13 @@ public class ModuleConfig {
 
   public static class Recipes {
 
-    @Config.Comment({"Chance to inflict hunger per click.", "Uniform distribution is ensured.", "For example, setting this to 0.25 will apply the hunger cost every four clicks.", "Set to 0 to disable."})
-    @Config.RangeDouble(min = 0, max = 1)
-    public double HUNGER_COST_CHANCE = 0;
-
     @Config.RangeInt(min = 0, max = 20)
-    @Config.Comment({"Amount of hunger to charge the player per click required to complete a recipe.", "Set to 0 to disable."})
-    public int HUNGER_COST_PER_CLICK = 0;
+    @Config.Comment({"Minimum amount of hunger the player needs to operate a mortar.", "Set to 0 to disable."})
+    public int MINIMUM_HUNGER_TO_USE = 0;
+
+    @Config.RangeDouble(min = 0, max = 40)
+    @Config.Comment({"Amount of exhaustion to charge the player per click required to complete a recipe.", "Set to 0 to disable."})
+    public double EXHAUSTION_COST_PER_CLICK = 0;
 
     @Config.RequiresMcRestart
     @Config.Comment({"Set to false to disable all default recipes."})
