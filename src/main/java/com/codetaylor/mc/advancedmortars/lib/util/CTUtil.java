@@ -1,6 +1,6 @@
 package com.codetaylor.mc.advancedmortars.lib.util;
 
-import com.blamejared.mtlib.helpers.InputHelper;
+import com.codetaylor.mc.advancedmortars.modules.mortar.integration.crafttweaker.mtlib.InputHelper;
 import crafttweaker.api.item.IIngredient;
 import crafttweaker.api.item.IItemStack;
 import net.minecraft.item.ItemStack;

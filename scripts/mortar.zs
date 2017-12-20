@@ -1,3 +1,3 @@
 import mods.advancedmortars.Mortar;
 
-//Mortar.addRecipe(["diamond"], <minecraft:gravel> * 2, 6, [<minecraft:cobblestone>]);
+Mortar.addRecipe(["iron", "stone"], <minecraft:flint>, 25, [<minecraft:gravel>]);

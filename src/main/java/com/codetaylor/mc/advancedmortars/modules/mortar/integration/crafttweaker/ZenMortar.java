@@ -1,10 +1,10 @@
 package com.codetaylor.mc.advancedmortars.modules.mortar.integration.crafttweaker;
 
-import com.blamejared.mtlib.helpers.InputHelper;
-import com.blamejared.mtlib.helpers.LogHelper;
-import com.blamejared.mtlib.utils.BaseUndoable;
 import com.codetaylor.mc.advancedmortars.lib.util.CTUtil;
 import com.codetaylor.mc.advancedmortars.modules.mortar.api.MortarAPI;
+import com.codetaylor.mc.advancedmortars.modules.mortar.integration.crafttweaker.mtlib.BaseUndoable;
+import com.codetaylor.mc.advancedmortars.modules.mortar.integration.crafttweaker.mtlib.InputHelper;
+import com.codetaylor.mc.advancedmortars.modules.mortar.integration.crafttweaker.mtlib.LogHelper;
 import com.codetaylor.mc.advancedmortars.modules.mortar.reference.EnumMortarType;
 import crafttweaker.api.item.IIngredient;
 import crafttweaker.api.item.IItemStack;
