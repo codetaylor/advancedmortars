@@ -14,5 +14,3 @@ tooltip.advancedmortars.durability=耐久：%s
 tooltip.advancedmortars.durability.unbreakable=无法破坏
 tooltip.advancedmortars.extended=按住 %sSHIFT%s 查看更多信息
 tooltip.advancedmortars.extended.pickup=%sSHIFT%s + %s左击%s 拿起研钵
-tooltip.advancedmortars.extended.switchmodes.line1=%sSHIFT%s + %s右击%s 开始研磨
-tooltip.advancedmortars.extended.switchmodes.line2= 切换研钵研磨模式

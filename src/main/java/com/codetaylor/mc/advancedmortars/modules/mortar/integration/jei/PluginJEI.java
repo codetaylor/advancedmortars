@@ -3,8 +3,7 @@ package com.codetaylor.mc.advancedmortars.modules.mortar.integration.jei;
 import com.codetaylor.mc.advancedmortars.modules.mortar.ModuleMortar;
 import com.codetaylor.mc.advancedmortars.modules.mortar.api.MortarAPI;
 import com.codetaylor.mc.advancedmortars.modules.mortar.recipe.IRecipeMortar;
-import com.codetaylor.mc.advancedmortars.modules.mortar.recipe.RecipeMortarCrushing;
-import com.codetaylor.mc.advancedmortars.modules.mortar.recipe.RecipeMortarMixing;
+import com.codetaylor.mc.advancedmortars.modules.mortar.recipe.RecipeMortar;
 import com.codetaylor.mc.advancedmortars.modules.mortar.reference.EnumMortarType;
 import mezz.jei.api.*;
 import mezz.jei.api.gui.IDrawable;
@@ -19,6 +18,7 @@ import java.util.List;
 public class PluginJEI
     implements IModPlugin {
 
+  private static final String TEXTURE_BACKGROUND = "textures/gui/jei.png";
   private IJeiHelpers jeiHelpers;
 
   @Override
@@ -42,14 +42,12 @@ public class PluginJEI
     }
 
     for (EnumMortarType type : EnumMortarType.values()) {
-      registry.handleRecipes(RecipeMortarCrushing.class, JEIRecipeWrapperMortarCrushing::new, this.createUID(type));
-      registry.handleRecipes(RecipeMortarMixing.class, JEIRecipeWrapperMortarMixing::new, this.createUID(type));
+      registry.handleRecipes(RecipeMortar.class, JEIRecipeWrapperMortar::new, this.createUID(type));
     }
 
     for (EnumMortarType type : EnumMortarType.values()) {
       List<IRecipeMortar> recipeList = new ArrayList<>();
-      MortarAPI.RECIPE_REGISTRY.getCrushingRecipes(type, recipeList);
-      MortarAPI.RECIPE_REGISTRY.getMixingRecipes(type, recipeList);
+      MortarAPI.RECIPE_REGISTRY.getRecipes(type, recipeList);
       registry.addRecipes(recipeList, this.createUID(type));
     }
   }
@@ -68,14 +66,14 @@ public class PluginJEI
     IGuiHelper guiHelper = this.jeiHelpers.getGuiHelper();
     ResourceLocation resourceLocation = new ResourceLocation(
         ModuleMortar.MOD_ID,
-        "textures/gui/jei_mortar_mixing.png"
+        TEXTURE_BACKGROUND
     );
     return guiHelper.createDrawable(resourceLocation, 0, 0, 116, 54, 116, 54);
   }
 
   private String createTitleTranslateKey(EnumMortarType type) {
 
-    return "text." + ModuleMortar.MOD_ID + ".jei.category.mortar." + type.getName();
+    return ModuleMortar.Lang.JEI_CATEGORY_PREFIX + type.getName();
   }
 
   private String createUID(EnumMortarType type) {

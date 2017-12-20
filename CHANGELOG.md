@@ -1,3 +1,6 @@
+1.2.6
+* Removed mortar modes. The behavior of each mode has been merged into a single mode.
+
 1.1.6
 * Player's hunger will not go below zero
 * Hunger cost will only be applied when recipe progress increments successfully

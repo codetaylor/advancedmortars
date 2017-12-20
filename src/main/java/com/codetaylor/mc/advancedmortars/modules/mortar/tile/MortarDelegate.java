@@ -3,49 +3,35 @@ package com.codetaylor.mc.advancedmortars.modules.mortar.tile;
 import com.codetaylor.mc.advancedmortars.lib.util.StackUtil;
 import com.codetaylor.mc.advancedmortars.modules.mortar.api.MortarAPI;
 import com.codetaylor.mc.advancedmortars.modules.mortar.recipe.IRecipeMortar;
-import com.codetaylor.mc.advancedmortars.modules.mortar.recipe.RecipeMortarMixing;
-import com.codetaylor.mc.advancedmortars.modules.mortar.reference.EnumMortarMode;
+import com.codetaylor.mc.advancedmortars.modules.mortar.recipe.RecipeMortar;
 import com.codetaylor.mc.advancedmortars.modules.mortar.reference.EnumMortarType;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.items.ItemStackHandler;
 
-import javax.annotation.Nonnull;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MortarDelegateMixing
+public class MortarDelegate
     implements IMortar {
 
   private ItemStackHandler itemStackHandler;
   private EnumMortarType type;
   private Runnable changeObserver;
 
-  public MortarDelegateMixing(
+  private IRecipeMortar recipe;
+
+  public MortarDelegate(
       EnumMortarType type,
       Runnable changeObserver
   ) {
 
     this.type = type;
-
     this.changeObserver = changeObserver;
-
-    this.itemStackHandler = new ItemStackHandler(8) {
-
-      @Override
-      protected int getStackLimit(int slot, @Nonnull ItemStack stack) {
-
-        return 1;
-      }
-    };
-  }
-
-  @Override
-  public EnumMortarMode getMortarMode() {
-
-    return EnumMortarMode.MIXING;
+    this.itemStackHandler = new ItemStackHandler(8);
   }
 
   @Override
@@ -62,27 +48,40 @@ public class MortarDelegateMixing
       return false;
     }
 
-    if (this.getFirstEmptySlotIndex() == -1) {
-      // All slots are full.
-      return false;
+    int count = itemStack.getCount();
+
+    for (int i = 0; i < this.itemStackHandler.getSlots(); i++) {
+      itemStack = this.itemStackHandler.insertItem(i, itemStack, true);
+
+      if (itemStack.getCount() != count) {
+        // This indicates that we can insert at least one item.
+        return true;
+      }
     }
 
-    return true;
+    return false;
   }
 
   @Override
   public void insertItem(ItemStack itemStack) {
+    this.insertItemInternal(itemStack);
+    this.updateRecipe();
+  }
 
-    if (this.canInsertItem(itemStack)) {
-      int index = this.getFirstEmptySlotIndex();
+  private void insertItemInternal(ItemStack itemStack) {
 
-      ItemStack stackToInsert = itemStack.copy();
-      stackToInsert.setCount(1);
-      this.itemStackHandler.setStackInSlot(index, stackToInsert);
-      itemStack.shrink(1);
+    ItemStack resultStack = itemStack.copy();
 
-      this.changeObserver.run();
+    for (int i = 0; i < this.itemStackHandler.getSlots(); i++) {
+      resultStack = this.itemStackHandler.insertItem(i, resultStack, false);
+
+      if (resultStack.isEmpty()) {
+        break;
+      }
     }
+
+    itemStack.setCount(resultStack.getCount());
+    this.changeObserver.run();
   }
 
   @Override
@@ -96,9 +95,7 @@ public class MortarDelegateMixing
 
     ItemStack toReturn = this.itemStackHandler.getStackInSlot(index);
     this.itemStackHandler.setStackInSlot(index, ItemStack.EMPTY);
-
     this.changeObserver.run();
-
     return toReturn;
   }
 
@@ -111,7 +108,7 @@ public class MortarDelegateMixing
   }
 
   @Override
-  public int getItemCount() {
+  public int getOccupiedSlotCount() {
 
     int index = this.getFirstEmptySlotIndex();
 
@@ -125,7 +122,7 @@ public class MortarDelegateMixing
   @Override
   public boolean isEmpty() {
 
-    return this.getItemCount() == 0;
+    return this.getOccupiedSlotCount() == 0;
   }
 
   @Override
@@ -138,10 +135,16 @@ public class MortarDelegateMixing
   public void deserializeNBT(NBTTagCompound compound) {
 
     this.itemStackHandler.deserializeNBT(compound);
+    this.updateRecipe();
   }
 
   @Override
   public IRecipeMortar getRecipe() {
+
+    return this.recipe;
+  }
+
+  private void updateRecipe() {
 
     List<ItemStack> itemStackList = new ArrayList<>();
 
@@ -155,7 +158,7 @@ public class MortarDelegateMixing
       itemStackList.add(stackInSlot);
     }
 
-    return MortarAPI.RECIPE_REGISTRY.findMixingRecipe(
+    this.recipe = MortarAPI.RECIPE_REGISTRY.findRecipe(
         this.type,
         itemStackList.toArray(new ItemStack[itemStackList.size()])
     );
@@ -164,14 +167,65 @@ public class MortarDelegateMixing
   @Override
   public ItemStack doCrafting() {
 
-    RecipeMortarMixing recipe = (RecipeMortarMixing) this.getRecipe();
+    RecipeMortar recipe = (RecipeMortar) this.getRecipe();
 
-    for (int i = 0; i < this.itemStackHandler.getSlots(); i++) {
-      this.itemStackHandler.setStackInSlot(i, ItemStack.EMPTY);
+    List<Ingredient> ingredients = new ArrayList<>();
+    ingredients.addAll(recipe.getIngredients());
+
+    for (int i = 0; i < ingredients.size(); i++) {
+      Ingredient ingredient = ingredients.get(i);
+      ItemStack[] matchingStacks = ingredient.getMatchingStacks();
+
+      if (matchingStacks.length > 0) {
+        int requiredCount = matchingStacks[0].getCount();
+
+        for (int j = 0; j < this.itemStackHandler.getSlots(); j++) {
+          ItemStack stackInSlot = this.itemStackHandler.getStackInSlot(j);
+
+          if (stackInSlot.isEmpty()) {
+            continue;
+          }
+
+          if (ingredient.apply(stackInSlot)) {
+
+            if (stackInSlot.getCount() >= requiredCount) {
+              stackInSlot.shrink(requiredCount);
+              break;
+
+            } else {
+              requiredCount -= stackInSlot.getCount();
+              stackInSlot.setCount(0);
+            }
+          }
+        }
+
+      }
     }
 
+    this.settleItemStacks();
+    this.updateRecipe();
     this.changeObserver.run();
     return recipe.getOutput();
+  }
+
+  private void settleItemStacks() {
+
+    List<ItemStack> stackList = new ArrayList<>();
+
+    for (int i = 0; i < this.itemStackHandler.getSlots(); i++) {
+      ItemStack stackInSlot = this.itemStackHandler.getStackInSlot(i);
+
+      if (!stackInSlot.isEmpty()) {
+        stackList.add(stackInSlot);
+        this.itemStackHandler.setStackInSlot(i, ItemStack.EMPTY);
+      }
+    }
+
+    for (ItemStack itemStack : stackList) {
+      // Use insertItemInternal here because we don't want to trigger a recipe update
+      // here. We will trigger the recipe update after settling the itemStacks.
+      this.insertItemInternal(itemStack);
+    }
   }
 
   private int getFirstEmptySlotIndex() {

@@ -1,6 +1,5 @@
 package com.codetaylor.mc.advancedmortars.modules.mortar.tile;
 
-import com.codetaylor.mc.advancedmortars.modules.mortar.reference.EnumMortarMode;
 import com.codetaylor.mc.advancedmortars.modules.mortar.recipe.IRecipeMortar;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -16,7 +15,7 @@ public interface IMortar {
 
   ItemStack removeItem();
 
-  int getItemCount();
+  int getOccupiedSlotCount();
 
   boolean isEmpty();
 
@@ -25,8 +24,6 @@ public interface IMortar {
   void deserializeNBT(NBTTagCompound compound);
 
   ItemStackHandler getItemStackHandler();
-
-  EnumMortarMode getMortarMode();
 
   IRecipeMortar getRecipe();
 

@@ -11,6 +11,7 @@ import com.codetaylor.mc.advancedmortars.modules.mortar.item.ItemBlockMortar;
 import com.codetaylor.mc.advancedmortars.modules.mortar.reference.EnumMortarType;
 import com.codetaylor.mc.advancedmortars.modules.mortar.tile.*;
 import net.minecraft.block.Block;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
@@ -29,6 +30,18 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ModuleMortar
     extends ModuleBase {
 
+  /**
+   * TODO:
+   *
+   * X settle items in mortar
+   * X cache recipe when mortar contents change
+   * X update JEI graphic
+   * X crosshair
+   * X update readme
+   * update curse project page
+   * update changelog
+   */
+
   public static final String MOD_ID = ModAdvancedMortars.MOD_ID;
   public static final boolean IS_DEV = ModAdvancedMortars.IS_DEV;
 
@@ -38,8 +51,7 @@ public class ModuleMortar
     public static final String TOOLTIP_DURABILITY_UNBREAKABLE = "tooltip." + MOD_ID + ".durability.unbreakable";
     public static final String TOOLTIP_EXTENDED = "tooltip." + MOD_ID + ".extended";
     public static final String TOOLTIP_EXTENDED_PICKUP = "tooltip." + MOD_ID + ".extended.pickup";
-    public static final String TOOLTIP_EXTENDED_SWITCHMODES_LINE1 = "tooltip." + MOD_ID + ".extended.switchmodes.line1";
-    public static final String TOOLTIP_EXTENDED_SWITCHMODES_LINE2 = "tooltip." + MOD_ID + ".extended.switchmodes.line2";
+    public static final String JEI_CATEGORY_PREFIX = "text." + ModuleMortar.MOD_ID + ".jei.category.mortar.";
   }
 
   public static class Blocks {
@@ -63,22 +75,25 @@ public class ModuleMortar
 
       for (EnumMortarType type : EnumMortarType.values()) {
 
-        MortarAPI.RECIPE_REGISTRY.addCrushingRecipe(
-            type,
-            new ItemStack(Items.DYE, 4, 15),
-            4,
-            Ingredient.fromStacks(new ItemStack(Items.BONE, 1, 0))
-        );
-
-        MortarAPI.RECIPE_REGISTRY.addMixingRecipe(
+        MortarAPI.RECIPE_REGISTRY.addRecipe(
             type,
             new ItemStack(Items.DYE, 4, 9),
             4,
             new Ingredient[]{
-                Ingredient.fromStacks(new ItemStack(Items.DYE, 1, 1)),
+                Ingredient.fromStacks(new ItemStack(Items.DYE, 2, 1)),
                 Ingredient.fromStacks(new ItemStack(Items.DYE, 1, 15))
             }
         );
+
+        MortarAPI.RECIPE_REGISTRY.addRecipe(
+            type,
+            new ItemStack(net.minecraft.init.Blocks.GRAVEL, 2, 0),
+            6,
+            new Ingredient[] {
+                Ingredient.fromStacks(new ItemStack(net.minecraft.init.Blocks.COBBLESTONE, 1, 0))
+            }
+        );
+
       }
 
     }

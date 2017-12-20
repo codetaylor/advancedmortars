@@ -83,16 +83,6 @@ public class ItemBlockMortar
           TextFormatting.AQUA,
           TextFormatting.GRAY
       ));
-      tooltip.add(I18n.format(
-          ModuleMortar.Lang.TOOLTIP_EXTENDED_SWITCHMODES_LINE1,
-          TextFormatting.AQUA,
-          TextFormatting.GRAY,
-          TextFormatting.AQUA,
-          TextFormatting.GRAY
-      ));
-      tooltip.add(I18n.format(
-          ModuleMortar.Lang.TOOLTIP_EXTENDED_SWITCHMODES_LINE2
-      ));
 
     } else {
       tooltip.add(I18n.format(ModuleMortar.Lang.TOOLTIP_EXTENDED, TextFormatting.AQUA, TextFormatting.GRAY));

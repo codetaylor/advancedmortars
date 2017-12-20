@@ -3,7 +3,6 @@ package com.codetaylor.mc.advancedmortars.modules.mortar.render;
 import com.codetaylor.mc.advancedmortars.lib.IRecipeOutputProvider;
 import com.codetaylor.mc.advancedmortars.lib.gui.GuiHelper;
 import com.codetaylor.mc.advancedmortars.modules.mortar.ModuleMortar;
-import com.codetaylor.mc.advancedmortars.modules.mortar.reference.EnumMortarMode;
 import com.codetaylor.mc.advancedmortars.modules.mortar.tile.TileEntityMortarBase;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
@@ -78,10 +77,7 @@ public class HUDRender {
           int x = (int) (MathHelper.cos(angle * i) * radius + resolution.getScaledWidth() / 2) - 8;
           int y = (int) (MathHelper.sin(angle * i) * radius + resolution.getScaledHeight() / 2) - 8;
           minecraft.getRenderItem().renderItemAndEffectIntoGUI(itemStack, x, y);
-
-          if (((TileEntityMortarBase) tileEntity).getMortarMode() == EnumMortarMode.CRUSHING) {
-            minecraft.getRenderItem().renderItemOverlays(minecraft.fontRenderer, itemStack, x, y);
-          }
+          minecraft.getRenderItem().renderItemOverlays(minecraft.fontRenderer, itemStack, x, y);
         }
       }
 
@@ -104,8 +100,15 @@ public class HUDRender {
         if (recipe != null) {
           int x = (int) (radius + resolution.getScaledWidth() / 2) - 8 + 30;
           int y = resolution.getScaledHeight() / 2 - 4;
-          GuiHelper.drawTexturedRect(minecraft, TEXTURE, x, y, 8, 10, 100, 10, 23, TEXTURE_WIDTH, TEXTURE_HEIGHT);
-          GuiHelper.drawTexturedRect(minecraft, TEXTURE, x + 10, y, 12, 11, 100, 32, 0, TEXTURE_WIDTH, TEXTURE_HEIGHT);
+
+          // Mouse button hint
+          if (minecraft.player.getHeldItemMainhand().isEmpty()) {
+            GuiHelper.drawTexturedRect(minecraft, TEXTURE, x, y, 8, 10, 100, 10, 23, TEXTURE_WIDTH, TEXTURE_HEIGHT);
+            x += 5;
+          }
+
+          // Arrow
+          GuiHelper.drawTexturedRect(minecraft, TEXTURE, x + 5, y, 12, 11, 100, 32, 0, TEXTURE_WIDTH, TEXTURE_HEIGHT);
         }
       }
 
@@ -125,61 +128,13 @@ public class HUDRender {
       }
 
       { // Render mode graphic.
-        int x = resolution.getScaledWidth() / 2 - 8 - 64;
-        int y = resolution.getScaledHeight() / 2 - 8 - 1;
-        EnumMortarMode mortarMode = ((TileEntityMortarBase) tileEntity).getMortarMode();
-
-        if (((TileEntityMortarBase) tileEntity).isEmpty()) {
-          x = resolution.getScaledWidth() / 2 - 9;
-        }
-
-        if (mortarMode == EnumMortarMode.CRUSHING) {
-          GuiHelper.drawTexturedRect(minecraft, TEXTURE, x, y, 16, 23, 100, 0, 0, TEXTURE_WIDTH, TEXTURE_HEIGHT);
-
-        } else if (mortarMode == EnumMortarMode.MIXING) {
-          GuiHelper.drawTexturedRect(minecraft, TEXTURE, x, y, 16, 23, 100, 16, 0, TEXTURE_WIDTH, TEXTURE_HEIGHT);
-        }
-
-        if (((TileEntityMortarBase) tileEntity).isEmpty()
+        if (recipe != null
             && minecraft.player.getHeldItemMainhand().isEmpty()) {
-          GuiHelper.drawTexturedRect(
-              minecraft,
-              TEXTURE,
-              x - 20,
-              y + 5,
-              18,
-              10,
-              100,
-              0,
-              23,
-              TEXTURE_WIDTH,
-              TEXTURE_HEIGHT
-          );
+          int x = resolution.getScaledWidth() / 2 - 8 + 65;
+          int y = resolution.getScaledHeight() / 2 - 8 - 20;
+          GuiHelper.drawTexturedRect(minecraft, TEXTURE, x, y, 16, 23, 100, 0, 0, TEXTURE_WIDTH, TEXTURE_HEIGHT);
         }
       }
-
-      /*{ // Render mortar mode string.
-        String mode = I18n.format(((TileEntityMortarBase) tileEntity).getMortarModeString());
-        //String modeWithLabel = I18n.format(ModuleMortar.Lang.MORTAR_MODE_LABEL, mode);
-
-        int x = resolution.getScaledWidth() / 2 - minecraft.fontRenderer.getStringWidth(mode) / 2;
-        int y = resolution.getScaledHeight() / 2 + 48;
-        minecraft.fontRenderer.drawStringWithShadow(mode, x, y, 0xFFFFFF);
-
-        if (((TileEntityMortarBase) tileEntity).isEmpty()
-            && minecraft.player.getHeldItemMainhand().isEmpty()) {
-          GuiHelper.drawTexturedRect(minecraft, TEXTURE_MODE, x - 21, y - 1, 16, 8, 100, 0, 0, 1, 1);
-        }
-      }*/
-
-      /*if (ModuleMortar.IS_DEV) {
-        String durabilityString = "Durability: " + ((TileEntityMortarBase) tileEntity).getDurability()
-            + "/" + ((TileEntityMortarBase) tileEntity).getMaxDurability();
-
-        int x = resolution.getScaledWidth() / 2 - minecraft.fontRenderer.getStringWidth(durabilityString) / 2;
-        int y = resolution.getScaledHeight() / 2 + 58;
-        minecraft.fontRenderer.drawStringWithShadow(durabilityString, x, y, 0xFFFFFF);
-      }*/
 
       GlStateManager.disableBlend();
     }

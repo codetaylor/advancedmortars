@@ -4,7 +4,6 @@ import com.codetaylor.mc.advancedmortars.lib.util.StackUtil;
 import com.codetaylor.mc.advancedmortars.modules.mortar.ModuleConfig;
 import com.codetaylor.mc.advancedmortars.modules.mortar.ModuleMortar;
 import com.codetaylor.mc.advancedmortars.modules.mortar.recipe.IRecipeMortar;
-import com.codetaylor.mc.advancedmortars.modules.mortar.reference.EnumMortarMode;
 import com.codetaylor.mc.advancedmortars.modules.mortar.reference.EnumMortarType;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
@@ -32,46 +31,20 @@ public abstract class TileEntityMortarBase
 
   protected byte typeId;
   protected int durability;
-  protected FactoryMortarDelegate factoryMortarDelegate;
   protected IMortar mortarDelegate;
   protected int craftingProgress;
 
   protected float hungerEntropy;
 
-  public TileEntityMortarBase(EnumMortarType typeId) {
+  public TileEntityMortarBase(EnumMortarType type) {
 
-    this.typeId = (byte) typeId.getMeta();
-    this.factoryMortarDelegate = new FactoryMortarDelegate(this::markDirty);
-    this.mortarDelegate = this.factoryMortarDelegate.create(
-        EnumMortarType.fromMeta(this.typeId),
-        EnumMortarMode.MIXING
-    );
-  }
-
-  public EnumMortarMode cycleMortarMode() {
-
-    if (this.isEmpty()) {
-      int id = this.mortarDelegate.getMortarMode().getId();
-      id = (id + 1) % EnumMortarMode.values().length;
-      this.mortarDelegate = this.factoryMortarDelegate.create(
-          EnumMortarType.fromMeta(this.typeId),
-          EnumMortarMode.fromId(id)
-      );
-      this.markDirty();
-    }
-
-    return this.mortarDelegate.getMortarMode();
+    this.typeId = (byte) type.getMeta();
+    this.mortarDelegate = new MortarDelegate(type, this::markDirty);
   }
 
   public int getCraftingProgress() {
 
     return this.craftingProgress;
-  }
-
-  @Override
-  public EnumMortarMode getMortarMode() {
-
-    return this.mortarDelegate.getMortarMode();
   }
 
   @Override
@@ -100,9 +73,9 @@ public abstract class TileEntityMortarBase
   }
 
   @Override
-  public int getItemCount() {
+  public int getOccupiedSlotCount() {
 
-    return this.mortarDelegate.getItemCount();
+    return this.mortarDelegate.getOccupiedSlotCount();
   }
 
   @Override
@@ -280,7 +253,6 @@ public abstract class TileEntityMortarBase
     compound = super.writeToNBT(compound);
     compound.setByte("type", this.typeId);
     compound.setInteger("durability", this.durability);
-    compound.setInteger("mortarMode", this.mortarDelegate.getMortarMode().getId());
     compound.setTag("mortarDelegate", this.mortarDelegate.serializeNBT());
     compound.setInteger("craftingProgress", this.craftingProgress);
 
@@ -294,11 +266,6 @@ public abstract class TileEntityMortarBase
     this.typeId = compound.getByte("type");
     this.durability = compound.getInteger("durability");
     this.craftingProgress = compound.getInteger("craftingProgress");
-
-    EnumMortarMode mortarMode = EnumMortarMode.fromId(compound.getInteger("mortarMode"));
-    if (mortarMode != this.mortarDelegate.getMortarMode()) {
-      this.mortarDelegate = this.factoryMortarDelegate.create(EnumMortarType.fromMeta(this.typeId), mortarMode);
-    }
     this.mortarDelegate.deserializeNBT(compound.getCompoundTag("mortarDelegate"));
   }
 

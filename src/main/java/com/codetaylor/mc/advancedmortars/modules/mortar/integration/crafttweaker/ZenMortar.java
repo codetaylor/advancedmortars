@@ -6,7 +6,6 @@ import com.blamejared.mtlib.utils.BaseUndoable;
 import com.codetaylor.mc.advancedmortars.lib.util.CTUtil;
 import com.codetaylor.mc.advancedmortars.modules.mortar.api.MortarAPI;
 import com.codetaylor.mc.advancedmortars.modules.mortar.reference.EnumMortarType;
-import crafttweaker.annotations.ZenRegister;
 import crafttweaker.api.item.IIngredient;
 import crafttweaker.api.item.IItemStack;
 import net.minecraft.item.ItemStack;
@@ -24,7 +23,7 @@ public class ZenMortar {
   public static final String NAME = "mods.advancedmortars.Mortar";
 
   @ZenMethod
-  public static void addMixingRecipe(String[] types, IItemStack output, int duration, IIngredient[] inputs) {
+  public static void addRecipe(String[] types, IItemStack output, int duration, IIngredient[] inputs) {
 
     PluginCraftTweaker.LATE_ADDITIONS.add(new AddMixing(
         types,
@@ -63,57 +62,7 @@ public class ZenMortar {
         EnumMortarType enumMortarType = EnumMortarType.fromName(type);
 
         if (enumMortarType != null) {
-          MortarAPI.RECIPE_REGISTRY.addMixingRecipe(enumMortarType, this.output, this.duration, this.inputs);
-
-        } else {
-          LogHelper.logError("Invalid mortar type: " + type + ". Valid types are: " + Arrays.toString(EnumMortarType.NAMES));
-        }
-      }
-    }
-
-    @Override
-    protected String getRecipeInfo() {
-
-      return LogHelper.getStackDescription(this.output);
-    }
-  }
-
-  @ZenMethod
-  public static void addCrushingRecipe(String[] types, IItemStack output, int duration, IIngredient input) {
-
-    PluginCraftTweaker.LATE_ADDITIONS.add(new AddCrushing(
-        types,
-        InputHelper.toStack(output),
-        duration,
-        CTUtil.toIngredient(input)
-    ));
-  }
-
-  private static class AddCrushing
-      extends BaseUndoable {
-
-    private String[] types;
-    private final ItemStack output;
-    private final int duration;
-    private final Ingredient input;
-
-    /* package */ AddCrushing(String[] types, ItemStack output, int duration, Ingredient input) {
-
-      super(NAME);
-      this.types = types;
-      this.output = output;
-      this.duration = duration;
-      this.input = input;
-    }
-
-    @Override
-    public void apply() {
-
-      for (String type : this.types) {
-        EnumMortarType enumMortarType = EnumMortarType.fromName(type);
-
-        if (enumMortarType != null) {
-          MortarAPI.RECIPE_REGISTRY.addCrushingRecipe(enumMortarType, this.output, this.duration, this.input);
+          MortarAPI.RECIPE_REGISTRY.addRecipe(enumMortarType, this.output, this.duration, this.inputs);
 
         } else {
           LogHelper.logError("Invalid mortar type: " + type + ". Valid types are: " + Arrays.toString(EnumMortarType.NAMES));

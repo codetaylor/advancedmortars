@@ -2,7 +2,6 @@ package com.codetaylor.mc.advancedmortars.modules.mortar.tile;
 
 import com.codetaylor.mc.advancedmortars.ModAdvancedMortars;
 import com.codetaylor.mc.advancedmortars.modules.mortar.recipe.IRecipeMortar;
-import com.codetaylor.mc.advancedmortars.modules.mortar.reference.EnumMortarMode;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
@@ -48,13 +47,6 @@ public class TESRMortar
     double offsetY = 0.125;
     double scale = 1.0;
 
-    if (tile.getMortarMode() == EnumMortarMode.CRUSHING
-        && !tile.isEmpty()
-        && itemStackHandler.getStackInSlot(0).getItem() instanceof ItemBlock) {
-      scale = 3.0;
-      offsetY = 0.2;
-    }
-
     for (int i = 0; i < itemStackHandler.getSlots(); i++) {
       offsetY = this.renderItem(itemStackHandler.getStackInSlot(i), offsetY, scale);
     }
@@ -98,7 +90,7 @@ public class TESRMortar
 
     GlStateManager.translate(x + 0.5, y + 0.5, z + 0.5);
     GlStateManager.rotate(360 * percentage, 0, 1, 0);
-    GlStateManager.translate(-0.5,-0.5,-0.5);
+    GlStateManager.translate(-0.5, -0.5, -0.5);
 
     // Render Model -----------------------------------------
 

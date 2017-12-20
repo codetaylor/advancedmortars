@@ -1,6 +1,6 @@
 package com.codetaylor.mc.advancedmortars.modules.mortar.integration.jei;
 
-import com.codetaylor.mc.advancedmortars.modules.mortar.recipe.RecipeMortarMixing;
+import com.codetaylor.mc.advancedmortars.modules.mortar.recipe.RecipeMortar;
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.IRecipeWrapper;
 import net.minecraft.item.ItemStack;
@@ -11,13 +11,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class JEIRecipeWrapperMortarMixing
+public class JEIRecipeWrapperMortar
     implements IRecipeWrapper {
 
   private List<List<ItemStack>> inputs;
   private ItemStack output;
 
-  public JEIRecipeWrapperMortarMixing(RecipeMortarMixing recipe) {
+  public JEIRecipeWrapperMortar(RecipeMortar recipe) {
 
     this.inputs = new ArrayList<>();
 
