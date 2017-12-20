@@ -212,8 +212,6 @@ public class BlockMortar
             }
           }
 
-          System.out.println(player.getFoodStats().getSaturationLevel());
-
         } else {
 
           // Can we insert the item?
