@@ -2,7 +2,7 @@
 {
   "modid": "advancedmortars",
   "name": "Advanced Mortars",
-  "description": "Four in-world, minimal-gui, mortars, two modes: grind or mix. CraftTweaker and JEI integration.",
+  "description": "Four in-world mortars with CraftTweaker and JEI integration.",
   "version": "${version}",
   "mcversion": "${mcversion}",
   "url": "",
