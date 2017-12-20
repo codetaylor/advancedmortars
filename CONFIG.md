@@ -7,19 +7,17 @@ general {
         # Set to false to disable all default recipes.
         B:ENABLE_DEFAULT_RECIPES=true
 
-        # Chance to inflict hunger per click.
-        # Uniform distribution is ensured.
-        # For example, setting this to 0.25 will apply the hunger cost every four clicks.
+        # Amount of exhaustion to charge the player per click required to complete a recipe.
         # Set to 0 to disable.
         # Min: 0.0
-        # Max: 1.0
-        D:HUNGER_COST_CHANCE=0.0
+        # Max: 40.0
+        D:EXHAUSTION_COST_PER_CLICK=0.0
 
-        # Amount of hunger to charge the player per click required to complete a recipe.
+        # Minimum amount of hunger the player needs to operate a mortar.
         # Set to 0 to disable.
         # Min: 0
         # Max: 20
-        I:HUNGER_COST_PER_CLICK=0
+        I:MINIMUM_HUNGER_TO_USE=0
     }
 
     durability {
