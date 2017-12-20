@@ -20,6 +20,9 @@ import net.minecraftforge.oredict.ShapelessOreRecipe;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * https://github.com/jaredlll08/MTLib/blob/1.12/src/main/java/com/blamejared/mtlib/helpers/LogHelper.java
+ */
 public class LogHelper {
 
   public static void logPrinted(IPlayer player) {
