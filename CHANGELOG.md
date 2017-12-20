@@ -1,3 +1,6 @@
+1.2.7
+* Removed dependency on MTLib, will now work without ModTweaker. Still requires CraftTweaker.
+
 1.2.6
 * NOTICE: ZenScript syntax has changed
 * NOTICE: Config file has changed, please refresh
