@@ -87,6 +87,13 @@ public class MortarDelegate
   @Override
   public ItemStack removeItem() {
 
+    ItemStack itemStack = this.removeItemInternal();
+    this.updateRecipe();
+    return itemStack;
+  }
+
+  private ItemStack removeItemInternal() {
+
     int index = this.getLastNonEmptySlotIndex();
 
     if (index == -1) {
@@ -103,8 +110,10 @@ public class MortarDelegate
   public void dropAllItems(World world, BlockPos pos) {
 
     while (!this.isEmpty()) {
-      StackUtil.spawnStackOnTop(world, this.removeItem(), pos);
+      // Use removeItemInternal so we don't trigger a recipe update during iteration.
+      StackUtil.spawnStackOnTop(world, this.removeItemInternal(), pos);
     }
+    this.updateRecipe();
   }
 
   @Override
