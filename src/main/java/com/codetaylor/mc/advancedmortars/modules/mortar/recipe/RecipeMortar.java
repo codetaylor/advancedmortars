@@ -10,13 +10,17 @@ public class RecipeMortar
     implements IRecipeMortar {
 
   private ItemStack output;
+  private ItemStack secondaryOutput;
+  private float secondaryOutputChance;
   private int duration;
   private List<Ingredient> inputs;
 
-  public RecipeMortar(ItemStack output, int duration, List<Ingredient> inputs) {
+  public RecipeMortar(ItemStack output, int duration, ItemStack secondaryOutput, float secondaryOutputChance, List<Ingredient> inputs) {
 
     this.duration = duration;
     this.output = output;
+    this.secondaryOutput = secondaryOutput;
+    this.secondaryOutputChance = secondaryOutputChance;
 
     this.inputs = new ArrayList<>(inputs);
   }
@@ -30,6 +34,18 @@ public class RecipeMortar
   public ItemStack getOutput() {
 
     return this.output.copy();
+  }
+
+  @Override
+  public ItemStack getSecondaryOutput() {
+
+    return this.secondaryOutput;
+  }
+
+  @Override
+  public float getSecondaryOutputChance() {
+
+    return this.secondaryOutputChance;
   }
 
   @Override

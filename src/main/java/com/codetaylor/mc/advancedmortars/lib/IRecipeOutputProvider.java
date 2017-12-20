@@ -6,4 +6,8 @@ public interface IRecipeOutputProvider {
 
   ItemStack getOutput();
 
+  ItemStack getSecondaryOutput();
+
+  float getSecondaryOutputChance();
+
 }

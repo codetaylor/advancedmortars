@@ -4,6 +4,7 @@ import com.codetaylor.mc.advancedmortars.lib.util.StackUtil;
 import com.codetaylor.mc.advancedmortars.modules.mortar.ModuleConfig;
 import com.codetaylor.mc.advancedmortars.modules.mortar.ModuleMortar;
 import com.codetaylor.mc.advancedmortars.modules.mortar.recipe.IRecipeMortar;
+import com.codetaylor.mc.advancedmortars.modules.mortar.recipe.RecipeMortar;
 import com.codetaylor.mc.advancedmortars.modules.mortar.reference.EnumMortarType;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
@@ -123,8 +124,14 @@ public abstract class TileEntityMortarBase
       if (this.craftingProgress >= recipe.getDuration()) {
         this.resetCraftingProgress();
 
-        ItemStack itemStack = this.doCrafting();
-        StackUtil.spawnStackOnTop(this.world, itemStack, this.pos);
+        ItemStack[] outputs = this.doCrafting();
+
+        StackUtil.spawnStackOnTop(this.world, outputs[0], this.pos);
+
+        if (outputs.length > 1
+            && this.world.rand.nextFloat() < recipe.getSecondaryOutputChance()) {
+          StackUtil.spawnStackOnTop(this.world, outputs[1], this.pos);
+        }
 
         this.world.playSound(
             null,
@@ -211,7 +218,7 @@ public abstract class TileEntityMortarBase
   }
 
   @Override
-  public ItemStack doCrafting() {
+  public ItemStack[] doCrafting() {
 
     return this.mortarDelegate.doCrafting();
   }

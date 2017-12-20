@@ -29,6 +29,28 @@ public class ZenMortar {
         types,
         InputHelper.toStack(output),
         duration,
+        null,
+        0,
+        CTUtil.toIngredientArray(inputs)
+    ));
+  }
+
+  @ZenMethod
+  public static void addRecipe(
+      String[] types,
+      IItemStack output,
+      int duration,
+      IItemStack secondaryOutput,
+      float secondaryOutputChance,
+      IIngredient[] inputs
+  ) {
+
+    PluginCraftTweaker.LATE_ADDITIONS.add(new Add(
+        types,
+        InputHelper.toStack(output),
+        duration,
+        InputHelper.toStack(secondaryOutput),
+        secondaryOutputChance,
         CTUtil.toIngredientArray(inputs)
     ));
   }
@@ -39,12 +61,16 @@ public class ZenMortar {
     private String[] types;
     private final ItemStack output;
     private final int duration;
+    private final ItemStack secondaryOutput;
+    private final float secondaryOutputChance;
     private final Ingredient[] inputs;
 
     /* package */ Add(
         String[] types,
         ItemStack output,
         int duration,
+        ItemStack secondaryOutput,
+        float secondaryOutputChance,
         Ingredient[] inputs
     ) {
 
@@ -52,6 +78,8 @@ public class ZenMortar {
       this.types = types;
       this.output = output;
       this.duration = duration;
+      this.secondaryOutput = secondaryOutput;
+      this.secondaryOutputChance = secondaryOutputChance;
       this.inputs = inputs;
     }
 
@@ -62,7 +90,14 @@ public class ZenMortar {
         EnumMortarType enumMortarType = EnumMortarType.fromName(type);
 
         if (enumMortarType != null) {
-          MortarAPI.RECIPE_REGISTRY.addRecipe(enumMortarType, this.output, this.duration, this.inputs);
+          MortarAPI.RECIPE_REGISTRY.addRecipe(
+              enumMortarType,
+              this.output,
+              this.duration,
+              this.secondaryOutput,
+              this.secondaryOutputChance,
+              this.inputs
+          );
 
         } else {
           LogHelper.logError("Invalid mortar type: " + type + ". Valid types are: " + Arrays.toString(EnumMortarType.NAMES));

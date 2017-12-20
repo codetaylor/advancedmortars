@@ -33,11 +33,11 @@ public class RegistryRecipeMortar {
   }
 
   @Nonnull
-  public RecipeMortar addRecipe(EnumMortarType type, ItemStack output, int duration, Ingredient[] inputs) {
+  public RecipeMortar addRecipe(EnumMortarType type, ItemStack output, int duration, ItemStack secondaryOutput, float secondaryOutputChance, Ingredient[] inputs) {
 
     List<Ingredient> inputList = new ArrayList<>();
     Collections.addAll(inputList, inputs);
-    RecipeMortar recipe = new RecipeMortar(output, duration, inputList);
+    RecipeMortar recipe = new RecipeMortar(output, duration, secondaryOutput, secondaryOutputChance, inputList);
     List<RecipeMortar> list = this.recipeMap.computeIfAbsent(type, k -> new ArrayList<>());
     list.add(recipe);
     return recipe;

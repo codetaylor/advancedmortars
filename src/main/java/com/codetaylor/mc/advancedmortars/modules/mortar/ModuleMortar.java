@@ -80,6 +80,8 @@ public class ModuleMortar
             type,
             new ItemStack(Items.DYE, 4, 9),
             4,
+            null,
+            0,
             new Ingredient[]{
                 Ingredient.fromStacks(new ItemStack(Items.DYE, 2, 1)),
                 Ingredient.fromStacks(new ItemStack(Items.DYE, 1, 15))
@@ -90,6 +92,8 @@ public class ModuleMortar
             type,
             new ItemStack(net.minecraft.init.Blocks.GRAVEL, 2, 0),
             6,
+            null,
+            0,
             new Ingredient[] {
                 Ingredient.fromStacks(new ItemStack(net.minecraft.init.Blocks.COBBLESTONE, 1, 0))
             }

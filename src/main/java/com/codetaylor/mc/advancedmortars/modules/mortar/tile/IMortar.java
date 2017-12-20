@@ -27,7 +27,7 @@ public interface IMortar {
 
   IRecipeMortar getRecipe();
 
-  ItemStack doCrafting();
+  ItemStack[] doCrafting();
 
   void dropAllItems(World world, BlockPos pos);
 

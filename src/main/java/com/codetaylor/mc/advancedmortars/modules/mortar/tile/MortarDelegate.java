@@ -64,6 +64,7 @@ public class MortarDelegate
 
   @Override
   public void insertItem(ItemStack itemStack) {
+
     this.insertItemInternal(itemStack);
     this.updateRecipe();
   }
@@ -165,7 +166,7 @@ public class MortarDelegate
   }
 
   @Override
-  public ItemStack doCrafting() {
+  public ItemStack[] doCrafting() {
 
     RecipeMortar recipe = (RecipeMortar) this.getRecipe();
 
@@ -205,7 +206,7 @@ public class MortarDelegate
     this.settleItemStacks();
     this.updateRecipe();
     this.changeObserver.run();
-    return recipe.getOutput();
+    return new ItemStack[]{recipe.getOutput(), recipe.getSecondaryOutput()};
   }
 
   private void settleItemStacks() {
