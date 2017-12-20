@@ -25,7 +25,7 @@ public class ZenMortar {
   @ZenMethod
   public static void addRecipe(String[] types, IItemStack output, int duration, IIngredient[] inputs) {
 
-    PluginCraftTweaker.LATE_ADDITIONS.add(new AddMixing(
+    PluginCraftTweaker.LATE_ADDITIONS.add(new Add(
         types,
         InputHelper.toStack(output),
         duration,
@@ -33,7 +33,7 @@ public class ZenMortar {
     ));
   }
 
-  private static class AddMixing
+  private static class Add
       extends BaseUndoable {
 
     private String[] types;
@@ -41,7 +41,7 @@ public class ZenMortar {
     private final int duration;
     private final Ingredient[] inputs;
 
-    /* package */ AddMixing(
+    /* package */ Add(
         String[] types,
         ItemStack output,
         int duration,
