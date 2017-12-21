@@ -57,11 +57,11 @@ public class PluginJEI
     return new JEICategoryMortar(
         this.createUID(type),
         this.createTitleTranslateKey(type),
-        this.createBackground(type)
+        this.createBackground()
     );
   }
 
-  private IDrawable createBackground(EnumMortarType type) {
+  private IDrawable createBackground() {
 
     IGuiHelper guiHelper = this.jeiHelpers.getGuiHelper();
     ResourceLocation resourceLocation = new ResourceLocation(
