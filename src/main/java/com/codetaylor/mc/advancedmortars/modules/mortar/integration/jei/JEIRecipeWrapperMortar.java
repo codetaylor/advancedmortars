@@ -3,6 +3,7 @@ package com.codetaylor.mc.advancedmortars.modules.mortar.integration.jei;
 import com.codetaylor.mc.advancedmortars.modules.mortar.recipe.RecipeMortar;
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.IRecipeWrapper;
+import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 
@@ -16,6 +17,8 @@ public class JEIRecipeWrapperMortar
 
   private List<List<ItemStack>> inputs;
   private ItemStack output;
+  private ItemStack secondaryOutput;
+  private float secondaryOutputChance;
 
   public JEIRecipeWrapperMortar(RecipeMortar recipe) {
 
@@ -26,6 +29,9 @@ public class JEIRecipeWrapperMortar
     }
 
     this.output = recipe.getOutput();
+
+    this.secondaryOutput = recipe.getSecondaryOutput();
+    this.secondaryOutputChance = recipe.getSecondaryOutputChance();
   }
 
   @Override
@@ -35,4 +41,20 @@ public class JEIRecipeWrapperMortar
     ingredients.setOutput(ItemStack.class, this.output);
   }
 
+  public ItemStack getSecondaryOutput() {
+
+    return this.secondaryOutput;
+  }
+
+  public float getSecondaryOutputChance() {
+
+    return this.secondaryOutputChance;
+  }
+
+  @Override
+  public void drawInfo(
+      Minecraft minecraft, int recipeWidth, int recipeHeight, int mouseX, int mouseY
+  ) {
+
+  }
 }

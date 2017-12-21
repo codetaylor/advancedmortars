@@ -83,6 +83,15 @@ public class JEICategoryMortar
       for (int i = 1; i <= count; i++) {
         stacks.set(i, inputs.get(i - 1));
       }
+
+      JEIRecipeWrapperMortar wrapper = (JEIRecipeWrapperMortar) recipeWrapper;
+      ItemStack secondaryOutput = wrapper.getSecondaryOutput();
+
+      if (secondaryOutput != null
+          && wrapper.getSecondaryOutputChance() > 0) {
+        stacks.init(count + 1, false, 94 + 18, 18);
+        stacks.set(count + 1, secondaryOutput);
+      }
     }
   }
 
