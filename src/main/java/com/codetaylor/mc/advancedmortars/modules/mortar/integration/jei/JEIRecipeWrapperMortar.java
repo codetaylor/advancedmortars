@@ -1,11 +1,14 @@
 package com.codetaylor.mc.advancedmortars.modules.mortar.integration.jei;
 
+import com.codetaylor.mc.advancedmortars.lib.gui.GuiHelper;
+import com.codetaylor.mc.advancedmortars.modules.mortar.ModuleMortar;
 import com.codetaylor.mc.advancedmortars.modules.mortar.recipe.RecipeMortar;
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.IRecipeWrapper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
+import net.minecraft.util.ResourceLocation;
 
 import javax.annotation.Nonnull;
 import java.util.ArrayList;
@@ -15,9 +18,13 @@ import java.util.List;
 public class JEIRecipeWrapperMortar
     implements IRecipeWrapper {
 
+  private static final ResourceLocation TEXTURE_SECONDARY_OVERLAY = new ResourceLocation(
+      ModuleMortar.MOD_ID,
+      "textures/gui/jei_secondary.png"
+  );
+
   private List<List<ItemStack>> inputs;
-  private ItemStack output;
-  private ItemStack secondaryOutput;
+  private List<ItemStack> outputs;
   private float secondaryOutputChance;
 
   public JEIRecipeWrapperMortar(RecipeMortar recipe) {
@@ -28,9 +35,14 @@ public class JEIRecipeWrapperMortar
       this.inputs.add(Arrays.asList(input.getMatchingStacks()));
     }
 
-    this.output = recipe.getOutput();
+    this.outputs = new ArrayList<>();
 
-    this.secondaryOutput = recipe.getSecondaryOutput();
+    this.outputs.add(recipe.getOutput());
+
+    if (recipe.getSecondaryOutput() != null) {
+      this.outputs.add(recipe.getSecondaryOutput());
+    }
+
     this.secondaryOutputChance = recipe.getSecondaryOutputChance();
   }
 
@@ -38,12 +50,7 @@ public class JEIRecipeWrapperMortar
   public void getIngredients(@Nonnull IIngredients ingredients) {
 
     ingredients.setInputLists(ItemStack.class, this.inputs);
-    ingredients.setOutput(ItemStack.class, this.output);
-  }
-
-  public ItemStack getSecondaryOutput() {
-
-    return this.secondaryOutput;
+    ingredients.setOutputs(ItemStack.class, this.outputs);
   }
 
   public float getSecondaryOutputChance() {
@@ -56,5 +63,11 @@ public class JEIRecipeWrapperMortar
       Minecraft minecraft, int recipeWidth, int recipeHeight, int mouseX, int mouseY
   ) {
 
+    if (this.outputs.size() > 1) {
+      GuiHelper.drawTexturedRect(minecraft, TEXTURE_SECONDARY_OVERLAY, recipeWidth - 26, 0, 26, 54, 0, 0, 0, 26, 54);
+
+
+      minecraft.fontRenderer.drawStringWithShadow("100%", recipeWidth - 2, 32, 0xFFFFFF);
+    }
   }
 }

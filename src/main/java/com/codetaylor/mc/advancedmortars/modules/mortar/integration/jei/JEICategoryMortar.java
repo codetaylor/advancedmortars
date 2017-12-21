@@ -62,9 +62,17 @@ public class JEICategoryMortar
       IGuiItemStackGroup stacks = recipeLayout.getItemStacks();
 
       List<List<ItemStack>> inputs = ingredients.getInputs(ItemStack.class);
-      List<ItemStack> outputs = ingredients.getOutputs(ItemStack.class).get(0);
+      List<List<ItemStack>> outputList = ingredients.getOutputs(ItemStack.class);
+      List<ItemStack> outputs = outputList.get(0);
+      boolean secondaryOutputExists = outputList.size() > 1;
 
-      stacks.init(0, false, 94, 18);
+      int outputYPosition = 18;
+
+      if (secondaryOutputExists) {
+        outputYPosition = 4;
+      }
+
+      stacks.init(0, false, 94, outputYPosition);
       stacks.set(0, outputs);
 
       int count = inputs.size();
@@ -74,7 +82,6 @@ public class JEICategoryMortar
       int offsetY = 17;
 
       for (int index = 0; index < count; index++) {
-
         int x = (int) (MathHelper.cos(angle * index) * radius) + offsetX;
         int y = (int) (MathHelper.sin(angle * index) * radius) + offsetY;
         stacks.init(index + 1, true, x, y);
@@ -84,13 +91,9 @@ public class JEICategoryMortar
         stacks.set(i, inputs.get(i - 1));
       }
 
-      JEIRecipeWrapperMortar wrapper = (JEIRecipeWrapperMortar) recipeWrapper;
-      ItemStack secondaryOutput = wrapper.getSecondaryOutput();
-
-      if (secondaryOutput != null
-          && wrapper.getSecondaryOutputChance() > 0) {
-        stacks.init(count + 1, false, 94 + 18, 18);
-        stacks.set(count + 1, secondaryOutput);
+      if (secondaryOutputExists) {
+        stacks.init(count + 1, false, 94, outputYPosition + 23);
+        stacks.set(count + 1, outputList.get(1));
       }
     }
   }

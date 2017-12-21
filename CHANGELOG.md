@@ -1,3 +1,6 @@
+1.3.8
+* Added requested feature: support for secondary item output with chance
+
 1.2.8
 * Fixed recipe update not triggering on item removal
 * Removed System.out saturation spam
