@@ -1,6 +1,7 @@
-1.3.7
+1.2.8
 * Fixed recipe update not triggering on item removal
 * Removed System.out saturation spam
+* Fixed NPE crash
 
 1.2.7
 * Removed dependency on MTLib, will now work without ModTweaker. Still requires CraftTweaker.
