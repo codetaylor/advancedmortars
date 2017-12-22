@@ -1,3 +1,6 @@
+1.3.9
+* Fixed NPE crash
+
 1.3.8
 * Added requested feature: support for secondary item output with chance
 
