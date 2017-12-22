@@ -1,3 +1,6 @@
+1.3.10
+* Fixed: Always shows 100% for secondary item drop in JEI
+
 1.3.9
 * Fixed NPE crash
 
