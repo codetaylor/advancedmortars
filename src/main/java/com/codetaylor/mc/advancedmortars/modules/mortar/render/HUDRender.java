@@ -35,7 +35,8 @@ public class HUDRender {
     Minecraft minecraft = Minecraft.getMinecraft();
     RayTraceResult rayTraceResult = minecraft.objectMouseOver;
 
-    if (rayTraceResult.typeOfHit != RayTraceResult.Type.BLOCK) {
+    if (rayTraceResult == null
+        || rayTraceResult.typeOfHit != RayTraceResult.Type.BLOCK) {
       return;
     }
 
