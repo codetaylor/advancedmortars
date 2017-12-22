@@ -53,11 +53,6 @@ public class JEIRecipeWrapperMortar
     ingredients.setOutputs(ItemStack.class, this.outputs);
   }
 
-  public float getSecondaryOutputChance() {
-
-    return this.secondaryOutputChance;
-  }
-
   @Override
   public void drawInfo(
       Minecraft minecraft, int recipeWidth, int recipeHeight, int mouseX, int mouseY
@@ -66,8 +61,8 @@ public class JEIRecipeWrapperMortar
     if (this.outputs.size() > 1) {
       GuiHelper.drawTexturedRect(minecraft, TEXTURE_SECONDARY_OVERLAY, recipeWidth - 26, 0, 26, 54, 0, 0, 0, 26, 54);
 
-
-      minecraft.fontRenderer.drawStringWithShadow("100%", recipeWidth - 2, 32, 0xFFFFFF);
+      String text = Math.round(this.secondaryOutputChance * 100) + "%";
+      minecraft.fontRenderer.drawStringWithShadow(text, recipeWidth - 2, 32, 0xFFFFFF);
     }
   }
 }
