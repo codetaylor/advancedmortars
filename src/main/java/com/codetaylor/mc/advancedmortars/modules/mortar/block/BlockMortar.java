@@ -179,6 +179,11 @@ public class BlockMortar
       float hitZ
   ) {
 
+    if (world.isRemote) {
+      // Only do this stuff on the client.
+      return true;
+    }
+
     if (hand == EnumHand.MAIN_HAND) {
 
       ItemStack heldItem = player.getHeldItem(hand);
@@ -189,14 +194,10 @@ public class BlockMortar
 
         if (heldItem.isEmpty()) {
 
-          if (world.isRemote) {
-            return true;
-          }
-
           if (player.isSneaking()) {
 
             if (!tile.isEmpty()) {
-              // pop the last item out of the tile
+              // If the player is sneaking and activating with an empty hand, pop the last item out of the tile.
               StackUtil.spawnStackOnTop(world, tile.removeItem(), pos);
             }
 
@@ -204,10 +205,13 @@ public class BlockMortar
           }
 
           if (player.getFoodStats().getFoodLevel() >= ModuleConfig.RECIPES.MINIMUM_HUNGER_TO_USE) {
-            // Only perform crafting if the player has enough hunger
+            // Only perform crafting if the player has enough hunger.
+            // Setting MINIMUM_HUNGER_TO_USE to 0 will ensure this check is always true.
 
             if (tile.incrementCraftingProgress()) {
-              // Only inflict exhaustion if the crafting process was incremented
+              // Only inflict exhaustion if the crafting process was incremented.
+              // This check prevents exhaustion from always being applied when the mortar is right-clicked.
+              // Setting EXHAUSTION_COST_PER_CLICK to 0 disables exhaustion.
               player.addExhaustion((float) ModuleConfig.RECIPES.EXHAUSTION_COST_PER_CLICK);
             }
           }
@@ -217,11 +221,7 @@ public class BlockMortar
           // Can we insert the item?
           if (tile.canInsertItem(heldItem)) {
 
-            if (world.isRemote) {
-              return true;
-            }
-
-            // insert the item in the tile on the server
+            // If we can insert the item, do eet!
             tile.insertItem(heldItem);
             return true;
           }
@@ -230,12 +230,6 @@ public class BlockMortar
     }
 
     return true;
-  }
-
-  public int getMaxDurability(IBlockState state) {
-
-    EnumMortarType type = state.getValue(VARIANT);
-    return this.getMaxDurability(type);
   }
 
   public int getMaxDurability(ItemStack itemStack) {
