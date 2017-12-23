@@ -10,6 +10,8 @@ import mods.advancedmortars.Mortar;
 
 Syntax:
 
+Allows up to eight input ingredients.
+
 ```
 Mortar.addRecipe(String[] mortarTypes, IItemStack output, int duration, IIngredient[] inputs);
 ```
@@ -21,6 +23,8 @@ Mortar.addRecipe(["iron", "stone"], <minecraft:gravel>, 20, [<minecraft:cobblest
 ```
 
 ##### Optional Secondary Item
+
+Allows up to eight input ingredients.
 
 Syntax:
 
