@@ -1,6 +1,7 @@
 package com.codetaylor.mc.advancedmortars.lib.util;
 
 import com.codetaylor.mc.advancedmortars.modules.mortar.integration.crafttweaker.mtlib.InputHelper;
+import crafttweaker.CraftTweakerAPI;
 import crafttweaker.api.item.IIngredient;
 import crafttweaker.api.item.IItemStack;
 import net.minecraft.item.ItemStack;
@@ -11,6 +12,20 @@ import java.util.Collections;
 import java.util.List;
 
 public class CTUtil {
+
+  public static void logError(String message) {
+
+    StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
+
+    for (StackTraceElement element : stackTrace) {
+      String methodName = element.getMethodName();
+
+      if ("__script__".equals(methodName)) {
+        CraftTweakerAPI.logError(message + " (" + element.getFileName() + ":" + element.getLineNumber() + ")");
+        break;
+      }
+    }
+  }
 
   public static Ingredient toIngredient(IIngredient ingredient) {
 
