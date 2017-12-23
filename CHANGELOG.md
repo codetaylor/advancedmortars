@@ -1,3 +1,6 @@
+1.3.11
+* Improved zen method error handling and reporting
+
 1.3.10
 * Fixed: Always shows 100% for secondary item drop in JEI
 
