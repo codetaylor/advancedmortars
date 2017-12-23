@@ -1,6 +1,6 @@
 package com.codetaylor.mc.advancedmortars.modules.mortar.integration.crafttweaker;
 
-import com.codetaylor.mc.advancedmortars.lib.util.CTUtil;
+import com.codetaylor.mc.advancedmortars.lib.util.CraftTweakerUtil;
 import com.codetaylor.mc.advancedmortars.modules.mortar.api.MortarAPI;
 import com.codetaylor.mc.advancedmortars.modules.mortar.integration.crafttweaker.mtlib.BaseUndoable;
 import com.codetaylor.mc.advancedmortars.modules.mortar.integration.crafttweaker.mtlib.InputHelper;
@@ -25,13 +25,31 @@ public class ZenMortar {
   @ZenMethod
   public static void addRecipe(String[] types, IItemStack output, int duration, IIngredient[] inputs) {
 
+    if (inputs == null || inputs.length == 0) {
+      CraftTweakerUtil.logError("No inputs defined");
+      return;
+
+    } else if (inputs.length > 8) {
+      CraftTweakerUtil.logError("Maximum number of 8 input ingredients exceeded: " + inputs.length);
+      return;
+    }
+
+    for (String type : types) {
+      EnumMortarType enumMortarType = EnumMortarType.fromName(type);
+
+      if (enumMortarType == null) {
+        CraftTweakerUtil.logError("Invalid mortar type: " + type);
+        return;
+      }
+    }
+
     PluginCraftTweaker.LATE_ADDITIONS.add(new Add(
         types,
         InputHelper.toStack(output),
         duration,
         null,
         0,
-        CTUtil.toIngredientArray(inputs)
+        CraftTweakerUtil.toIngredientArray(inputs)
     ));
   }
 
@@ -51,7 +69,7 @@ public class ZenMortar {
         duration,
         InputHelper.toStack(secondaryOutput),
         secondaryOutputChance,
-        CTUtil.toIngredientArray(inputs)
+        CraftTweakerUtil.toIngredientArray(inputs)
     ));
   }
 
@@ -100,6 +118,8 @@ public class ZenMortar {
           );
 
         } else {
+          // Sanity check. Should never happen because we check the mortar types in the ZenMethod
+          // in order to log a line number at the point of failure.
           LogHelper.logError("Invalid mortar type: " + type + ". Valid types are: " + Arrays.toString(EnumMortarType.NAMES));
         }
       }

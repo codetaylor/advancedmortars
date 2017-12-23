@@ -11,7 +11,7 @@ import javax.annotation.Nullable;
 import java.util.Collections;
 import java.util.List;
 
-public class CTUtil {
+public class CraftTweakerUtil {
 
   public static void logError(String message) {
 
