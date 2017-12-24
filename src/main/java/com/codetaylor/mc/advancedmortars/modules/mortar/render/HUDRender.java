@@ -2,6 +2,7 @@ package com.codetaylor.mc.advancedmortars.modules.mortar.render;
 
 import com.codetaylor.mc.advancedmortars.lib.IRecipeOutputProvider;
 import com.codetaylor.mc.advancedmortars.lib.gui.GuiHelper;
+import com.codetaylor.mc.advancedmortars.modules.mortar.ModuleConfig;
 import com.codetaylor.mc.advancedmortars.modules.mortar.ModuleMortar;
 import com.codetaylor.mc.advancedmortars.modules.mortar.tile.TileEntityMortarBase;
 import net.minecraft.client.Minecraft;
@@ -104,7 +105,7 @@ public class HUDRender {
 
           // Mouse button hint
           if (minecraft.player.getHeldItemMainhand().isEmpty()) {
-            GuiHelper.drawTexturedRect(minecraft, TEXTURE, x, y, 8, 10, 100, 10, 23, TEXTURE_WIDTH, TEXTURE_HEIGHT);
+            GuiHelper.drawTexturedRect(minecraft, TEXTURE, x, y, 8, 10, 100, 10, 35, TEXTURE_WIDTH, TEXTURE_HEIGHT);
             x += 5;
           }
 
@@ -113,27 +114,45 @@ public class HUDRender {
         }
       }
 
-      { // Render mortar pick-up hint.
-        int x = resolution.getScaledWidth() / 2 - 9;
-        int y = resolution.getScaledHeight() / 2 - 64 - 16;
-        GuiHelper.drawTexturedRect(minecraft, TEXTURE, x, y, 18, 22, 100, 18, 24, TEXTURE_WIDTH, TEXTURE_HEIGHT);
-      }
+      if (ModuleConfig.CLIENT.DISPLAY_INTERACTION_HINTS) {
 
-      { // Render ingredient return hint.
-        if (!((TileEntityMortarBase) tileEntity).isEmpty()
-            && minecraft.player.getHeldItemMainhand().isEmpty()) {
-          int x = resolution.getScaledWidth() / 2 - 9;
-          int y = resolution.getScaledHeight() / 2 - 6;
-          GuiHelper.drawTexturedRect(minecraft, TEXTURE, x, y, 18, 22, 100, 0, 23, TEXTURE_WIDTH, TEXTURE_HEIGHT);
+        { // Render mortar pick-up hint.
+          int x = resolution.getScaledWidth() / 2 - 9 + 18;
+
+          if (!minecraft.player.getHeldItemMainhand().isEmpty()
+              || ((TileEntityMortarBase) tileEntity).isEmpty()) {
+            x -= 17;
+          }
+
+          int y = resolution.getScaledHeight() / 2 - 64 - 8;
+          GuiHelper.drawTexturedRect(minecraft, TEXTURE, x, y, 18, 22, 100, 18, 23, TEXTURE_WIDTH, TEXTURE_HEIGHT);
+        }
+
+        { // Render ingredient return hint.
+          if (!((TileEntityMortarBase) tileEntity).isEmpty()
+              && minecraft.player.getHeldItemMainhand().isEmpty()) {
+            int x = resolution.getScaledWidth() / 2 - 9 - 18;
+            int y = resolution.getScaledHeight() / 2 - 64 - 8;
+            GuiHelper.drawTexturedRect(minecraft, TEXTURE, x, y, 18, 22, 100, 0, 23, TEXTURE_WIDTH, TEXTURE_HEIGHT);
+          }
         }
       }
 
-      { // Render mode graphic.
-        if (recipe != null
-            && minecraft.player.getHeldItemMainhand().isEmpty()) {
-          int x = resolution.getScaledWidth() / 2 - 8 + 65;
-          int y = resolution.getScaledHeight() / 2 - 8 - 20;
+      if (ModuleConfig.CLIENT.DISPLAY_MORTAR_DURABILITY) {
+
+        { // Render mode graphic.
+          int x = resolution.getScaledWidth() / 2 - 7;
+          int y = resolution.getScaledHeight() / 2 - 12;
           GuiHelper.drawTexturedRect(minecraft, TEXTURE, x, y, 16, 23, 100, 0, 0, TEXTURE_WIDTH, TEXTURE_HEIGHT);
+        }
+
+        { // Render durability.
+          int x = resolution.getScaledWidth() / 2 - 9;
+          int y = resolution.getScaledHeight() / 2 + 0;
+          double durability = ((TileEntityMortarBase) tileEntity).getDurability() / (double) ((TileEntityMortarBase) tileEntity)
+              .getMaxDurability();
+          int color = MathHelper.hsvToRGB(Math.max(0.0F, (float) (1.0F - durability)) / 3.0F, 1.0F, 1.0F);
+          GuiHelper.drawDurabilityBar(x, y, durability, color, 14);
         }
       }
 

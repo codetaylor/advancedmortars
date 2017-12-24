@@ -42,6 +42,16 @@ public abstract class TileEntityMortarBase
     this.mortarDelegate = new MortarDelegate(type, this::markDirty);
   }
 
+  public int getDurability() {
+
+    return this.durability;
+  }
+
+  public int getMaxDurability() {
+
+    return ModuleMortar.Blocks.MORTAR.getMaxDurability(EnumMortarType.fromMeta(this.typeId));
+  }
+
   public int getCraftingProgress() {
 
     return this.craftingProgress;
@@ -277,11 +287,6 @@ public abstract class TileEntityMortarBase
   public final NBTTagCompound getUpdateTag() {
 
     return this.writeToNBT(new NBTTagCompound());
-  }
-
-  private int getMaxDurability() {
-
-    return ModuleMortar.Blocks.MORTAR.getMaxDurability(EnumMortarType.fromMeta(this.typeId));
   }
 
 }

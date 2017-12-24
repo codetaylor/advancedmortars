@@ -2,6 +2,7 @@ package com.codetaylor.mc.advancedmortars.lib.gui;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.BufferBuilder;
+import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.texture.TextureManager;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
@@ -53,6 +54,51 @@ public class GuiHelper {
         .tex(u0, v0)
         .endVertex();
     tessellator.draw();
+  }
+
+  public static void drawColoredRect(
+      BufferBuilder renderer,
+      int x,
+      int y,
+      int width,
+      int height,
+      int red,
+      int green,
+      int blue,
+      int alpha
+  ) {
+
+    renderer.begin(GL11.GL_QUADS, DefaultVertexFormats.POSITION_COLOR);
+    renderer.pos((double) (x + 0), (double) (y + 0), 0.0D).color(red, green, blue, alpha).endVertex();
+    renderer.pos((double) (x + 0), (double) (y + height), 0.0D).color(red, green, blue, alpha).endVertex();
+    renderer.pos((double) (x + width), (double) (y + height), 0.0D).color(red, green, blue, alpha).endVertex();
+    renderer.pos((double) (x + width), (double) (y + 0), 0.0D).color(red, green, blue, alpha).endVertex();
+    Tessellator.getInstance().draw();
+  }
+
+  public static void drawDurabilityBar(int xPosition, int yPosition, double durabilityPercentage, int color, int width) {
+
+    GlStateManager.disableLighting();
+    GlStateManager.disableDepth();
+    GlStateManager.disableTexture2D();
+    GlStateManager.disableAlpha();
+    GlStateManager.disableBlend();
+    Tessellator tessellator = Tessellator.getInstance();
+    BufferBuilder bufferbuilder = tessellator.getBuffer();
+    int subWidth = Math.round((float) width - (float) durabilityPercentage * (float) width);
+    xPosition += 2;
+    yPosition += 13;
+    GuiHelper.drawColoredRect(bufferbuilder, xPosition, yPosition, width, 2, 0, 0, 0, 255);
+
+    int red = color >> 16 & 255;
+    int green = color >> 8 & 255;
+    int blue = color & 255;
+    GuiHelper.drawColoredRect(bufferbuilder, xPosition, yPosition, subWidth, 1, red, green, blue, 255);
+    GlStateManager.enableBlend();
+    GlStateManager.enableAlpha();
+    GlStateManager.enableTexture2D();
+    GlStateManager.enableLighting();
+    GlStateManager.enableDepth();
   }
 
   private GuiHelper() {

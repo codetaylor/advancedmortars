@@ -5,6 +5,14 @@ general {
     # Set to false to make the mortar drop its contents when moved.
     B:KEEP_CONTENTS=true
 
+    client {
+        # Set to false to hide the mortar interaction hints in the UI overlay.
+        B:DISPLAY_INTERACTION_HINTS=true
+
+        # Set to false to hide the mortar durability in the UI overlay.
+        B:DISPLAY_MORTAR_DURABILITY=true
+    }
+
     recipes {
         # Set to false to disable all default recipes.
         B:ENABLE_DEFAULT_RECIPES=true

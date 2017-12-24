@@ -12,6 +12,17 @@ public class ModuleConfig {
   @Config.Comment({"Set to false to make the mortar drop its contents when moved."})
   public static boolean KEEP_CONTENTS = true;
 
+  public static Client CLIENT = new Client();
+
+  public static class Client {
+
+    @Config.Comment({"Set to false to hide the mortar interaction hints in the UI overlay."})
+    public boolean DISPLAY_INTERACTION_HINTS = true;
+
+    @Config.Comment({"Set to false to hide the mortar durability in the UI overlay."})
+    public boolean DISPLAY_MORTAR_DURABILITY = true;
+  }
+
   public static Recipes RECIPES = new Recipes();
 
   public static class Recipes {

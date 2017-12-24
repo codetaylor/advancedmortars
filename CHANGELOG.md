@@ -1,3 +1,8 @@
+1.5.11
+* UX redesign with considerable help from Yuudaari
+* Added config option to disable ingredient return and mortar pickup UI overlay hints
+* Added config option to disable durability display in the UI overlay
+
 1.4.11
 * Added requested feature: config option to force mortar to spill contents when moved
 
