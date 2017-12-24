@@ -13,7 +13,7 @@ This mod is designed for modpack makers. It contains only example recipes and is
 
 ![Mortars](https://raw.githubusercontent.com/codetaylor/advancedmortars/master/assets/mortars.png)
 
-This mod contains four in-world mortars, each with two recipe modes: mixing and crushing. Each mortar also has a configurable durability.
+This mod contains four in-world mortars, each with a configurable durability.
 
 ![Mortar Items](https://raw.githubusercontent.com/codetaylor/advancedmortars/master/assets/items.png)
 
