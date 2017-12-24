@@ -2,6 +2,8 @@
 # Configuration file
 
 general {
+    # Set to false to make the mortar drop its contents when moved.
+    B:KEEP_CONTENTS=true
 
     recipes {
         # Set to false to disable all default recipes.
@@ -11,7 +13,7 @@ general {
         # Set to 0 to disable.
         # Min: 0.0
         # Max: 40.0
-        D:EXHAUSTION_COST_PER_CLICK=0.0
+        D:EXHAUSTION_COST_PER_CLICK=20.0
 
         # Minimum amount of hunger the player needs to operate a mortar.
         # Set to 0 to disable.

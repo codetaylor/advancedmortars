@@ -137,7 +137,8 @@ public class BlockMortar
     if (tileEntity != null
         && tileEntity instanceof TileEntityMortarBase) {
 
-      drops.add(((TileEntityMortarBase) tileEntity).getAsItemStack());
+      boolean dropAllItems = !ModuleConfig.KEEP_CONTENTS;
+      drops.add(((TileEntityMortarBase) tileEntity).destroy(dropAllItems, false, null));
     }
   }
 

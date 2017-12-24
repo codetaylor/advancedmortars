@@ -9,6 +9,9 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 @Config(modid = ModuleMortar.MOD_ID, name = ModuleMortar.MOD_ID + ".module.Mortar")
 public class ModuleConfig {
 
+  @Config.Comment({"Set to false to make the mortar drop its contents when moved."})
+  public static boolean KEEP_CONTENTS = true;
+
   public static Recipes RECIPES = new Recipes();
 
   public static class Recipes {

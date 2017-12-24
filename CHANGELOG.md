@@ -1,3 +1,6 @@
+1.4.11
+* Added requested feature: config option to force mortar to spill contents when moved
+
 1.3.11
 * Improved zen method error handling and reporting
 

@@ -1,6 +1,7 @@
 package com.codetaylor.mc.advancedmortars.modules.mortar.event;
 
 import com.codetaylor.mc.advancedmortars.lib.util.StackUtil;
+import com.codetaylor.mc.advancedmortars.modules.mortar.ModuleConfig;
 import com.codetaylor.mc.advancedmortars.modules.mortar.block.BlockMortar;
 import com.codetaylor.mc.advancedmortars.modules.mortar.render.HUDRender;
 import com.codetaylor.mc.advancedmortars.modules.mortar.tile.TileEntityMortarBase;
@@ -45,7 +46,8 @@ public class MortarEventHandler {
       TileEntity tileEntity = world.getTileEntity(pos);
 
       if (tileEntity instanceof TileEntityMortarBase) {
-        ItemStack itemStack = ((TileEntityMortarBase) tileEntity).destroy(false, false, SoundEvents.ENTITY_ITEM_PICKUP);
+        boolean dropAllItems = !ModuleConfig.KEEP_CONTENTS;
+        ItemStack itemStack = ((TileEntityMortarBase) tileEntity).destroy(dropAllItems, false, SoundEvents.ENTITY_ITEM_PICKUP);
         StackUtil.spawnStackOnTop(world, itemStack, pos);
       }
     }
