@@ -6,6 +6,7 @@ import com.codetaylor.mc.advancedmortars.modules.mortar.ModuleConfig;
 import com.codetaylor.mc.advancedmortars.modules.mortar.ModuleMortar;
 import com.codetaylor.mc.advancedmortars.modules.mortar.tile.TileEntityMortarBase;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiChat;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderHelper;
@@ -34,6 +35,12 @@ public class HUDRender {
   public static void render(ScaledResolution resolution) {
 
     Minecraft minecraft = Minecraft.getMinecraft();
+
+    if (minecraft.currentScreen != null
+        && minecraft.currentScreen instanceof GuiChat) {
+      return;
+    }
+
     RayTraceResult rayTraceResult = minecraft.objectMouseOver;
 
     if (rayTraceResult == null
@@ -156,6 +163,7 @@ public class HUDRender {
         }
       }
 
+      GlStateManager.disableLighting();
       GlStateManager.disableBlend();
     }
   }
