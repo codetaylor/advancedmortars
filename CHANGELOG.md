@@ -1,3 +1,9 @@
+1.5.13
+* Now hides crosshairs when displaying mortar durability in overlay 
+
+1.5.12
+* Fixed gray text gui while looking at mortar bug
+
 1.5.11
 * UX redesign with considerable help from Yuudaari
 * Added config option to disable ingredient return and mortar pickup UI overlay hints

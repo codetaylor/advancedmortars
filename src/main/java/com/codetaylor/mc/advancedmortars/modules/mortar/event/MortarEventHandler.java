@@ -81,12 +81,9 @@ public class MortarEventHandler {
 
         TileEntity tileEntity = minecraft.world.getTileEntity(blockPos);
 
-        if (tileEntity instanceof TileEntityMortarBase) {
-
-          if (!((TileEntityMortarBase) tileEntity).isEmpty()
-              && minecraft.player.getHeldItemMainhand().isEmpty()) {
-            event.setCanceled(true);
-          }
+        if (tileEntity instanceof TileEntityMortarBase
+            && ModuleConfig.CLIENT.DISPLAY_MORTAR_DURABILITY) {
+          event.setCanceled(true);
         }
       }
     }
