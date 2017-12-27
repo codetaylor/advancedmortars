@@ -84,6 +84,14 @@ public class ItemBlockMortar
           TextFormatting.GRAY
       ));
 
+      tooltip.add(I18n.format(
+          ModuleMortar.Lang.TOOLTIP_EXTENDED_RETRIEVE,
+          TextFormatting.AQUA,
+          TextFormatting.GRAY,
+          TextFormatting.AQUA,
+          TextFormatting.GRAY
+      ));
+
     } else {
       tooltip.add(I18n.format(ModuleMortar.Lang.TOOLTIP_EXTENDED, TextFormatting.AQUA, TextFormatting.GRAY));
     }

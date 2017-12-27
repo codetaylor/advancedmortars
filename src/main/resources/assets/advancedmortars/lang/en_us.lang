@@ -14,3 +14,4 @@ tooltip.advancedmortars.durability=Durability: %s
 tooltip.advancedmortars.durability.unbreakable=Unbreakable
 tooltip.advancedmortars.extended=Hold %sSHIFT%s for more info.
 tooltip.advancedmortars.extended.pickup=%sSHIFT%s + %sLEFT-CLICK%s to pick up mortar.
+tooltip.advancedmortars.extended.retrieve=%sSHIFT%s + %sRIGHT-CLICK%s to retrieve ingredients.

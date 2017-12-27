@@ -14,3 +14,4 @@ tooltip.advancedmortars.durability=耐久：%s
 tooltip.advancedmortars.durability.unbreakable=无法破坏
 tooltip.advancedmortars.extended=按住 %sSHIFT%s 查看更多信息
 tooltip.advancedmortars.extended.pickup=%sSHIFT%s + %s左击%s 拿起研钵
+tooltip.advancedmortars.extended.retrieve=%sSHIFT%s + %sRIGHT-CLICK%s to retrieve ingredients.
