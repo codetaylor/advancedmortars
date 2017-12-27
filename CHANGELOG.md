@@ -1,3 +1,6 @@
+1.5.14
+* Fixed: Oredict recipes not working properly (#21)
+
 1.5.13
 * Now hides crosshairs when displaying mortar durability in overlay 
 

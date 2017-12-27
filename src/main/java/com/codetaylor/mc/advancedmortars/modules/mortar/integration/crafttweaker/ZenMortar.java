@@ -8,12 +8,17 @@ import com.codetaylor.mc.advancedmortars.modules.mortar.integration.crafttweaker
 import com.codetaylor.mc.advancedmortars.modules.mortar.reference.EnumMortarType;
 import crafttweaker.api.item.IIngredient;
 import crafttweaker.api.item.IItemStack;
+import crafttweaker.api.item.IngredientStack;
+import crafttweaker.api.oredict.IOreDictEntry;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
+import net.minecraft.util.NonNullList;
+import net.minecraftforge.oredict.OreDictionary;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 
 import java.util.Arrays;
+import java.util.List;
 
 import static com.codetaylor.mc.advancedmortars.modules.mortar.integration.crafttweaker.ZenMortar.NAME;
 
@@ -49,7 +54,7 @@ public class ZenMortar {
         duration,
         null,
         0,
-        CraftTweakerUtil.toIngredientArray(inputs)
+        inputs
     ));
   }
 
@@ -69,7 +74,7 @@ public class ZenMortar {
         duration,
         InputHelper.toStack(secondaryOutput),
         secondaryOutputChance,
-        CraftTweakerUtil.toIngredientArray(inputs)
+        inputs
     ));
   }
 
@@ -81,7 +86,7 @@ public class ZenMortar {
     private final int duration;
     private final ItemStack secondaryOutput;
     private final float secondaryOutputChance;
-    private final Ingredient[] inputs;
+    private final IIngredient[] inputs;
 
     /* package */ Add(
         String[] types,
@@ -89,7 +94,7 @@ public class ZenMortar {
         int duration,
         ItemStack secondaryOutput,
         float secondaryOutputChance,
-        Ingredient[] inputs
+        IIngredient[] inputs
     ) {
 
       super(NAME);
@@ -108,13 +113,45 @@ public class ZenMortar {
         EnumMortarType enumMortarType = EnumMortarType.fromName(type);
 
         if (enumMortarType != null) {
+          Ingredient[] ingredients = new Ingredient[this.inputs.length];
+
+          for (int i = 0; i < this.inputs.length; i++) {
+            ItemStack[] itemStacks;
+
+            if (this.inputs[i] instanceof IOreDictEntry) {
+              NonNullList<ItemStack> ores = OreDictionary.getOres(((IOreDictEntry) this.inputs[i]).getName());
+              itemStacks = ores.toArray(new ItemStack[ores.size()]);
+
+            } else if (this.inputs[i] instanceof IItemStack) {
+              itemStacks = new ItemStack[]{InputHelper.toStack((IItemStack) this.inputs[i])};
+
+            } else if (this.inputs[i] instanceof IngredientStack) {
+              List<IItemStack> items = this.inputs[i].getItems();
+              itemStacks = new ItemStack[items.size()];
+
+              for (int j = 0; j < items.size(); j++) {
+                itemStacks[j] = InputHelper.toStack(items.get(i));
+              }
+
+            } else {
+              LogHelper.logError("Unknown input type: " + this.inputs[i].getClass());
+              return;
+            }
+
+            ingredients[i] = Ingredient.fromStacks(itemStacks);
+
+            for (ItemStack itemStack : ingredients[i].getMatchingStacks()) {
+              itemStack.setCount(this.inputs[i].getAmount());
+            }
+          }
+
           MortarAPI.RECIPE_REGISTRY.addRecipe(
               enumMortarType,
               this.output,
               this.duration,
               this.secondaryOutput,
               this.secondaryOutputChance,
-              this.inputs
+              ingredients
           );
 
         } else {

@@ -56,43 +56,19 @@ public class RecipeMortar
 
   public boolean matches(ItemStack[] inputs) {
 
-    return this.getUniqueItemCount(inputs) == this.inputs.size()
-        && this.checkAvailableIngredients(inputs);
-  }
-
-  private int getUniqueItemCount(ItemStack[] inputs) {
-
-    List<ItemStack> itemList = new ArrayList<>();
-
-    for (ItemStack input : inputs) {
-
-      boolean hasItem = false;
-
-      for (ItemStack itemStack : itemList) {
-
-        if (itemStack.getItem() == input.getItem()
-            && itemStack.getMetadata() == input.getMetadata()) {
-          hasItem = true;
-        }
-      }
-
-      if (!hasItem) {
-        itemList.add(input);
-      }
-    }
-
-    return itemList.size();
+    return this.checkAvailableIngredients(inputs);
   }
 
   private boolean checkAvailableIngredients(ItemStack[] inputs) {
 
+    boolean[] matchedInputs = new boolean[inputs.length];
     int[] availableCounts = new int[inputs.length];
 
     for (int i = 0; i < inputs.length; i++) {
       availableCounts[i] = inputs[i].getCount();
     }
 
-    for (int i = 0; i < this.inputs.size(); i++) {
+    for (int i = 0; i < this.inputs.size(); i++) { // for each recipe ingredient
       Ingredient ingredient = this.inputs.get(i);
       ItemStack[] matchingStacks = ingredient.getMatchingStacks();
 
@@ -102,22 +78,26 @@ public class RecipeMortar
 
       int requiredCount = matchingStacks[0].getCount();
 
-      for (int j = 0; j < inputs.length; j++) {
-        ItemStack input = inputs[j];
+      for (int j = 0; j < inputs.length; j++) { // for each provided ingredient
+        boolean ingredientMatches = ingredient.apply(inputs[j]);
+
+        if (ingredientMatches) {
+          matchedInputs[j] = true;
+        }
 
         if (availableCounts[j] > 0
-            && ingredient.apply(input)) {
+            && ingredientMatches) {
 
           if (requiredCount == availableCounts[j]) {
             requiredCount -= availableCounts[j];
             availableCounts[j] = 0;
-            break; // requirements satisfied
+            // requirements satisfied
 
           } else if (requiredCount < availableCounts[j]) {
             int availableCount = availableCounts[j];
             availableCounts[j] -= requiredCount;
             requiredCount -= availableCount;
-            break; // requirements satisfied
+            // requirements satisfied
 
           } else { // requiredCount > availableCounts[j]
             requiredCount -= availableCounts[j];
@@ -129,6 +109,13 @@ public class RecipeMortar
 
       if (requiredCount > 0) {
         // requirements were not met
+        return false;
+      }
+    }
+
+    for (boolean matchedInput : matchedInputs) {
+
+      if (!matchedInput) {
         return false;
       }
     }
