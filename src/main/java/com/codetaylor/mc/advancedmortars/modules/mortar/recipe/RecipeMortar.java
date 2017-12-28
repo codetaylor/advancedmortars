@@ -149,7 +149,7 @@ public class RecipeMortar
 
       for (int j = 0; j < inputs.length; j++) { // for each provided ingredient
 
-        if (!matchedInputs[j] && ingredient.apply(inputs[j])) {
+        if (inputs[j].isEmpty() || (!matchedInputs[j] && ingredient.apply(inputs[j]))) {
           matchedInputs[j] = true;
         }
       }
