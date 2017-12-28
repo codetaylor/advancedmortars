@@ -26,7 +26,6 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.Explosion;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -193,17 +192,22 @@ public class BlockMortar
       if (tileEntity instanceof TileEntityMortarBase) {
         TileEntityMortarBase tile = (TileEntityMortarBase) tileEntity;
 
-        if (heldItem.isEmpty()) {
+        if (heldItem.isEmpty() && player.isSneaking()) {
 
-          if (player.isSneaking()) {
-
-            if (!tile.isEmpty()) {
-              // If the player is sneaking and activating with an empty hand, pop the last item out of the tile.
-              StackUtil.spawnStackOnTop(world, tile.removeItem(), pos);
-            }
-
-            return true;
+          if (!tile.isEmpty()) {
+            // If the player is sneaking and activating with an empty hand, pop the last item out of the tile.
+            StackUtil.spawnStackOnTop(world, tile.removeItem(), pos);
           }
+
+          return true;
+
+        } else if (!heldItem.isEmpty() && tile.canInsertItem(heldItem)) {
+
+          // If we can insert the item, do eet!
+          tile.insertItem(heldItem);
+          return true;
+
+        } else if (heldItem.isEmpty() || !ModuleConfig.RECIPES.REQUIRE_EMPTY_HAND_TO_USE) {
 
           if (player.getFoodStats().getFoodLevel() >= ModuleConfig.RECIPES.MINIMUM_HUNGER_TO_USE) {
             // Only perform crafting if the player has enough hunger.
@@ -215,16 +219,6 @@ public class BlockMortar
               // Setting EXHAUSTION_COST_PER_CLICK to 0 disables exhaustion.
               player.addExhaustion((float) ModuleConfig.RECIPES.EXHAUSTION_COST_PER_CLICK);
             }
-          }
-
-        } else {
-
-          // Can we insert the item?
-          if (tile.canInsertItem(heldItem)) {
-
-            // If we can insert the item, do eet!
-            tile.insertItem(heldItem);
-            return true;
           }
         }
       }

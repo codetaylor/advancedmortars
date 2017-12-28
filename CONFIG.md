@@ -28,6 +28,9 @@ general {
         # Min: 0
         # Max: 20
         I:MINIMUM_HUNGER_TO_USE=0
+
+        # If set to true, the mortar will require an empty hand to use.
+        B:REQUIRE_EMPTY_HAND_TO_USE=false
     }
 
     durability {

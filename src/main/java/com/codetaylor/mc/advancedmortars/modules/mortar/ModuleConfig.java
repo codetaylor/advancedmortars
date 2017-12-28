@@ -27,6 +27,9 @@ public class ModuleConfig {
 
   public static class Recipes {
 
+    @Config.Comment({"If set to true, the mortar will require an empty hand to use."})
+    public boolean REQUIRE_EMPTY_HAND_TO_USE = false;
+
     @Config.RangeInt(min = 0, max = 20)
     @Config.Comment({"Minimum amount of hunger the player needs to operate a mortar.", "Set to 0 to disable."})
     public int MINIMUM_HUNGER_TO_USE = 0;
