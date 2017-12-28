@@ -111,7 +111,8 @@ public class HUDRender {
           int y = resolution.getScaledHeight() / 2 - 4;
 
           // Mouse button hint
-          if (minecraft.player.getHeldItemMainhand().isEmpty()) {
+          if (minecraft.player.getHeldItemMainhand().isEmpty()
+              || !ModuleConfig.RECIPES.REQUIRE_EMPTY_HAND_TO_USE) {
             GuiHelper.drawTexturedRect(minecraft, TEXTURE, x, y, 8, 10, 100, 10, 35, TEXTURE_WIDTH, TEXTURE_HEIGHT);
             x += 5;
           }
