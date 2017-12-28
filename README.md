@@ -23,7 +23,7 @@ This mod contains four in-world mortars, each with a configurable durability.
 
 ##### Insertion
 
-Place up to eight stacks of items in the mortar by right-clicking the mortar while holding the items. Then, perform the craft by right-clicking or holding down the right mouse button with an empty hand. 
+Place up to eight stacks of items in the mortar by right-clicking the mortar while holding the items. Then, perform the craft by right-clicking or holding down the right mouse button with an empty hand (empty hand requirement is configurable). 
 
 ##### Retrieval
 
