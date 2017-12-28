@@ -50,6 +50,22 @@ public class MortarDelegate
 
     int count = itemStack.getCount();
 
+    // If there is an active recipe, disallow input if the item, combined with the
+    // existing items in the mortar, is not at least a partial match to any recipe.
+    if (this.recipe != null) {
+      ItemStack[] ingredients = new ItemStack[this.itemStackHandler.getSlots() + 1];
+
+      for (int i = 0; i < this.itemStackHandler.getSlots(); i++) {
+        ingredients[i] = this.itemStackHandler.getStackInSlot(i);
+      }
+
+      ingredients[this.itemStackHandler.getSlots()] = itemStack;
+
+      if (!MortarAPI.RECIPE_REGISTRY.matchesPartial(this.type, ingredients)) {
+        return false;
+      }
+    }
+
     for (int i = 0; i < this.itemStackHandler.getSlots(); i++) {
       itemStack = this.itemStackHandler.insertItem(i, itemStack, true);
 

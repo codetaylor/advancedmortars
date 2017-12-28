@@ -3,7 +3,6 @@ package com.codetaylor.mc.advancedmortars.modules.mortar.recipe;
 import com.codetaylor.mc.advancedmortars.modules.mortar.reference.EnumMortarType;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.util.NonNullList;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -33,7 +32,14 @@ public class RegistryRecipeMortar {
   }
 
   @Nonnull
-  public RecipeMortar addRecipe(EnumMortarType type, ItemStack output, int duration, ItemStack secondaryOutput, float secondaryOutputChance, Ingredient[] inputs) {
+  public RecipeMortar addRecipe(
+      EnumMortarType type,
+      ItemStack output,
+      int duration,
+      ItemStack secondaryOutput,
+      float secondaryOutputChance,
+      Ingredient[] inputs
+  ) {
 
     List<Ingredient> inputList = new ArrayList<>();
     Collections.addAll(inputList, inputs);
@@ -60,6 +66,24 @@ public class RegistryRecipeMortar {
     }
 
     return null;
+  }
+
+  public boolean matchesPartial(EnumMortarType type, ItemStack[] inputs) {
+
+    List<RecipeMortar> list = this.recipeMap.get(type);
+
+    if (list == null || list.isEmpty()) {
+      return false;
+    }
+
+    for (RecipeMortar recipe : list) {
+
+      if (recipe.matchesPartial(inputs)) {
+        return true;
+      }
+    }
+
+    return false;
   }
 
 }

@@ -1,3 +1,6 @@
+1.5.15
+* Changed how mortar input is handled: items can only be inserted into the mortar if the item being inserted, combined with the items already in the mortar, partially satisfy any recipe.
+
 1.5.14
 * Fixed: Oredict recipes not working properly (#21)
 * Add extended tooltip info that displays the item retrieval instructions (#19)

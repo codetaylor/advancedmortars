@@ -15,7 +15,13 @@ public class RecipeMortar
   private int duration;
   private List<Ingredient> inputs;
 
-  public RecipeMortar(ItemStack output, int duration, ItemStack secondaryOutput, float secondaryOutputChance, List<Ingredient> inputs) {
+  public RecipeMortar(
+      ItemStack output,
+      int duration,
+      ItemStack secondaryOutput,
+      float secondaryOutputChance,
+      List<Ingredient> inputs
+  ) {
 
     this.duration = duration;
     this.output = output;
@@ -55,11 +61,6 @@ public class RecipeMortar
   }
 
   public boolean matches(ItemStack[] inputs) {
-
-    return this.checkAvailableIngredients(inputs);
-  }
-
-  private boolean checkAvailableIngredients(ItemStack[] inputs) {
 
     boolean[] matchedInputs = new boolean[inputs.length];
     int[] availableCounts = new int[inputs.length];
@@ -116,6 +117,47 @@ public class RecipeMortar
     for (boolean matchedInput : matchedInputs) {
 
       if (!matchedInput) {
+        return false;
+      }
+    }
+
+    return true;
+  }
+
+  /**
+   * Returns true if all of the given inputs are used in any recipe.
+   *
+   * Because I'm not sick of writing recipe matching algorithms.
+   *
+   * (-.-)
+   *
+   * (╯°□°）╯︵ ┻━┻
+   *
+   * @param inputs the inputs
+   * @return true if all of the given inputs are used in any recipe
+   */
+  public boolean matchesPartial(ItemStack[] inputs) {
+
+    boolean[] matchedInputs = new boolean[inputs.length];
+
+    for (Ingredient ingredient : this.inputs) { // for each recipe ingredient
+      ItemStack[] matchingStacks = ingredient.getMatchingStacks();
+
+      if (matchingStacks.length == 0) {
+        return false;
+      }
+
+      for (int j = 0; j < inputs.length; j++) { // for each provided ingredient
+
+        if (!matchedInputs[j] && ingredient.apply(inputs[j])) {
+          matchedInputs[j] = true;
+        }
+      }
+    }
+
+    for (boolean matchedInput : matchedInputs) {
+
+      if (!matchedInput) { // found an input that wasn't matched
         return false;
       }
     }
