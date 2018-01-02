@@ -30,32 +30,14 @@ public class ZenMortar {
   @ZenMethod
   public static void addRecipe(String[] types, IItemStack output, int duration, IIngredient[] inputs) {
 
-    if (inputs == null || inputs.length == 0) {
-      CraftTweakerUtil.logError("No inputs defined");
-      return;
-
-    } else if (inputs.length > 8) {
-      CraftTweakerUtil.logError("Maximum number of 8 input ingredients exceeded: " + inputs.length);
-      return;
-    }
-
-    for (String type : types) {
-      EnumMortarType enumMortarType = EnumMortarType.fromName(type);
-
-      if (enumMortarType == null) {
-        CraftTweakerUtil.logError("Invalid mortar type: " + type);
-        return;
-      }
-    }
-
-    PluginCraftTweaker.LATE_ADDITIONS.add(new Add(
+    ZenMortar.addRecipe(
         types,
-        InputHelper.toStack(output),
+        output,
         duration,
         null,
         0,
         inputs
-    ));
+    );
   }
 
   @ZenMethod
@@ -67,6 +49,26 @@ public class ZenMortar {
       float secondaryOutputChance,
       IIngredient[] inputs
   ) {
+
+    // Check that inputs are defined and within the bounds.
+    if (inputs == null || inputs.length == 0) {
+      CraftTweakerUtil.logError("No inputs defined");
+      return;
+
+    } else if (inputs.length > 8) {
+      CraftTweakerUtil.logError("Maximum number of 8 input ingredients exceeded: " + inputs.length);
+      return;
+    }
+
+    // Check that all types are valid.
+    for (String type : types) {
+      EnumMortarType enumMortarType = EnumMortarType.fromName(type);
+
+      if (enumMortarType == null) {
+        CraftTweakerUtil.logError("Invalid mortar type: " + type);
+        return;
+      }
+    }
 
     PluginCraftTweaker.LATE_ADDITIONS.add(new Add(
         types,
@@ -134,7 +136,7 @@ public class ZenMortar {
               }
 
             } else {
-              LogHelper.logError("Unknown input type: " + this.inputs[i].getClass());
+              LogHelper.logError("Unknown input type: " + this.inputs[i]);
               return;
             }
 
