@@ -1,3 +1,6 @@
+1.6.15
+* Fixed: world load hangs on invalid script (#22)
+
 1.6.14
 * Improved usability:
     * Changed how mortar input is handled: items can only be inserted into the mortar if the item being inserted, combined with the items already in the mortar, partially satisfy any recipe.
