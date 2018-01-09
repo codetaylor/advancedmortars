@@ -29,7 +29,6 @@ public class TESRMortar
     extends TileEntitySpecialRenderer<TileEntityMortarBase> {
 
   private IBakedModel bakedModel;
-  //private ResourceLocation PESTLE_TEXTURE = new ResourceLocation(ModuleMortar.MOD_ID, "textures/blocks/soul_gravel.png");
 
   @Override
   public void render(

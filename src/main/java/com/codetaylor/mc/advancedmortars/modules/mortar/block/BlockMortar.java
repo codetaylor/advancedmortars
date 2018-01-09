@@ -179,8 +179,8 @@ public class BlockMortar
       float hitZ
   ) {
 
+    // Only do this stuff on the server.
     if (world.isRemote) {
-      // Only do this stuff on the client.
       return true;
     }
 
