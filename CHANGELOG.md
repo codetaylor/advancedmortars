@@ -1,3 +1,6 @@
+1.6.16
+* Changed: updated zh_cn.lang (PR#23 DYColdWind)
+
 1.6.15
 * Fixed: world load hangs on invalid script (#22)
 
