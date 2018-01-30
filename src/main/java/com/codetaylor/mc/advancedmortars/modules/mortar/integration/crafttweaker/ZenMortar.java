@@ -132,7 +132,7 @@ public class ZenMortar {
               itemStacks = new ItemStack[items.size()];
 
               for (int j = 0; j < items.size(); j++) {
-                itemStacks[j] = InputHelper.toStack(items.get(i));
+                itemStacks[j] = InputHelper.toStack(items.get(j));
               }
 
             } else {
