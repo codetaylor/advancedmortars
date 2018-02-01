@@ -5,9 +5,15 @@ import com.codetaylor.mc.advancedmortars.modules.mortar.api.MortarAPI;
 import com.codetaylor.mc.advancedmortars.modules.mortar.recipe.IRecipeMortar;
 import com.codetaylor.mc.advancedmortars.modules.mortar.recipe.RecipeMortar;
 import com.codetaylor.mc.advancedmortars.modules.mortar.reference.EnumMortarType;
-import mezz.jei.api.*;
+import mezz.jei.api.IJeiHelpers;
+import mezz.jei.api.IModPlugin;
+import mezz.jei.api.IModRegistry;
+import mezz.jei.api.JEIPlugin;
 import mezz.jei.api.gui.IDrawable;
 import mezz.jei.api.recipe.IRecipeCategoryRegistration;
+import mezz.jei.gui.elements.DrawableResource;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
@@ -63,12 +69,20 @@ public class PluginJEI
 
   private IDrawable createBackground() {
 
-    IGuiHelper guiHelper = this.jeiHelpers.getGuiHelper();
     ResourceLocation resourceLocation = new ResourceLocation(
         ModuleMortar.MOD_ID,
         TEXTURE_BACKGROUND
     );
-    return guiHelper.createDrawable(resourceLocation, 0, 0, 116, 54, 116, 54);
+    return new DrawableResource(resourceLocation, 0, 0, 116, 54, 0, 0, 0, 0, 116, 54) {
+
+      @Override
+      public void draw(Minecraft minecraft) {
+
+        GlStateManager.enableBlend();
+        super.draw(minecraft);
+        GlStateManager.disableBlend();
+      }
+    };
   }
 
   private String createTitleTranslateKey(EnumMortarType type) {

@@ -6,6 +6,7 @@ import com.codetaylor.mc.advancedmortars.modules.mortar.recipe.RecipeMortar;
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.IRecipeWrapper;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.ResourceLocation;
@@ -17,6 +18,11 @@ import java.util.List;
 
 public class JEIRecipeWrapperMortar
     implements IRecipeWrapper {
+
+  private static final ResourceLocation TEXTURE_PRIMARY_OVERLAY = new ResourceLocation(
+      ModuleMortar.MOD_ID,
+      "textures/gui/jei_primary.png"
+  );
 
   private static final ResourceLocation TEXTURE_SECONDARY_OVERLAY = new ResourceLocation(
       ModuleMortar.MOD_ID,
@@ -59,11 +65,18 @@ public class JEIRecipeWrapperMortar
       Minecraft minecraft, int recipeWidth, int recipeHeight, int mouseX, int mouseY
   ) {
 
+    GlStateManager.enableBlend();
+
     if (this.outputs.size() > 1) {
       GuiHelper.drawTexturedRect(minecraft, TEXTURE_SECONDARY_OVERLAY, recipeWidth - 26, 0, 26, 54, 0, 0, 0, 26, 54);
 
       String text = Math.round(this.secondaryOutputChance * 100) + "%";
       minecraft.fontRenderer.drawStringWithShadow(text, recipeWidth - 2, 32, 0xFFFFFF);
+
+    } else {
+      GuiHelper.drawTexturedRect(minecraft, TEXTURE_PRIMARY_OVERLAY, recipeWidth - 26, 0, 26, 54, 0, 0, 0, 26, 54);
     }
+
+    GlStateManager.disableBlend();
   }
 }
