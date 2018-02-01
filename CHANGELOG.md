@@ -1,5 +1,6 @@
 1.6.17
-* Fixed: Recipes with no secondary outputs render empty secondary output in JEI (#26)
+* Fixed: recipes with no secondary outputs render empty secondary output in JEI (#26)
+* Changed: improved readability of JEI recipes when using resource packs that alter the background texture
 
 1.6.16
 * Changed: updated zh_cn.lang (PR#23 DYColdWind)
