@@ -39,7 +39,8 @@ public class JEIRecipeWrapperMortar
 
     this.outputs.add(recipe.getOutput());
 
-    if (recipe.getSecondaryOutput() != null) {
+    if (recipe.getSecondaryOutput() != null
+        && !recipe.getSecondaryOutput().isEmpty()) {
       this.outputs.add(recipe.getSecondaryOutput());
     }
 

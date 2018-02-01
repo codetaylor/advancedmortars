@@ -1,3 +1,6 @@
+1.6.17
+* Fixed: Recipes with no secondary outputs render empty secondary output in JEI (#26)
+
 1.6.16
 * Changed: updated zh_cn.lang (PR#23 DYColdWind)
 
