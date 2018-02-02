@@ -1,3 +1,6 @@
+1.6.18
+* Fixed: output syntax cannot be null (#27) caused by declaring the main output of the recipe as `null` in the .zs script
+
 1.6.17
 * Fixed: recipes with no secondary outputs render empty secondary output in JEI (#26)
 * Changed: improved readability of JEI recipes when using resource packs that alter the background texture

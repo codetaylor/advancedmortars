@@ -167,7 +167,7 @@ public class ZenMortar {
     @Override
     protected String getRecipeInfo() {
 
-      return LogHelper.getStackDescription(this.output);
+      return (this.output != null && !this.output.isEmpty()) ? LogHelper.getStackDescription(this.output) : "EMPTY";
     }
   }
 
