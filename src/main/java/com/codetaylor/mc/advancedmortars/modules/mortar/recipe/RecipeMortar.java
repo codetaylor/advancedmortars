@@ -45,7 +45,7 @@ public class RecipeMortar
   @Override
   public ItemStack getSecondaryOutput() {
 
-    return this.secondaryOutput;
+    return this.secondaryOutput.copy();
   }
 
   @Override

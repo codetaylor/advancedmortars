@@ -1,3 +1,6 @@
+1.6.19
+* Fixed: secondary output quantity discrepancy
+
 1.6.18
 * Fixed: output syntax cannot be null (#27) caused by declaring the main output of the recipe as `null` in the .zs script
 
