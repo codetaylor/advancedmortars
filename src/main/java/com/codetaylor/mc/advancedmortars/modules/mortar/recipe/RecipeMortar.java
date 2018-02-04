@@ -25,7 +25,7 @@ public class RecipeMortar
 
     this.duration = duration;
     this.output = output;
-    this.secondaryOutput = secondaryOutput;
+    this.secondaryOutput = (secondaryOutput == null) ? ItemStack.EMPTY : secondaryOutput;
     this.secondaryOutputChance = secondaryOutputChance;
 
     this.inputs = new ArrayList<>(inputs);

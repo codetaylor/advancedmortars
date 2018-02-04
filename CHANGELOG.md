@@ -1,3 +1,6 @@
+1.6.20
+* Fixed: default recipes causing JEI errors (#29)
+
 1.6.19
 * Fixed: secondary output quantity discrepancy
 
