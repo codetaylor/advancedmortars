@@ -5,6 +5,7 @@ import com.codetaylor.mc.advancedmortars.modules.mortar.api.MortarAPI;
 import com.codetaylor.mc.advancedmortars.modules.mortar.recipe.IRecipeMortar;
 import com.codetaylor.mc.advancedmortars.modules.mortar.recipe.RecipeMortar;
 import com.codetaylor.mc.advancedmortars.modules.mortar.reference.EnumMortarType;
+import com.codetaylor.mc.advancedmortars.modules.mortar.util.Utils;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.nbt.NBTTagCompound;
@@ -212,7 +213,7 @@ public class MortarDelegate
             continue;
           }
 
-          if (ingredient.apply(stackInSlot)) {
+          if (Utils.ingredientApplyWithNBT(ingredient, stackInSlot)) {
 
             if (stackInSlot.getCount() >= requiredCount) {
               stackInSlot.shrink(requiredCount);

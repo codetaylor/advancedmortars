@@ -1,5 +1,6 @@
 package com.codetaylor.mc.advancedmortars.modules.mortar.recipe;
 
+import com.codetaylor.mc.advancedmortars.modules.mortar.util.Utils;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 
@@ -80,7 +81,7 @@ public class RecipeMortar
       int requiredCount = matchingStacks[0].getCount();
 
       for (int j = 0; j < inputs.length; j++) { // for each provided ingredient
-        boolean ingredientMatches = ingredient.apply(inputs[j]);
+        boolean ingredientMatches = Utils.ingredientApplyWithNBT(ingredient, inputs[j]);
 
         if (ingredientMatches) {
           matchedInputs[j] = true;
@@ -126,11 +127,11 @@ public class RecipeMortar
 
   /**
    * Returns true if all of the given inputs are used in any recipe.
-   *
+   * <p>
    * Because I'm not sick of writing recipe matching algorithms.
-   *
+   * <p>
    * (-.-)
-   *
+   * <p>
    * (╯°□°）╯︵ ┻━┻
    *
    * @param inputs the inputs
@@ -149,7 +150,7 @@ public class RecipeMortar
 
       for (int j = 0; j < inputs.length; j++) { // for each provided ingredient
 
-        if (inputs[j].isEmpty() || (!matchedInputs[j] && ingredient.apply(inputs[j]))) {
+        if (inputs[j].isEmpty() || (!matchedInputs[j] && Utils.ingredientApplyWithNBT(ingredient, inputs[j]))) {
           matchedInputs[j] = true;
         }
       }
