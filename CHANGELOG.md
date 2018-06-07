@@ -1,3 +1,6 @@
+1.6.21
+* Fixed: 
+
 1.6.20
 * Fixed: default recipes causing JEI errors (#29)
 
