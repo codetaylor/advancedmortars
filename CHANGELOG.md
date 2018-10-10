@@ -1,3 +1,8 @@
+1.6.22
+* Added support for CrT IngredientOr (#30)
+* Added durability bars on the mortar items (#31)
+* Added tr_tr.lang (#34 Emirhangg)
+
 1.6.21
 * Fixed: doesn't respect NBT tags (#33)
 
