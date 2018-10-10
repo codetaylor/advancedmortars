@@ -1,5 +1,6 @@
 package com.codetaylor.mc.advancedmortars.modules.mortar.item;
 
+import com.codetaylor.mc.advancedmortars.modules.mortar.ModuleConfig;
 import com.codetaylor.mc.advancedmortars.modules.mortar.ModuleMortar;
 import net.minecraft.block.Block;
 import net.minecraft.client.gui.GuiScreen;
@@ -95,5 +96,38 @@ public class ItemBlockMortar
     } else {
       tooltip.add(I18n.format(ModuleMortar.Lang.TOOLTIP_EXTENDED, TextFormatting.AQUA, TextFormatting.GRAY));
     }
+  }
+
+  @Override
+  public boolean showDurabilityBar(ItemStack stack) {
+
+    int maxDurability = ModuleMortar.Blocks.MORTAR.getMaxDurability(stack);
+
+    if (maxDurability <= 0) {
+      return false;
+    }
+
+    return ModuleConfig.CLIENT.DISPLAY_MORTAR_DURABILITY;
+  }
+
+  @Override
+  public double getDurabilityForDisplay(ItemStack stack) {
+
+    int maxDurability = ModuleMortar.Blocks.MORTAR.getMaxDurability(stack);
+
+    if (maxDurability <= 0) {
+      return 0;
+    }
+
+    NBTTagCompound stackCompound = stack.getTagCompound();
+    int durability = 0;
+
+    if (stackCompound != null
+        && stackCompound.hasKey("BlockEntityTag")) {
+      NBTTagCompound compound = stackCompound.getCompoundTag("BlockEntityTag");
+      durability = maxDurability - compound.getInteger("durability");
+    }
+
+    return 1 - durability / (double) maxDurability;
   }
 }
