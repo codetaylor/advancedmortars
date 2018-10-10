@@ -1,10 +1,17 @@
 package com.codetaylor.mc.advancedmortars.modules.mortar.integration.crafttweaker.mtlib;
 
+import crafttweaker.api.item.IIngredient;
 import crafttweaker.api.item.IItemStack;
+import crafttweaker.api.oredict.IOreDictEntry;
 import crafttweaker.mc1120.item.MCItemStack;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.NonNullList;
+import net.minecraftforge.oredict.OreDictionary;
 
 import java.lang.reflect.Array;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * https://github.com/jaredlll08/MTLib/blob/1.12/src/main/java/com/blamejared/mtlib/helpers/InputHelper.java
@@ -59,5 +66,59 @@ public class InputHelper {
     }
 
     return new MCItemStack(stack);
+  }
+
+  public static List<ItemStack> getMatchingStacks(IIngredient ingredient, List<ItemStack> result) {
+
+    if (ingredient == null) {
+      return result;
+    }
+
+    if (ingredient instanceof IOreDictEntry) {
+      NonNullList<ItemStack> ores = OreDictionary.getOres(((IOreDictEntry) ingredient).getName());
+      InputHelper.getMatchingStacks(ores, ingredient.getAmount(), result);
+
+    } else if (ingredient instanceof IItemStack) {
+      ItemStack itemStack = InputHelper.toStack((IItemStack) ingredient);
+      itemStack.setCount(ingredient.getAmount());
+      result.add(itemStack);
+
+    } else {
+      List<IItemStack> items = ingredient.getItems();
+
+      for (IItemStack item : items) {
+        ItemStack itemStack = InputHelper.toStack(item);
+        InputHelper.getMatchingStacks(Collections.singletonList(itemStack), ingredient.getAmount(), result);
+      }
+    }
+
+    return result;
+  }
+
+  public static List<ItemStack> getMatchingStacks(List<ItemStack> itemStackList, int amount, List<ItemStack> result) {
+
+    NonNullList<ItemStack> internalList = NonNullList.create();
+
+    for (ItemStack itemStack : itemStackList) {
+
+      if (itemStack.isEmpty()) {
+        continue;
+      }
+
+      if (itemStack.getMetadata() == OreDictionary.WILDCARD_VALUE) {
+
+        itemStack.getItem().getSubItems(CreativeTabs.SEARCH, internalList);
+
+      } else {
+        internalList.add(itemStack);
+      }
+    }
+
+    for (ItemStack itemStack : internalList) {
+      itemStack.setCount(amount);
+    }
+
+    result.addAll(internalList);
+    return result;
   }
 }

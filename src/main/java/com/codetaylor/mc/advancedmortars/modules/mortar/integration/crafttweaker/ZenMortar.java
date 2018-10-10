@@ -8,15 +8,12 @@ import com.codetaylor.mc.advancedmortars.modules.mortar.integration.crafttweaker
 import com.codetaylor.mc.advancedmortars.modules.mortar.reference.EnumMortarType;
 import crafttweaker.api.item.IIngredient;
 import crafttweaker.api.item.IItemStack;
-import crafttweaker.api.item.IngredientStack;
-import crafttweaker.api.oredict.IOreDictEntry;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.util.NonNullList;
-import net.minecraftforge.oredict.OreDictionary;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -117,34 +114,12 @@ public class ZenMortar {
         if (enumMortarType != null) {
           Ingredient[] ingredients = new Ingredient[this.inputs.length];
 
+          ArrayList<ItemStack> result = new ArrayList<>();
           for (int i = 0; i < this.inputs.length; i++) {
-            ItemStack[] itemStacks;
-
-            if (this.inputs[i] instanceof IOreDictEntry) {
-              NonNullList<ItemStack> ores = OreDictionary.getOres(((IOreDictEntry) this.inputs[i]).getName());
-              itemStacks = ores.toArray(new ItemStack[ores.size()]);
-
-            } else if (this.inputs[i] instanceof IItemStack) {
-              itemStacks = new ItemStack[]{InputHelper.toStack((IItemStack) this.inputs[i])};
-
-            } else if (this.inputs[i] instanceof IngredientStack) {
-              List<IItemStack> items = this.inputs[i].getItems();
-              itemStacks = new ItemStack[items.size()];
-
-              for (int j = 0; j < items.size(); j++) {
-                itemStacks[j] = InputHelper.toStack(items.get(j));
-              }
-
-            } else {
-              LogHelper.logError("Unknown input type: " + this.inputs[i]);
-              return;
-            }
-
-            ingredients[i] = Ingredient.fromStacks(itemStacks);
-
-            for (ItemStack itemStack : ingredients[i].getMatchingStacks()) {
-              itemStack.setCount(this.inputs[i].getAmount());
-            }
+            result.clear();
+            List<ItemStack> matchingStacks = InputHelper.getMatchingStacks(this.inputs[i], result);
+            ItemStack[] array = matchingStacks.toArray(new ItemStack[matchingStacks.size()]);
+            ingredients[i] = Ingredient.fromStacks(array);
           }
 
           MortarAPI.RECIPE_REGISTRY.addRecipe(
