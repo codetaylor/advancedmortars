@@ -1,0 +1,17 @@
+itemGroup.advancedmortars=Advanced Mortars
+
+text.advancedmortars.jei.category.mortar.wood=Tahta Havan
+text.advancedmortars.jei.category.mortar.stone=TaÅŸ Havan
+text.advancedmortars.jei.category.mortar.iron=Demir Havan
+text.advancedmortars.jei.category.mortar.diamond=Elmas Havan
+
+tile.advancedmortars.mortar.mortar_wood.name=Tahta Havan
+tile.advancedmortars.mortar.mortar_stone.name=TaÅŸ Havan
+tile.advancedmortars.mortar.mortar_iron.name=Demir Havan
+tile.advancedmortars.mortar.mortar_diamond.name=Elmas Havan
+
+tooltip.advancedmortars.durability=DayanÄ±klÄ±lÄ±k: %s
+tooltip.advancedmortars.durability.unbreakable=KÄ±rÄ±lamaz
+tooltip.advancedmortars.extended=%sSHIFT%s TuÅŸuna basarak daha fazla bilgi Ã¶ÄŸrenin.
+tooltip.advancedmortars.extended.pickup=%sSHIFT%s ve %sLEFT-CLICK%s yaparak bir havanÄ± geri alÄ±n.
+tooltip.advancedmortars.extended.retrieve=%sSHIFT%s ve %sRIGHT-CLICK%s yaparak malzemeleri geri alÄ±n.
