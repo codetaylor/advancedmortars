@@ -1,3 +1,7 @@
+1.6.23
+* Fix JEI mouseover bounds (#40)
+* Fix empty durability bar displays in JEI
+
 1.6.22
 * Added support for CrT IngredientOr (#30)
 * Added durability bars on the mortar items (#31)
