@@ -19,7 +19,7 @@ def getVersionName = { String workTree ->
 }
 
 project.ext.mcversion = "1.12.2"
-project.ext.forgeversion = "14.23.1.2578"
+project.ext.forgeversion = "14.23.5.2816"
 version = project.ext.mcversion + "-" + getVersionName("${project.projectDir}")
 group = "com.codetaylor.mc"
 archivesBaseName = "advancedmortars"
@@ -86,7 +86,7 @@ dependencies {
     deobfCompile "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.2.397"
     deobfCompile "CraftTweaker2:CraftTweaker2-API:4.1.2.397"
     deobfCompile "CraftTweaker2:ZenScript:4.1.2.397"
-    deobfCompile "mezz.jei:jei_1.12.2:4.8.0.+"
+    deobfCompile "mezz.jei:jei_1.12.2:4.15.0.279"
 }
 
 processResources {
