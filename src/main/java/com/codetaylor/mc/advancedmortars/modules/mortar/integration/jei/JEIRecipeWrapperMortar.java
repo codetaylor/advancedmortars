@@ -68,13 +68,14 @@ public class JEIRecipeWrapperMortar
     GlStateManager.enableBlend();
 
     if (this.outputs.size() > 1) {
-      GuiHelper.drawTexturedRect(minecraft, TEXTURE_SECONDARY_OVERLAY, recipeWidth - 26, 0, 26, 54, 0, 0, 0, 26, 54);
+      GuiHelper.drawTexturedRect(minecraft, TEXTURE_SECONDARY_OVERLAY, recipeWidth - 26, 12, 26, 54, 0, 0, 0, 26, 54);
 
       String text = Math.round(this.secondaryOutputChance * 100) + "%";
-      minecraft.fontRenderer.drawStringWithShadow(text, recipeWidth - 2, 32, 0xFFFFFF);
+      int stringWidth = minecraft.fontRenderer.getStringWidth(text);
+      minecraft.fontRenderer.drawStringWithShadow(text, recipeWidth - (stringWidth) - 24, 32 + 16, 0xFFFFFF);
 
     } else {
-      GuiHelper.drawTexturedRect(minecraft, TEXTURE_PRIMARY_OVERLAY, recipeWidth - 26, 0, 26, 54, 0, 0, 0, 26, 54);
+      GuiHelper.drawTexturedRect(minecraft, TEXTURE_PRIMARY_OVERLAY, recipeWidth - 26, 8, 26, 54, 0, 0, 0, 26, 54);
     }
 
     GlStateManager.disableBlend();

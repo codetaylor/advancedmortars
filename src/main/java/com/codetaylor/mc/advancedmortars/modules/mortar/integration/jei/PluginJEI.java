@@ -73,7 +73,7 @@ public class PluginJEI
         ModuleMortar.MOD_ID,
         TEXTURE_BACKGROUND
     );
-    return new DrawableResource(resourceLocation, 0, 0, 116, 54, 0, 0, 0, 0, 116, 54) {
+    return new DrawableResource(resourceLocation, 0, 0, 116 + 8, 54 + 8, 8, 0, 8, 0, 116, 54) {
 
       @Override
       public void draw(Minecraft minecraft) {

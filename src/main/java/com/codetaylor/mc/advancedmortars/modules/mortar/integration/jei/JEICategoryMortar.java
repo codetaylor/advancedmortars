@@ -7,9 +7,12 @@ import mezz.jei.api.gui.IRecipeLayout;
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.IRecipeCategory;
 import mezz.jei.api.recipe.IRecipeWrapper;
+import mezz.jei.gui.elements.DrawableResource;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
 
 import javax.annotation.Nonnull;
@@ -67,20 +70,20 @@ public class JEICategoryMortar
       List<ItemStack> outputs = outputList.get(0);
       boolean secondaryOutputExists = outputList.size() > 1;
 
-      int outputYPosition = 18;
+      int outputYPosition = 18 + 8;
 
       if (secondaryOutputExists) {
-        outputYPosition = 4;
+        outputYPosition = 8 + 8;
       }
 
-      stacks.init(0, false, 94, outputYPosition);
+      stacks.init(0, false, 94 + 16, outputYPosition);
       stacks.set(0, outputs);
 
       int count = inputs.size();
       float angle = (float) (Math.PI * 2 / (float) count);
       float radius = 18 + 8;
-      int offsetX = 17;
-      int offsetY = 17;
+      int offsetX = 17 + 8;
+      int offsetY = 17 + 8;
 
       for (int index = 0; index < count; index++) {
         int x = (int) (MathHelper.cos(angle * index) * radius) + offsetX;
@@ -93,7 +96,7 @@ public class JEICategoryMortar
       }
 
       if (secondaryOutputExists) {
-        stacks.init(count + 1, false, 94, outputYPosition + 23);
+        stacks.init(count + 1, false, 94 + 16, outputYPosition + 23);
         stacks.set(count + 1, outputList.get(1));
       }
     }
