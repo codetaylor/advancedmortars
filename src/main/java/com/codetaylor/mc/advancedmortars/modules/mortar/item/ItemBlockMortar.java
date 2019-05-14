@@ -107,7 +107,8 @@ public class ItemBlockMortar
       return false;
     }
 
-    return ModuleConfig.CLIENT.DISPLAY_MORTAR_DURABILITY;
+    return ModuleConfig.CLIENT.DISPLAY_MORTAR_DURABILITY
+        && this.getDurabilityForDisplay(stack) < 0.9999999999;
   }
 
   @Override
