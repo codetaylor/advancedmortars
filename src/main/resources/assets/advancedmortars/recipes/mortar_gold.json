@@ -1,0 +1,25 @@
+{
+  "result": {
+    "item": "advancedmortars:mortar",
+    "data": 4
+  },
+  "pattern": [
+    "  s",
+    "wfw",
+    " w "
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "s": {
+      "type": "forge:ore_dict",
+      "ore": "stickWood"
+    },
+    "w": {
+      "type": "forge:ore_dict",
+      "ore": "ingotGold"
+    },
+    "f": {
+      "item": "minecraft:flint"
+    }
+  }
+}

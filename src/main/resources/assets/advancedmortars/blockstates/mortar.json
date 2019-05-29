@@ -13,6 +13,15 @@
       },
       "diamond": {
         "model": "advancedmortars:mortar_diamond"
+      },
+      "gold": {
+        "model": "advancedmortars:mortar_gold"
+      },
+      "obsidian": {
+        "model": "advancedmortars:mortar_obsidian"
+      },
+      "emerald": {
+        "model": "advancedmortars:mortar_emerald"
       }
     }
   }

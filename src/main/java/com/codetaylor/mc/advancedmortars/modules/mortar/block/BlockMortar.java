@@ -129,6 +129,11 @@ public class BlockMortar
       NonNullList<ItemStack> drops, IBlockAccess world, BlockPos pos, IBlockState state, int fortune
   ) {
 
+    // TODO: Fix
+    // This method should simply return a list of drops like the javadoc says.
+    // Calling the destroy method on the TE below will spawn items directly in
+    // the world. Calling this method should not spawn anything in the world.
+
     drops.clear();
 
     TileEntity tileEntity = world.getTileEntity(pos);
@@ -243,8 +248,14 @@ public class BlockMortar
         return ModuleConfig.DURABILITY.STONE;
       case IRON:
         return ModuleConfig.DURABILITY.IRON;
+      case GOLD:
+        return ModuleConfig.DURABILITY.GOLD;
       case DIAMOND:
         return ModuleConfig.DURABILITY.DIAMOND;
+      case OBSIDIAN:
+        return ModuleConfig.DURABILITY.OBSIDIAN;
+      case EMERALD:
+        return ModuleConfig.DURABILITY.EMERALD;
       default:
         throw new IllegalArgumentException("Unknown mortar type: " + type);
     }
@@ -273,6 +284,12 @@ public class BlockMortar
         return new TileEntityMortarIron();
       case DIAMOND:
         return new TileEntityMortarDiamond();
+      case GOLD:
+        return new TileEntityMortarGold();
+      case OBSIDIAN:
+        return new TileEntityMortarObsidian();
+      case EMERALD:
+        return new TileEntityMortarEmerald();
       default:
         throw new IllegalArgumentException("Unknown variant: " + type);
     }

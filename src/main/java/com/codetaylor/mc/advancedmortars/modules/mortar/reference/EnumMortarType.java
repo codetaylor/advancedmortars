@@ -17,7 +17,10 @@ public enum EnumMortarType
   WOOD(0, "wood", Material.WOOD, Material.WOOD.getMaterialMapColor(), 2, 5, "axe", 0, SoundType.WOOD),
   STONE(1, "stone", Material.ROCK, Material.ROCK.getMaterialMapColor(), 1.5f, 10, "pickaxe", 1, SoundType.STONE),
   IRON(2, "iron", Material.IRON, Material.IRON.getMaterialMapColor(), 5, 10, "pickaxe", 2, SoundType.METAL),
-  DIAMOND(3, "diamond", Material.IRON, MapColor.DIAMOND, 5, 10, "pickaxe", 3, SoundType.METAL);
+  DIAMOND(3, "diamond", Material.IRON, MapColor.DIAMOND, 5, 10, "pickaxe", 3, SoundType.METAL),
+  GOLD(4, "gold", Material.IRON, MapColor.GOLD, 2, 5, "pickaxe", 2, SoundType.METAL),
+  OBSIDIAN(5, "obsidian", Material.IRON, MapColor.GOLD, 5, 10, "pickaxe", 3, SoundType.METAL),
+  EMERALD(6, "emerald", Material.IRON, MapColor.GOLD, 5, 10, "pickaxe", 3, SoundType.METAL);
 
   private static final EnumMortarType[] META_LOOKUP = Stream.of(EnumMortarType.values())
       .sorted(Comparator.comparing(EnumMortarType::getMeta))
@@ -29,7 +32,6 @@ public enum EnumMortarType
       .toArray(String[]::new);
 
   public static final Map<String, EnumMortarType> NAME_MAP = Stream.of(EnumMortarType.values())
-      .sorted(Comparator.comparing(EnumMortarType::getMeta))
       .collect(Collectors.toMap(EnumMortarType::getName, Function.identity()));
 
   private final int meta;

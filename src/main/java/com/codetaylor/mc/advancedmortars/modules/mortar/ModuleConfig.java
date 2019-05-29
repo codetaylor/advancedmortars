@@ -54,6 +54,10 @@ public class ModuleConfig {
 
     @Config.RangeInt(min = 0)
     @Config.Comment({"Set to 0 for infinite uses."})
+    public int GOLD = 32;
+
+    @Config.RangeInt(min = 0)
+    @Config.Comment({"Set to 0 for infinite uses."})
     public int STONE = 64;
 
     @Config.RangeInt(min = 0)
@@ -63,6 +67,14 @@ public class ModuleConfig {
     @Config.RangeInt(min = 0)
     @Config.Comment({"Set to 0 for infinite uses."})
     public int DIAMOND = 1024;
+
+    @Config.RangeInt(min = 0)
+    @Config.Comment({"Set to 0 for infinite uses."})
+    public int OBSIDIAN = 870;
+
+    @Config.RangeInt(min = 0)
+    @Config.Comment({"Set to 0 for infinite uses."})
+    public int EMERALD = 2048;
 
   }
 

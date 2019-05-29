@@ -11,7 +11,6 @@ import com.codetaylor.mc.advancedmortars.modules.mortar.item.ItemBlockMortar;
 import com.codetaylor.mc.advancedmortars.modules.mortar.reference.EnumMortarType;
 import com.codetaylor.mc.advancedmortars.modules.mortar.tile.*;
 import net.minecraft.block.Block;
-import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
@@ -82,7 +81,7 @@ public class ModuleMortar
             6,
             null,
             0,
-            new Ingredient[] {
+            new Ingredient[]{
                 Ingredient.fromStacks(new ItemStack(net.minecraft.init.Blocks.COBBLESTONE, 1, 0))
             }
         );
@@ -118,7 +117,10 @@ public class ModuleMortar
         TileEntityMortarWood.class,
         TileEntityMortarStone.class,
         TileEntityMortarIron.class,
-        TileEntityMortarDiamond.class
+        TileEntityMortarGold.class,
+        TileEntityMortarDiamond.class,
+        TileEntityMortarObsidian.class,
+        TileEntityMortarEmerald.class
     );
   }
 
@@ -145,6 +147,18 @@ public class ModuleMortar
     );
     ClientRegistry.bindTileEntitySpecialRenderer(
         TileEntityMortarDiamond.class,
+        new TESRMortar()
+    );
+    ClientRegistry.bindTileEntitySpecialRenderer(
+        TileEntityMortarGold.class,
+        new TESRMortar()
+    );
+    ClientRegistry.bindTileEntitySpecialRenderer(
+        TileEntityMortarObsidian.class,
+        new TESRMortar()
+    );
+    ClientRegistry.bindTileEntitySpecialRenderer(
+        TileEntityMortarEmerald.class,
         new TESRMortar()
     );
   }
