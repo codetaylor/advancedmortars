@@ -30,19 +30,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ModuleMortar
     extends ModuleBase {
 
-  /**
-   * TODO:
-   *
-   * X settle items in mortar
-   * X cache recipe when mortar contents change
-   * X update JEI graphic
-   * X crosshair
-   * X update readme
-   * hunger
-   * update curse project page
-   * update changelog
-   */
-
   public static final String MOD_ID = ModAdvancedMortars.MOD_ID;
   public static final boolean IS_DEV = ModAdvancedMortars.IS_DEV;
 
