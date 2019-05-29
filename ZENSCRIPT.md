@@ -12,6 +12,7 @@ import mods.advancedmortars.Mortar;
 
 * *Maximum of eight input ingredients.*
 * *Each input ingredient must be different.* Using the same ingredient multiple times in the input array will **not** yield the desired results.
+* Valid mortar types are: `wood`, `stone`, `iron`, `gold`, `diamond`, `obsidian`, `emerald`
 
 ```
 Mortar.addRecipe(String[] mortarTypes, IItemStack output, int duration, IIngredient[] inputs);

@@ -1,3 +1,7 @@
+1.7
+* Add gold, obsidian, and emerald mortar
+* Change mortar item to use block model
+
 1.6.23
 * Fix JEI mouseover bounds (#40)
 * Fix empty durability bar displays in JEI
