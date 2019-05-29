@@ -1,4 +1,4 @@
-1.7
+1.7.0
 * Add gold, obsidian, and emerald mortar
 * Change mortar item to use block model
 
