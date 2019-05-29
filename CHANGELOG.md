@@ -1,6 +1,6 @@
 1.7.0
-* Add gold, obsidian, and emerald mortar
-* Change mortar item to use block model
+* Add gold, obsidian, and emerald mortar (#41)
+* Change mortar item to use block model (#38)
 
 1.6.23
 * Fix JEI mouseover bounds (#40)
