@@ -1,0 +1,23 @@
+itemGroup.advancedmortars=Fortschrittliche Mörser
+
+text.advancedmortars.jei.category.mortar.wood=Holzmörser
+text.advancedmortars.jei.category.mortar.stone=Steinmörser
+text.advancedmortars.jei.category.mortar.iron=Eisenmörser
+text.advancedmortars.jei.category.mortar.diamond=Diamantmörser
+text.advancedmortars.jei.category.mortar.gold=Goldmörser
+text.advancedmortars.jei.category.mortar.obsidian=Obsidianmörser
+text.advancedmortars.jei.category.mortar.emerald=Smaragdmörser
+
+tile.advancedmortars.mortar.mortar_wood.name=Holzmörser
+tile.advancedmortars.mortar.mortar_stone.name=Steinmörser
+tile.advancedmortars.mortar.mortar_iron.name=Eisenmörser
+tile.advancedmortars.mortar.mortar_diamond.name=Diamantmörser
+tile.advancedmortars.mortar.mortar_gold.name=Goldener Mörser
+tile.advancedmortars.mortar.mortar_obsidian.name=Obsidianmörser
+tile.advancedmortars.mortar.mortar_emerald.name=Smaragdmörser
+
+tooltip.advancedmortars.durability=Haltbarkeit: %s
+tooltip.advancedmortars.durability.unbreakable=Unkaputtbar
+tooltip.advancedmortars.extended=Halte %sSHIFT%s für mehr Info.
+tooltip.advancedmortars.extended.pickup=%sSHIFT%s + %sLEFT-CLICK%s um den Mörser aufzunehmen.
+tooltip.advancedmortars.extended.retrieve=%sSHIFT%s + %sRIGHT-CLICK%s um Zutaten zu entnehmen.
