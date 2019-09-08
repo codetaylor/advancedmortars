@@ -1,3 +1,6 @@
+1.7.1
+* Added de_de.lang (#44 TheSpicePhantom)
+
 1.7.0
 * Add gold, obsidian, and emerald mortar (#41)
 * Change mortar item to use block model (#38)
