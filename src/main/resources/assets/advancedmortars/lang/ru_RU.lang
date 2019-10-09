@@ -4,11 +4,17 @@ text.advancedmortars.jei.category.mortar.wood=Деревянная ступка
 text.advancedmortars.jei.category.mortar.stone=Каменная ступка
 text.advancedmortars.jei.category.mortar.iron=Железная ступка
 text.advancedmortars.jei.category.mortar.diamond=Алмазная ступка
+text.advancedmortars.jei.category.mortar.gold=Золотая ступка
+text.advancedmortars.jei.category.mortar.obsidian=Обсидиановая ступка
+text.advancedmortars.jei.category.mortar.emerald=Изумрудная ступка
 
 tile.advancedmortars.mortar.mortar_wood.name=Деревянная ступка
 tile.advancedmortars.mortar.mortar_stone.name=Каменная ступка
 tile.advancedmortars.mortar.mortar_iron.name=Железная ступка
 tile.advancedmortars.mortar.mortar_diamond.name=Алмазная ступка
+tile.advancedmortars.mortar.mortar_gold.name=Золотая ступка
+tile.advancedmortars.mortar.mortar_obsidian.name=Обсидиановая ступка
+tile.advancedmortars.mortar.mortar_emerald.name=Изумрудная ступка
 
 tooltip.advancedmortars.durability=Прочность: %s
 tooltip.advancedmortars.durability.unbreakable=Неразрушимый
